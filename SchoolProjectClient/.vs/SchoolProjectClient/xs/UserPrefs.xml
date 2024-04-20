@@ -1,0 +1,35 @@
+﻿<Properties StartupConfiguration="{5722214F-5F8A-4A9B-9E00-C07DE1E262D2}|https">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Client/Services/Users/IUserService.cs">
+    <Files>
+      <File FileName="Client/Services/Basket/IBasketService.cs" Line="1" Column="1" />
+      <File FileName="Client/Services/Users/IUserService.cs" Line="9" Column="69" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SchoolProjectClient" expanded="True">
+            <Node name="SchoolProjectClient.Client" expanded="True">
+              <Node name="Model" expanded="True" />
+              <Node name="Pages">
+                <Node name="PageProcess" expanded="True" />
+              </Node>
+              <Node name="Services" expanded="True">
+                <Node name="Basket" expanded="True" />
+                <Node name="Users" expanded="True">
+                  <Node name="IUserService.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.SchoolProjectClient.Server PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

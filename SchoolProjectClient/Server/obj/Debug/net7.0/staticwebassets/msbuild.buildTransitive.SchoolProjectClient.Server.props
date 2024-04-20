@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/SchoolProjectClient.Server.props" />
+</Project>

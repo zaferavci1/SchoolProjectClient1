@@ -1,0 +1,36 @@
+﻿@page "/buttonTest"
+@page "/buttons"
+
+
+
+<h3> Button Test</h3>
+
+<div class="form-group">
+
+
+    <div class="container">
+
+        <div class="btn-toolbaar">
+
+
+            <CustomEditButtonCompenent OnClick="changeTitle" Caption="Deneme-1" Color="danger" Icon="pencil-square-o" />
+            <CustomEditButtonCompenent Caption="Deneme-2" Color="primary" Icon="pencil" />
+
+            <RadzenButton Text="Hello world!" />
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@code {
+    private string title = "";
+
+    private void changeTitle()
+    {
+        title = "New Title";
+    }
+}
+

@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' ">
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' ">
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.17" PrivateAssets="all" />
+    <PackageReference Include="Radzen.Blazor" Version="4.28.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\SchoolProjectClient.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Custom Compenents\" />
+    <None Remove="Custom Compenents\Button\" />
+    <None Remove="Pages\PageProcess\" />
+    <None Remove="Model\" />
+    <None Remove="Model\PublicProfile\" />
+    <None Remove="Model\Post\" />
+    <None Remove="Model\Notification\" />
+    <None Remove="Model\Comment\" />
+    <None Remove="Model\Basket\" />
+    <None Remove="Services\" />
+    <None Remove="Model\Common\" />
+    <None Remove="Services\Users\" />
+    <None Remove="Model\User\" />
+    <None Remove="Services\Basket\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Custom Compenents\" />
+    <Folder Include="Custom Compenents\Button\" />
+    <Folder Include="Pages\PageProcess\" />
+    <Folder Include="Model\" />
+    <Folder Include="Model\PublicProfile\" />
+    <Folder Include="Model\Post\" />
+    <Folder Include="Model\Notification\" />
+    <Folder Include="Model\Comment\" />
+    <Folder Include="Model\Basket\" />
+    <Folder Include="Services\" />
+    <Folder Include="Model\Common\" />
+    <Folder Include="Services\Users\" />
+    <Folder Include="Model\User\" />
+    <Folder Include="Services\Basket\" />
+  </ItemGroup>
+</Project>
