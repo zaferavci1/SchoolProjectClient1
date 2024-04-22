@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/zaferavci/Documents/SchoolProjectClient/Client/SchoolProjectClient.Client.csproj": {}
+    "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/SchoolProjectClient.Client.csproj": {}
   },
   "projects": {
-    "/Users/zaferavci/Documents/SchoolProjectClient/Client/SchoolProjectClient.Client.csproj": {
+    "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/SchoolProjectClient.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/zaferavci/Documents/SchoolProjectClient/Client/SchoolProjectClient.Client.csproj",
+        "projectUniqueName": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/SchoolProjectClient.Client.csproj",
         "projectName": "SchoolProjectClient.Client",
-        "projectPath": "/Users/zaferavci/Documents/SchoolProjectClient/Client/SchoolProjectClient.Client.csproj",
+        "projectPath": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/SchoolProjectClient.Client.csproj",
         "packagesPath": "/Users/zaferavci/.nuget/packages/",
-        "outputPath": "/Users/zaferavci/Documents/SchoolProjectClient/Client/obj/",
+        "outputPath": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/zaferavci/.nuget/NuGet/NuGet.Config"
@@ -26,8 +26,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/zaferavci/Documents/SchoolProjectClient/Shared/SchoolProjectClient.Shared.csproj": {
-                "projectPath": "/Users/zaferavci/Documents/SchoolProjectClient/Shared/SchoolProjectClient.Shared.csproj"
+              "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/SchoolProjectClient.Shared.csproj": {
+                "projectPath": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/SchoolProjectClient.Shared.csproj"
               }
             }
           }
@@ -50,6 +50,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.17, )"
+            },
+            "MudBlazor": {
+              "target": "Package",
+              "version": "[6.19.1, )"
             },
             "Radzen.Blazor": {
               "target": "Package",
@@ -87,14 +91,14 @@
         }
       }
     },
-    "/Users/zaferavci/Documents/SchoolProjectClient/Shared/SchoolProjectClient.Shared.csproj": {
+    "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/SchoolProjectClient.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/zaferavci/Documents/SchoolProjectClient/Shared/SchoolProjectClient.Shared.csproj",
+        "projectUniqueName": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/SchoolProjectClient.Shared.csproj",
         "projectName": "SchoolProjectClient.Shared",
-        "projectPath": "/Users/zaferavci/Documents/SchoolProjectClient/Shared/SchoolProjectClient.Shared.csproj",
+        "projectPath": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/SchoolProjectClient.Shared.csproj",
         "packagesPath": "/Users/zaferavci/.nuget/packages/",
-        "outputPath": "/Users/zaferavci/Documents/SchoolProjectClient/Shared/obj/",
+        "outputPath": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/zaferavci/.nuget/NuGet/NuGet.Config"

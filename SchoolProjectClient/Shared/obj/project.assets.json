@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/zaferavci/Documents/SchoolProjectClient/Shared/SchoolProjectClient.Shared.csproj",
+      "projectUniqueName": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/SchoolProjectClient.Shared.csproj",
       "projectName": "SchoolProjectClient.Shared",
-      "projectPath": "/Users/zaferavci/Documents/SchoolProjectClient/Shared/SchoolProjectClient.Shared.csproj",
+      "projectPath": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/SchoolProjectClient.Shared.csproj",
       "packagesPath": "/Users/zaferavci/.nuget/packages/",
-      "outputPath": "/Users/zaferavci/Documents/SchoolProjectClient/Shared/obj/",
+      "outputPath": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/zaferavci/.nuget/NuGet/NuGet.Config"

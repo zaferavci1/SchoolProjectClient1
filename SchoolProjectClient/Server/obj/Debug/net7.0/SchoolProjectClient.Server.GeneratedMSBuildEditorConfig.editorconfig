@@ -9,13 +9,13 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SchoolProjectClient.Server
 build_property.RootNamespace = SchoolProjectClient.Server
-build_property.ProjectDir = /Users/zaferavci/Documents/SchoolProjectClient/Server/
+build_property.ProjectDir = /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/zaferavci/Documents/SchoolProjectClient/Server
+build_property.MSBuildProjectDirectory = /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/zaferavci/Documents/SchoolProjectClient/Server/Pages/Error.cshtml]
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

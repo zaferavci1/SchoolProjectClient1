@@ -23,12 +23,15 @@
       "Microsoft.Extensions.FileProviders.Abstractions.dll": "sha256-Zt6OY6gg\/1Tzt9oFOQBkezPvUVkFK4dyM6Pfk+MTUvg=",
       "Microsoft.Extensions.FileProviders.Physical.dll": "sha256-9xkIbIienaRj9Td2MyWYzL9JmVx6CKbGCPrvJ1Pxfn8=",
       "Microsoft.Extensions.FileSystemGlobbing.dll": "sha256-Gm0yiS5fySh2nZXdCRKZIbASK8sSukwjogLc+a9EBZY=",
+      "Microsoft.Extensions.Localization.dll": "sha256-pQiSK5mlv8ZnKSyCWuV2D0RpzUSoq\/RQLgZTY79aFEk=",
+      "Microsoft.Extensions.Localization.Abstractions.dll": "sha256-+l4b058wgEjArrWrQdzA4wIFnThKXYVeBUTrOYMpj7Q=",
       "Microsoft.Extensions.Logging.dll": "sha256-WMsuY8rhtg+vvssGFSR7ZLKhqYPAzOi538IXMoiJ6bI=",
       "Microsoft.Extensions.Logging.Abstractions.dll": "sha256-7mzUlhcvGxpAVO4h\/Tka7P\/8IXF9ZsHkGt0fp5aufkU=",
       "Microsoft.Extensions.Options.dll": "sha256-gcHJrSv1wTqvF9SyWTEKcbiShn4mkgfnm9+tRQr4OqY=",
       "Microsoft.Extensions.Primitives.dll": "sha256-q4ruoDSCjV\/QJY9ZkzV6uxvEvZUVrDbyUjU3SSh5SlE=",
       "Microsoft.JSInterop.dll": "sha256-xenAnavn\/a92BD+qN9enjJLVttI91ZqW5ulI6Y81VdI=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-ECKh1S96xdsHV9EhDvH4KfG1ihaSfcZ\/Ys4I2zy5V+M=",
+      "MudBlazor.dll": "sha256-qLSnA+9E3mTkwg77JTNyf3hYblMa1KIbfUYSb3X8BsE=",
       "Radzen.Blazor.dll": "sha256-9oweDP1TwIJ6Tkjoe1cn7zTVX\/vb2n04cxFU5zuT9FA=",
       "System.IO.Pipelines.dll": "sha256-P\/MqD0fCBd5bgTM16JC1QC\/Zz7s+CwViyzmDFkBG4\/c=",
       "System.Linq.Dynamic.Core.dll": "sha256-KsA1AmkQWza4o3AJK\/0Vuz7nJGCUGjiYUf7b+8QwKsA=",
@@ -200,15 +203,15 @@
       "mscorlib.dll": "sha256-0HcXGniS+WAs4hupbRUCnwMELwoYJxH9EvPE3IR0EqQ=",
       "netstandard.dll": "sha256-NXaYbCfP6xdQO3fJkzooXzSY4o1\/iQDrumjom6Lm57g=",
       "System.Private.CoreLib.dll": "sha256-liKvB0yZJmhm3WN18TOgTvS9tWwMZzi0mlqZNDk8Pkg=",
-      "SchoolProjectClient.Shared.dll": "sha256-kWkGewzk236EJiLXudxVN6nAPnWl0xVQXAo0DJlhy\/0=",
-      "SchoolProjectClient.Client.dll": "sha256-Qm+uzoQkM7D53KCPS3O0UR2WKRkwuqXqozADTPQ\/2oM="
+      "SchoolProjectClient.Shared.dll": "sha256-wLloVfP\/eU\/CgYdYq7JsY88VhjFb1WsaM0c8TgF3yEg=",
+      "SchoolProjectClient.Client.dll": "sha256-9xBOaxWlXOKVzG3PGPbPrhsuU0thiBptpA+289MwgBE="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "SchoolProjectClient.Shared.pdb": "sha256-a1PYqlNwd1RZ2qN2j1oT8zRRmusYWK3shTtXfbwW\/zI=",
-      "SchoolProjectClient.Client.pdb": "sha256-WNXQdkA\/7+d1Dmr4eNksCEfYUTo\/1ZYbzXawBjPbs0o="
+      "SchoolProjectClient.Shared.pdb": "sha256-sKgJCDhdwvN9Mr3LBJyFgBw1cwM91Ko9+klE5iKkORw=",
+      "SchoolProjectClient.Client.pdb": "sha256-XhxpXGVHyv4BslwYcevVcPsIUJIIOkyghKmOih5Ws0k="
     },
     "runtime": {
       "dotnet.7.0.18.7sdl316oz4.js": "sha256-lsqy0PQ8nf1\/0sSlLGe3Kfwi8V0Q1QzVy5+AqtJ3cfU=",

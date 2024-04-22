@@ -9,57 +9,65 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = SchoolProjectClient.Client
 build_property.RootNamespace = SchoolProjectClient.Client
-build_property.ProjectDir = /Users/zaferavci/Documents/SchoolProjectClient/Client/
+build_property.ProjectDir = /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/zaferavci/Documents/SchoolProjectClient/Client
+build_property.MSBuildProjectDirectory = /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/zaferavci/Documents/SchoolProjectClient/Client/App.razor]
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/zaferavci/Documents/SchoolProjectClient/Client/Custom Compenents/Button/BaseButtonComponent.razor]
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/Custom Compenents/Button/BaseButtonComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q3VzdG9tIENvbXBlbmVudHMvQnV0dG9uL0Jhc2VCdXR0b25Db21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/zaferavci/Documents/SchoolProjectClient/Client/Custom Compenents/Button/ButtonComponent.razor]
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/Custom Compenents/Button/ButtonComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q3VzdG9tIENvbXBlbmVudHMvQnV0dG9uL0J1dHRvbkNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/zaferavci/Documents/SchoolProjectClient/Client/Custom Compenents/Button/CustomEditButtonCompenent.razor]
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/Custom Compenents/Button/CustomEditButtonCompenent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q3VzdG9tIENvbXBlbmVudHMvQnV0dG9uL0N1c3RvbUVkaXRCdXR0b25Db21wZW5lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/zaferavci/Documents/SchoolProjectClient/Client/Pages/ButtonTest.razor]
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/Pages/ButtonTest.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQnV0dG9uVGVzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/zaferavci/Documents/SchoolProjectClient/Client/Pages/Counter.razor]
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/zaferavci/Documents/SchoolProjectClient/Client/Pages/FetchData.razor]
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/zaferavci/Documents/SchoolProjectClient/Client/Pages/Index.razor]
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/zaferavci/Documents/SchoolProjectClient/Client/Shared/SurveyPrompt.razor]
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/Pages/Test.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/Pages/Users/AddUserPopup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlcnMvQWRkVXNlclBvcHVwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/zaferavci/Documents/SchoolProjectClient/Client/_Imports.razor]
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/zaferavci/Documents/SchoolProjectClient/Client/Shared/MainLayout.razor]
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-8trpk9dgvf
 
-[/Users/zaferavci/Documents/SchoolProjectClient/Client/Shared/NavMenu.razor]
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-vz4i7bbdli

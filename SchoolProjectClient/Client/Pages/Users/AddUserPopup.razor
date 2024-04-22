@@ -1,0 +1,46 @@
+﻿@page "/add-user"
+
+@using SchoolProjectClient.Client.Services.Users;
+@using SchoolProjectClient.Client.Model.User;
+@using MudBlazor;
+
+
+@inject IUserService _userService;
+@inject ISnackbar _snackbar;
+
+<MudDialog>
+    <DialogContent>
+        <MudTextField T="string" @bind-Value="addUser.NickName" Label="Nickname" FullWidth></MudTextField>
+        <MudTextField T="string" @bind-Value="addUser.Name" Label="Name" FullWidth></MudTextField>
+        <MudTextField T="string" @bind-Value="addUser.Surname" Label="Surname" FullWidth></MudTextField>
+        <MudTextField T="string" @bind-Value="addUser.Mail" Label="Email" FullWidth></MudTextField>
+        <MudTextField T="string" @bind-Value="addUser.PhoneNumber" Label="Phone Number" FullWidth></MudTextField>
+        <MudTextField T="string" @bind-Value="addUser.Password" Label="Password" FullWidth InputType="InputType.Password"></MudTextField>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Add">Add User</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    AddUser addUser = new();
+
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    void Cancel() => MudDialog.Cancel();
+
+    async Task Add()
+    {
+        try
+        {
+            var result = await _userService.AddUserAsync(addUser);
+            _snackbar.Add("User added successfully: " + result.Message, Severity.Success);
+            MudDialog.Close(DialogResult.Ok(true));
+        }
+        catch (Exception ex)
+        {
+            _snackbar.Add("Failed to add user: " + ex.Message, Severity.Error);
+        }
+    }
+}

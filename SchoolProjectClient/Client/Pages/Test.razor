@@ -1,0 +1,54 @@
+﻿@page "/manage-users"
+@using System.Text;
+@using SchoolProjectClient.Client.Model.User;
+@using SchoolProjectClient.Client.Services.Users;
+@using SchoolProjectClient.Client.Pages.Users;
+@using MudBlazor
+@using Variant = MudBlazor.Variant
+
+@inject IUserService _userService;
+@inject IDialogService _dialogService;
+
+<MudTable Items="@Users">
+    <HeaderContent>
+        <MudTh>Nickname</MudTh>
+        <MudTh>Name</MudTh>
+        <MudTh>Surname</MudTh>
+        <MudTh>Email</MudTh>
+        <MudTh>Phone Number</MudTh>
+        <MudTh>Actions</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Nickname">@context.NickName</MudTd>
+        <MudTd DataLabel="Name">@context.Name</MudTd>
+        <MudTd DataLabel="Surname">@context.Surname</MudTd>
+        <MudTd DataLabel="Email">@context.Mail</MudTd>
+        <MudTd DataLabel="Phone Number">@context.PhoneNumber</MudTd>
+        @*<MudTd>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditUserPopup(context))">Edit</MudButton>
+        </MudTd>*@
+    </RowTemplate>
+</MudTable>
+<br />
+<MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="OpenAddUserPopup">Add New User</MudButton>
+
+@code {
+    public List<User> Users { get; set; } = new List<User>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Users = (await _userService.GetAllUserListAsync(0, 8)).Data.Users;
+    }
+
+    private void OpenAddUserPopup()
+    {
+        _dialogService.Show<AddUserPopup>("Add User");
+    }
+
+    //private void OpenEditUserPopup(AddUser user)
+    //{
+    //    var parameters = new DialogParameters();
+    //    parameters.Add("User", user);
+    //    _dialogService.Show<EditUserPopup>("Edit User", parameters);
+    //}
+}

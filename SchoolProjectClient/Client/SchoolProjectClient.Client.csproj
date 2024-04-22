@@ -17,6 +17,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.17" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.17" PrivateAssets="all" />
     <PackageReference Include="Radzen.Blazor" Version="4.28.7" />
+    <PackageReference Include="MudBlazor" Version="6.19.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,7 +42,8 @@
     <None Remove="Model\Common\" />
     <None Remove="Services\Users\" />
     <None Remove="Model\User\" />
-    <None Remove="Services\Basket\" />
+    <None Remove="Services\Baskets\" />
+    <None Remove="Pages\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Custom Compenents\" />
@@ -57,6 +59,7 @@
     <Folder Include="Model\Common\" />
     <Folder Include="Services\Users\" />
     <Folder Include="Model\User\" />
-    <Folder Include="Services\Basket\" />
+    <Folder Include="Services\Baskets\" />
+    <Folder Include="Pages\Users\" />
   </ItemGroup>
 </Project>

@@ -10,3 +10,15 @@
 /Users/zaferavci/Documents/SchoolProjectClient/Shared/obj/Debug/net7.0/refint/SchoolProjectClient.Shared.dll
 /Users/zaferavci/Documents/SchoolProjectClient/Shared/obj/Debug/net7.0/SchoolProjectClient.Shared.pdb
 /Users/zaferavci/Documents/SchoolProjectClient/Shared/obj/Debug/net7.0/ref/SchoolProjectClient.Shared.dll
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/bin/Debug/net7.0/SchoolProjectClient.Shared.deps.json
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/bin/Debug/net7.0/SchoolProjectClient.Shared.dll
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/bin/Debug/net7.0/SchoolProjectClient.Shared.pdb
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/obj/Debug/net7.0/SchoolProjectClient.Shared.csproj.AssemblyReference.cache
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/obj/Debug/net7.0/SchoolProjectClient.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/obj/Debug/net7.0/SchoolProjectClient.Shared.AssemblyInfoInputs.cache
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/obj/Debug/net7.0/SchoolProjectClient.Shared.AssemblyInfo.cs
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/obj/Debug/net7.0/SchoolProjectClient.Shared.csproj.CoreCompileInputs.cache
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/obj/Debug/net7.0/SchoolProjectClient.Shared.dll
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/obj/Debug/net7.0/refint/SchoolProjectClient.Shared.dll
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/obj/Debug/net7.0/SchoolProjectClient.Shared.pdb
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Shared/obj/Debug/net7.0/ref/SchoolProjectClient.Shared.dll
