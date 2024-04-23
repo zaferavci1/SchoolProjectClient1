@@ -26,11 +26,13 @@
         <MudTd DataLabel="Email">@context.Mail</MudTd>
         <MudTd DataLabel="Phone Number">@context.PhoneNumber</MudTd>
         <MudTd>
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditUserPopup(context.Id))">Edit</MudButton>
-            </MudTd>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditUserPopup(context.Id))">Edit</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="@(() => OpenDeleteUserPopup(context.Id))">Delete</MudButton>
+        </MudTd>
     </RowTemplate>
 </MudTable>
 <br />
+
 
 @code {
     public List<User> Users { get; set; } = new List<User>();
@@ -50,5 +52,12 @@
         var parameters = new DialogParameters();
         parameters.Add("Id", id);
         _dialogService.Show<EditUserPopup>("Edit User", parameters);
+    }
+
+    private void OpenDeleteUserPopup(string id)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("Id", id);
+        _dialogService.Show<DeleteUserPopup>("Delete User", parameters);
     }
 }

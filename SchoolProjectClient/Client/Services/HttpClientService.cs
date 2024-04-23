@@ -20,7 +20,7 @@ namespace SchoolProjectClient.Client.Services
         {
             StringBuilder urlBuilder = new StringBuilder();
             urlBuilder.Append(Url(requestParameter));
-            urlBuilder.Append(!String.IsNullOrEmpty(id) ? "/" + id : "");
+            urlBuilder.Append(!String.IsNullOrEmpty(id) ? "" + id : "");
             HttpResponseMessage httpResponseMessage = await _httpClient.DeleteAsync(urlBuilder.ToString());
             return await httpResponseMessage.Content.ReadFromJsonAsync<TResponse>();
         }

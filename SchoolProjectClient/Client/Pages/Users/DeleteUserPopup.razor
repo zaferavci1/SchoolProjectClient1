@@ -1,0 +1,46 @@
+﻿@page "/delete-user"
+
+@using SchoolProjectClient.Client.Services.Users
+@using MudBlazor
+
+@inject IUserService _userService
+@inject ISnackbar _snackbar
+
+<MudDialog>
+    <DialogContent>
+        <MudTextField T="string" @bind-Value="Id" Label="User ID to Delete" FullWidth></MudTextField>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Error" OnClick="ConfirmDelete">Delete User</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [Parameter] public string Id { get; set; }
+
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    void Cancel() => MudDialog.Cancel();
+
+    async Task ConfirmDelete()
+    {
+        try
+        {
+            var result = await _userService.DeleteUserAsync(Id);
+            if (result.IsSucceeded)
+            {
+                _snackbar.Add("User deleted successfully", Severity.Success);
+                MudDialog.Close(DialogResult.Ok(true));
+            }
+            else
+            {
+                _snackbar.Add("Failed to delete user: " + result.Message, Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            _snackbar.Add("Exception during user deletion: " + ex.Message, Severity.Error);
+        }
+    }
+}
