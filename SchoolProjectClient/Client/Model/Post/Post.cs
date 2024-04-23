@@ -9,5 +9,11 @@ namespace SchoolProjectClient.Client.Model.Post
         public string Content { get; set; }
         public int LikeCount { get; set; }
     }
+
+    public class PostResponse
+    {
+        public List<Post> Posts { get; set; }
+        public int TotalPostCount { get; set; }
+    }
 }
 

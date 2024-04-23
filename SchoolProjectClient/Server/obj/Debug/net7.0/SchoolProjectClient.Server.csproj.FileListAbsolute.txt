@@ -55,6 +55,7 @@
 /Users/zaferavci/Documents/SchoolProjectClient/Server/obj/Debug/net7.0/SchoolProjectClient.Server.pdb
 /Users/zaferavci/Documents/SchoolProjectClient/Server/obj/Debug/net7.0/SchoolProjectClient.Server.genruntimeconfig.cache
 /Users/zaferavci/Documents/SchoolProjectClient/Server/obj/Debug/net7.0/ref/SchoolProjectClient.Server.dll
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/SchoolProjectClient.Client.staticwebassets.runtime.json
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/appsettings.Development.json
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/appsettings.json
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/BlazorDebugProxy/BrowserDebugHost.dll
@@ -65,13 +66,15 @@
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/BlazorDebugProxy/Microsoft.CodeAnalysis.dll
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/BlazorDebugProxy/Microsoft.CodeAnalysis.Scripting.dll
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/BlazorDebugProxy/Newtonsoft.Json.dll
-/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/SchoolProjectClient.Client.staticwebassets.runtime.json
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/SchoolProjectClient.Server.staticwebassets.runtime.json
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/SchoolProjectClient.Server
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/SchoolProjectClient.Server.deps.json
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/SchoolProjectClient.Server.runtimeconfig.json
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/SchoolProjectClient.Server.dll
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/SchoolProjectClient.Server.pdb
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/Mapster.dll
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/Mapster.Core.dll
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/Mapster.DependencyInjection.dll
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/Microsoft.AspNetCore.Authorization.dll
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/Microsoft.AspNetCore.Components.dll
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/Microsoft.AspNetCore.Components.Forms.dll
@@ -88,6 +91,7 @@
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/Microsoft.JSInterop.WebAssembly.dll
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/MudBlazor.dll
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/Radzen.Blazor.dll
+/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/Riok.Mapperly.Abstractions.dll
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/System.Linq.Dynamic.Core.dll
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/SchoolProjectClient.Client.dll
 /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Server/bin/Debug/net7.0/SchoolProjectClient.Shared.dll

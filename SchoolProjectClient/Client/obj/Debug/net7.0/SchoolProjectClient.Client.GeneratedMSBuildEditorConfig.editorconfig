@@ -56,6 +56,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlcnMvQWRkVXNlclBvcHVwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/Pages/Users/EditUserPopup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlcnMvRWRpdFVzZXJQb3B1cC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

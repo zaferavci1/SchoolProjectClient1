@@ -9,6 +9,7 @@
 @inject IUserService _userService;
 @inject IDialogService _dialogService;
 
+<MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="OpenAddUserPopup">Add New User</MudButton>
 <MudTable Items="@Users">
     <HeaderContent>
         <MudTh>Nickname</MudTh>
@@ -24,20 +25,19 @@
         <MudTd DataLabel="Surname">@context.Surname</MudTd>
         <MudTd DataLabel="Email">@context.Mail</MudTd>
         <MudTd DataLabel="Phone Number">@context.PhoneNumber</MudTd>
-        @*<MudTd>
-            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditUserPopup(context))">Edit</MudButton>
-        </MudTd>*@
+        <MudTd>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditUserPopup(context.Id))">Edit</MudButton>
+            </MudTd>
     </RowTemplate>
 </MudTable>
 <br />
-<MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="OpenAddUserPopup">Add New User</MudButton>
 
 @code {
     public List<User> Users { get; set; } = new List<User>();
 
     protected override async Task OnInitializedAsync()
     {
-        Users = (await _userService.GetAllUserListAsync(0, 8)).Data.Users;
+        Users = (await _userService.GetAllUserListAsync(0, 8)).Data.UsersDTOs;
     }
 
     private void OpenAddUserPopup()
@@ -45,10 +45,10 @@
         _dialogService.Show<AddUserPopup>("Add User");
     }
 
-    //private void OpenEditUserPopup(AddUser user)
-    //{
-    //    var parameters = new DialogParameters();
-    //    parameters.Add("User", user);
-    //    _dialogService.Show<EditUserPopup>("Edit User", parameters);
-    //}
+    private void OpenEditUserPopup(string id)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("Id", id);
+        _dialogService.Show<EditUserPopup>("Edit User", parameters);
+    }
 }

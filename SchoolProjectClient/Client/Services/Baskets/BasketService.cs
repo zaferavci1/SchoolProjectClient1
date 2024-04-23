@@ -1,11 +1,31 @@
-﻿using System;
+﻿using SchoolProjectClient.Client.Model.Basket;
+using SchoolProjectClient.Client.Model.Common;
+
 namespace SchoolProjectClient.Client.Services.Baskets
 {
-	public class BasketService
-	{
-		public BasketService()
-		{
-		}
-	}
+    public class BasketService : IBasketService
+    {
+        public readonly IHttpClientService _httpClientService;
+
+        public BasketService(IHttpClientService httpClientService)
+        {
+            _httpClientService = httpClientService;
+        }
+
+        public async Task<BaseResponse<Basket>> AddBasketAsync(AddBasket addBasket)
+            => await _httpClientService.PostAsync<AddBasket, BaseResponse<Basket>>(new RequestParameter() { Controller = "Baskets", Action = "Add" }, addBasket);
+
+        public async Task<BaseResponse<Basket>> DeleteBasketAsync(string id)
+            => await _httpClientService.DeleteAsync<BaseResponse<Basket>>(new() { Controller = "Baskets", Action = "Delete" }, id);
+
+        public async Task<BaseResponse<BasketResponse>> GetAllBasketListAsync(int page, int size)
+            => await _httpClientService.GetAsync<BaseResponse<BasketResponse>>(new() { Controller = "Baskets", Action = "GetAll", QueryString = $"page={page}&size={size}" });
+
+        public Task<BaseResponse<GetByIdBasket>> GetByIdBasketAsync(string id)
+            => _httpClientService.GetAsync<BaseResponse<GetByIdBasket>>(new() { Controller = "Baskets", Action = "GetById" }, id);
+
+        public Task<BaseResponse<Basket>> UpdateBasketAsync(UpdateBasket updateBasket)
+            => _httpClientService.PutAsync<UpdateBasket, BaseResponse<Basket>>(new RequestParameter() { Controller = "Baskets", Action = "Update" }, updateBasket);
+    }
 }
 

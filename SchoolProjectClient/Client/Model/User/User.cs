@@ -1,8 +1,8 @@
 ﻿using System;
 namespace SchoolProjectClient.Client.Model.User
 {
-	public class User
-	{
+    public class User
+    {
         public string Id { get; set; }
         public string NickName { get; set; }
         public string Name { get; set; }
@@ -14,7 +14,7 @@ namespace SchoolProjectClient.Client.Model.User
 
     public class UserResponse
     {
-        public List<User> Users { get; set; }
+        public List<User> UsersDTOs { get; set; }
         public int TotalUserCount { get; set; }
     }
 }

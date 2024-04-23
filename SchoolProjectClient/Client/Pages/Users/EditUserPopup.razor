@@ -1,0 +1,77 @@
+﻿@page "/edit-user/{userId}"
+
+@using SchoolProjectClient.Client.Services.Users;
+@using SchoolProjectClient.Client.Model.User;
+@using MudBlazor;
+@using Mapster;
+
+@inject IUserService _userService;
+@inject ISnackbar _snackbar;
+@inject NavigationManager _navigationManager;
+
+<MudDialog>
+    <DialogContent>
+        <MudTextField T="string" @bind-Value="getByIdUser.NickName" Label="Nickname" FullWidth></MudTextField>
+        <MudTextField T="string" @bind-Value="getByIdUser.Name" Label="Name" FullWidth></MudTextField>
+        <MudTextField T="string" @bind-Value="getByIdUser.Surname" Label="Surname" FullWidth></MudTextField>
+        <MudTextField T="string" @bind-Value="getByIdUser.Mail" Label="Email" FullWidth></MudTextField>
+        <MudTextField T="string" @bind-Value="getByIdUser.PhoneNumber" Label="Phone Number" FullWidth></MudTextField>
+        <MudTextField T="string" @bind-Value="getByIdUser.Password" Label="Password" FullWidth InputType="InputType.Password"></MudTextField>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Update">Save Changes</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [Parameter] public string Id { get; set; }
+    private UpdateUser editUser = new();
+    private GetByIdUser getByIdUser = new();
+    private bool loading = false;
+
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        loading = true;
+        try
+        {
+            getByIdUser = (await _userService.GetUserByIdAsync(Id)).Data;
+
+            Console.WriteLine("dsfsd");
+        }
+        catch (Exception ex)
+        {
+            _snackbar.Add("Error loading user: " + ex.Message, Severity.Error);
+            // Consider redirecting back to user list here
+        }
+        finally
+        {
+            loading = false;
+        }
+
+    }
+
+    void Cancel() => MudDialog.Cancel();
+
+    async Task Update()
+    {
+        loading = true;
+        try
+        {
+            editUser = getByIdUser.Adapt<UpdateUser>();
+            var result = await _userService.UpdateUserAsync(editUser);
+            _snackbar.Add("User updated successfully!", Severity.Success);
+            MudDialog.Close(DialogResult.Ok(true));
+        }
+        catch (Exception ex)
+        {
+            _snackbar.Add("Failed to update user: " + ex.Message, Severity.Error);
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
+}

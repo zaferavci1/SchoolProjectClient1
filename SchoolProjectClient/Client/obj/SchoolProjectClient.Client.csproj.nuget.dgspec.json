@@ -42,6 +42,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Mapster": {
+              "target": "Package",
+              "version": "[7.4.0, )"
+            },
+            "Mapster.DependencyInjection": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",
               "version": "[7.0.17, )"
@@ -58,6 +66,10 @@
             "Radzen.Blazor": {
               "target": "Package",
               "version": "[4.28.7, )"
+            },
+            "Riok.Mapperly": {
+              "target": "Package",
+              "version": "[3.5.1, )"
             }
           },
           "imports": [

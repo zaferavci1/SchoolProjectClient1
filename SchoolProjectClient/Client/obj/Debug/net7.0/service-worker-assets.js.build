@@ -61,7 +61,7 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-GLWdMAW4sRG0OOkGSGeACet5SyDMm2W6tk7\/\/bfLQRA=",
+      "hash": "sha256-ygka4GixSeb\/dy9DEEiFTd8cx0f\/JuCGQwRGdIh6UEU=",
       "url": "index.html"
     },
     {
@@ -71,6 +71,18 @@
     {
       "hash": "sha256-Xx5zqwVMl7Sw1NDxVhm\/Um\/IKRXqtO2GctxjXQfSBJo=",
       "url": "SchoolProjectClient.Client.styles.css"
+    },
+    {
+      "hash": "sha256-cZIM617kVDaa1CDrTzCFrUGFXLRF+9urMGrW0YfDfqQ=",
+      "url": "_framework\/Mapster.dll"
+    },
+    {
+      "hash": "sha256-jYHh+gsdve2iEha131dSwYUOgGMgDFQ2oNqV2qouFjs=",
+      "url": "_framework\/Mapster.Core.dll"
+    },
+    {
+      "hash": "sha256-\/mqs5nyG52VszIMFNnd9Z4zzBx88Q5JdKWwpSuls24o=",
+      "url": "_framework\/Mapster.DependencyInjection.dll"
     },
     {
       "hash": "sha256-38TtIvwDPxVxpvFKDaJEL1KnTkSn2xwgRbinNxl6Wbg=",
@@ -175,6 +187,10 @@
     {
       "hash": "sha256-9oweDP1TwIJ6Tkjoe1cn7zTVX\/vb2n04cxFU5zuT9FA=",
       "url": "_framework\/Radzen.Blazor.dll"
+    },
+    {
+      "hash": "sha256-EuwEF2Ls\/OipOS9DCWOv+6eUG31cRfwLlV89d2ydlS4=",
+      "url": "_framework\/Riok.Mapperly.Abstractions.dll"
     },
     {
       "hash": "sha256-P\/MqD0fCBd5bgTM16JC1QC\/Zz7s+CwViyzmDFkBG4\/c=",
@@ -893,11 +909,11 @@
       "url": "_framework\/SchoolProjectClient.Shared.pdb"
     },
     {
-      "hash": "sha256-T9DQkQyY1lR\/Qxa8m\/4ToS7HhAoPRNwKkc+BP+wP5PQ=",
+      "hash": "sha256-jojGhEXJSpCofxpZ8Y1J+3PIA\/23ofv6MZiyTrrksNM=",
       "url": "_framework\/SchoolProjectClient.Client.dll"
     },
     {
-      "hash": "sha256-4zzUfb7dycZdLUHjM9XiqUoMjufepaK4WUguPYq0knc=",
+      "hash": "sha256-j8LD7IfmpjmQzIlU2H\/Vz7lWqDPD3BtQ2FYWYSxWkJU=",
       "url": "_framework\/SchoolProjectClient.Client.pdb"
     },
     {
@@ -905,7 +921,7 @@
       "url": "_framework\/blazor.webassembly.js"
     },
     {
-      "hash": "sha256-XPReMCSRaNOOXZlAbqlfoQSPLREie4wHk74X6+k8cRM=",
+      "hash": "sha256-FxOuR88U7qZx0VwyrgFeCBGCa8ARMirhtRlCyegi1Bc=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -1113,5 +1129,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "l9LCPa1Z"
+  "version": "w8nZyJK2"
 };

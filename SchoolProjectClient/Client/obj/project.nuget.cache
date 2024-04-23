@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "oeHf4w43bYYThqcgk4/GdPIclKt3ZhjbAf8EqT4CfGdt5qqHm9wRtN7hKnYdAXgk38+DbXMd5hFn5n/ZuZMgEA==",
+  "dgSpecHash": "vKPKkEWwQt7z4yz5Z27zcmvwOFy16EGJXRychLuADrDDFfXRavhY1ejF0GY9FhAcK0/+B+//r8ptAo5RDbYptQ==",
   "success": true,
   "projectFilePath": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/SchoolProjectClient.Client.csproj",
   "expectedPackageFiles": [
     "/Users/zaferavci/.nuget/packages/dartsassbuilder/1.0.0/dartsassbuilder.1.0.0.nupkg.sha512",
+    "/Users/zaferavci/.nuget/packages/mapster/7.4.0/mapster.7.4.0.nupkg.sha512",
+    "/Users/zaferavci/.nuget/packages/mapster.core/1.2.1/mapster.core.1.2.1.nupkg.sha512",
+    "/Users/zaferavci/.nuget/packages/mapster.dependencyinjection/1.0.1/mapster.dependencyinjection.1.0.1.nupkg.sha512",
     "/Users/zaferavci/.nuget/packages/microsoft.aspnetcore.authorization/7.0.17/microsoft.aspnetcore.authorization.7.0.17.nupkg.sha512",
     "/Users/zaferavci/.nuget/packages/microsoft.aspnetcore.components/7.0.17/microsoft.aspnetcore.components.7.0.17.nupkg.sha512",
     "/Users/zaferavci/.nuget/packages/microsoft.aspnetcore.components.analyzers/7.0.17/microsoft.aspnetcore.components.analyzers.7.0.17.nupkg.sha512",
@@ -33,6 +36,7 @@
     "/Users/zaferavci/.nuget/packages/microsoft.jsinterop.webassembly/7.0.17/microsoft.jsinterop.webassembly.7.0.17.nupkg.sha512",
     "/Users/zaferavci/.nuget/packages/mudblazor/6.19.1/mudblazor.6.19.1.nupkg.sha512",
     "/Users/zaferavci/.nuget/packages/radzen.blazor/4.28.7/radzen.blazor.4.28.7.nupkg.sha512",
+    "/Users/zaferavci/.nuget/packages/riok.mapperly/3.5.1/riok.mapperly.3.5.1.nupkg.sha512",
     "/Users/zaferavci/.nuget/packages/system.io.pipelines/7.0.0/system.io.pipelines.7.0.0.nupkg.sha512",
     "/Users/zaferavci/.nuget/packages/system.linq.dynamic.core/1.3.7/system.linq.dynamic.core.1.3.7.nupkg.sha512",
     "/Users/zaferavci/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",

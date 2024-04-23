@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+    <UserSecretsId>57339309-b5e4-4ab4-9628-8d7e752974b4</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' ">
@@ -18,6 +19,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.17" PrivateAssets="all" />
     <PackageReference Include="Radzen.Blazor" Version="4.28.7" />
     <PackageReference Include="MudBlazor" Version="6.19.1" />
+    <PackageReference Include="Riok.Mapperly" Version="3.5.1" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +48,8 @@
     <None Remove="Model\User\" />
     <None Remove="Services\Baskets\" />
     <None Remove="Pages\Users\" />
+    <None Remove="Services\Comments\" />
+    <None Remove="Services\Posts\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Custom Compenents\" />
@@ -61,5 +67,7 @@
     <Folder Include="Model\User\" />
     <Folder Include="Services\Baskets\" />
     <Folder Include="Pages\Users\" />
+    <Folder Include="Services\Comments\" />
+    <Folder Include="Services\Posts\" />
   </ItemGroup>
 </Project>
