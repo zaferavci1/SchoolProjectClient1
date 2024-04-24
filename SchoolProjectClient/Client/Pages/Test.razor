@@ -39,7 +39,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Users = (await _userService.GetAllUserListAsync(0, 8)).Data.UsersDTOs;
+        await LoadDataAsync();
     }
 
     private void OpenAddUserPopup()
@@ -47,11 +47,22 @@
         _dialogService.Show<AddUserPopup>("Add User");
     }
 
-    private void OpenEditUserPopup(string id)
+    private async void OpenEditUserPopup(string id)
     {
         var parameters = new DialogParameters();
         parameters.Add("Id", id);
-        _dialogService.Show<EditUserPopup>("Edit User", parameters);
+
+        var dialog = await _dialogService.ShowAsync<EditUserPopup>("Edit User", parameters);
+        if (!(await dialog.Result).Cancelled )
+        {
+            await OnInitializedAsync();
+            dialog.Close();
+        }
+    }
+
+    private async Task LoadDataAsync()
+    {
+        Users = (await _userService.GetAllUserListAsync(0, 8)).Data.UsersDTOs;
     }
 
     private void OpenDeleteUserPopup(string id)

@@ -44,8 +44,10 @@ namespace SchoolProjectClient.Client.Services
 
         public async Task<TResponse> PutAsync<TRequest, TResponse>(RequestParameter requestParameter, TRequest body)
         {
+            JsonSerializerOptions jsonSerializerOptions = new();
+            jsonSerializerOptions.PropertyNameCaseInsensitive = true;
             string url = Url(requestParameter);
-            HttpResponseMessage httpResponseMessage = await _httpClient.PutAsJsonAsync<TRequest>(url, body);
+            HttpResponseMessage httpResponseMessage = await _httpClient.PutAsJsonAsync<TRequest>(url, body, jsonSerializerOptions);
             return await httpResponseMessage.Content.ReadFromJsonAsync<TResponse>();
         }
 
