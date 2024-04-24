@@ -1,0 +1,93 @@
+﻿@page "/manage-comments"
+
+@using SchoolProjectClient.Client.Services.Comments;
+@using SchoolProjectClient.Client.Services.Users;
+@using SchoolProjectClient.Client.Model.Comment;
+@using SchoolProjectClient.Client.Pages.Comments;
+@using MudBlazor
+@using Variant = MudBlazor.Variant
+
+@inject ICommentService _commentService;
+@inject IUserService _userService;
+@inject IDialogService _dialogService;
+
+
+
+
+<MudTable Items="@Comments" Class="full-width-table">
+    <HeaderContent>
+        <MudTh>User Name</MudTh> 
+        <MudTh>Post Id</MudTh>
+        <MudTh>Content</MudTh>
+        <MudTh>Like Count</MudTh>
+        <MudTh>Actions</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="User Name">@(await GetUserNameByIdAsync(context.UserId))</MudTd>
+        <MudTd DataLabel="Post Id">@context.PostId</MudTd>
+        <MudTd DataLabel="Content">@context.Content</MudTd>
+        <MudTd DataLabel="Like Count">@context.LikeCount</MudTd>
+        <MudTd>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditCommentPopup(context.Id))">Edit</MudButton>
+        </MudTd>
+    </RowTemplate>
+</MudTable>
+
+
+<style>
+    .full-width-table .mud-table-container {
+        width: 100%; 
+        overflow-x: auto;
+    }
+</style>
+
+<br />
+
+@code {
+    public List<Comment> Comments { get; set; } = new List<Comment>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadDataAsync();
+    }
+
+    private async Task LoadDataAsync()
+    {
+        Comments = (await _commentService.GetAllCommentListAsync(0, 5)).Data.Comments;
+        Console.WriteLine();
+    }
+
+
+    private void OpenAddCommentPopup()
+    {
+        _dialogService.Show<AddCommentPopup>("Add Comment");
+    }
+
+    private async void OpenEditCommentPopup(string id)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("Id", id);
+
+        var dialog = await _dialogService.ShowAsync<EditCommentPopup>("Edit Comment", parameters);
+        if (!(await dialog.Result).Cancelled)
+        {
+            await OnInitializedAsync();
+            dialog.Close();
+        }
+    }
+
+    public async Task<string> GetUserNameByIdAsync(string userId)
+    {
+        var response = await _userService.GetUserByIdAsync(userId);
+        if (response.IsSucceeded && response.Data != null)
+        {
+            return response.Data.NickName;
+        }
+        return "Unknown";
+    }
+    public string Name { get; set; } =  GetUserNameByIdAsync();
+
+
+}
+

@@ -1,0 +1,42 @@
+﻿@page "/add-comment"
+
+@using SchoolProjectClient.Client.Services.Comments; 
+@using SchoolProjectClient.Client.Model.Comment;    
+@using MudBlazor;
+
+@inject ICommentService _commentService;
+@inject ISnackbar _snackbar;
+
+<MudDialog>
+    <DialogContent>
+        <MudTextField T="string" @bind-Value="addComment.Content" Label="Comment Text" FullWidth></MudTextField>
+        <MudTextField T="string" @bind-Value="addComment.UserId" Label="User ID" FullWidth></MudTextField>
+        <MudTextField T="string" @bind-Value="addComment.PostId" Label="Post ID" FullWidth></MudTextField>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="AddComment">Add Comment</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    AddComment addComment = new();
+
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    void Cancel() => MudDialog.Cancel();
+
+    async Task AddComment()
+    {
+        try
+        {
+            var result = await _commentService.AddCommentAsync(addComment);
+            _snackbar.Add("Comment added successfully: " + result.Message, Severity.Success);
+            MudDialog.Close(DialogResult.Ok(true));
+        }
+        catch (Exception ex)
+        {
+            _snackbar.Add("Failed to add comment: " + ex.Message, Severity.Error);
+        }
+    }
+}
