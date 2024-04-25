@@ -1,6 +1,75 @@
-﻿<h3>Component1</h3>
+﻿@page "/edit-comment/{commentId}"
+
+@using SchoolProjectClient.Client.Services.Comments
+@using SchoolProjectClient.Client.Model.Comment
+@using MudBlazor;
+@using Mapster;
+
+@inject ICommentService _commentService;
+@inject ISnackbar _snackbar;
+@inject NavigationManager _navigationManager;
+
+<MudDialog>
+    <DialogContent>
+        <MudTextField T="string" @bind-Value="getByIdComment.Content" Label="Comment Content" FullWidth></MudTextField>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Update">Save Changes</MudButton>
+    </DialogActions>
+</MudDialog>
 
 @code {
+    [Parameter] public string Id { get; set; }
+    private UpdateComment editComment = new();
+    private GetByIdComment getByIdComment = new();
+    private bool loading = false;
 
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        loading = true;
+        try
+        {
+            getByIdComment = (await _commentService.GetByIdCommentAsync(Id)).Data;
+        }
+        catch (Exception ex)
+        {
+            _snackbar.Add("Error loading comment: " + ex.Message, Severity.Error);
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
+
+    void Cancel() => MudDialog.Cancel();
+
+    async Task Update()
+    {
+        loading = true;
+        try
+        {
+            editComment = getByIdComment.Adapt<UpdateComment>();
+            var result = await _commentService.UpdateCommentAsync(editComment);
+            if (result.IsSucceeded)
+            {
+                _snackbar.Add("Comment updated successfully!", Severity.Success);
+                MudDialog.Close(DialogResult.Ok(true));
+            }
+            else
+            {
+                _snackbar.Add("Failed to update comment: " + result.Message, Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            _snackbar.Add("Failed to update comment: " + ex.Message, Severity.Error);
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
 }
-

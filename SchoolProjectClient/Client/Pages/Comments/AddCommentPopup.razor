@@ -1,42 +1,74 @@
 ﻿@page "/add-comment"
 
-@using SchoolProjectClient.Client.Services.Comments; 
-@using SchoolProjectClient.Client.Model.Comment;    
-@using MudBlazor;
+@using SchoolProjectClient.Client.Services.Users
+@using SchoolProjectClient.Client.Services.Comments
+@using SchoolProjectClient.Client.Services.Posts
+@using SchoolProjectClient.Client.Model.Comment
+@using SchoolProjectClient.Client.Model.User
+@using SchoolProjectClient.Client.Model.Post
 
 @inject ICommentService _commentService;
+@inject IUserService _userService;     
+@inject IPostService _postService;     
 @inject ISnackbar _snackbar;
 
 <MudDialog>
     <DialogContent>
-        <MudTextField T="string" @bind-Value="addComment.Content" Label="Comment Text" FullWidth></MudTextField>
-        <MudTextField T="string" @bind-Value="addComment.UserId" Label="User ID" FullWidth></MudTextField>
-        <MudTextField T="string" @bind-Value="addComment.PostId" Label="Post ID" FullWidth></MudTextField>
+        <MudTextField T="string" @bind-Value="addComment.Content" Label="Comment Text" FullWidth />
+
+        <MudSelect T="string" Label="User ID" @bind-Value="addComment.UserId" FullWidth>
+            @foreach (var user in Users)
+            {
+                <MudSelectItem Value="@user.Id" Text="@user.NickName" />
+            }
+        </MudSelect>
+
+        <MudSelect T="string" Label="Post ID" @bind-Value="addComment.PostId" FullWidth>
+            @foreach (var post in Posts)
+            {
+                <MudSelectItem Value="@post.Id" Text="@post.Title" />
+            }
+        </MudSelect>
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="Cancel">Cancel</MudButton>
-        <MudButton Color="Color.Primary" OnClick="AddComment">Add Comment</MudButton>
+        <MudButton Color="Color.Primary" OnClick="SubmitComment">Add Comment</MudButton>
     </DialogActions>
 </MudDialog>
 
 @code {
     AddComment addComment = new();
+    List<User> Users = new(); 
+    List<Post> Posts = new(); 
 
     [CascadingParameter] MudDialogInstance MudDialog { get; set; }
 
+    protected override async Task OnInitializedAsync()
+    {
+        Users = (await _userService.GetAllUserListAsync(0, 10)).Data.UsersDTOs;
+        Posts = (await _postService.GetAllPostAsync(0, 10)).Data.Posts;
+    }
+
     void Cancel() => MudDialog.Cancel();
 
-    async Task AddComment()
+    async Task SubmitComment()
     {
         try
         {
             var result = await _commentService.AddCommentAsync(addComment);
-            _snackbar.Add("Comment added successfully: " + result.Message, Severity.Success);
-            MudDialog.Close(DialogResult.Ok(true));
+            if (result.IsSucceeded)
+            {
+                _snackbar.Add("Comment added successfully", Severity.Success);
+                MudDialog.Close(DialogResult.Ok(true));
+            }
+            else
+            {
+                _snackbar.Add($"Failed to add comment: {result.Message}", Severity.Error);
+            }
         }
         catch (Exception ex)
         {
-            _snackbar.Add("Failed to add comment: " + ex.Message, Severity.Error);
+            _snackbar.Add($"Exception during comment submission: {ex.Message}", Severity.Error);
         }
     }
 }

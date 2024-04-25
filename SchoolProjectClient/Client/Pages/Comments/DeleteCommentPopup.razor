@@ -17,7 +17,8 @@
 </MudDialog>
 
 @code {
-    [Parameter] public string CommentId { get; set; }
+    [Parameter] public string Id { get; set; }
+    [Parameter] public string UserId { get; set; }
 
     [CascadingParameter] MudDialogInstance MudDialog { get; set; }
 
@@ -27,11 +28,12 @@
     {
         try
         {
-            var result = await _commentService.DeleteCommentAsync(CommentId);
+            var result = await _commentService.DeleteCommentAsync(new() { UserId = UserId, Id = Id });
+            Console.WriteLine();
             if (result.IsSucceeded)
             {
                 _snackbar.Add("Comment deleted successfully", Severity.Success);
-                MudDialog.Close(DialogResult.Ok(true)); 
+                MudDialog.Close(DialogResult.Ok(true));
             }
             else
             {

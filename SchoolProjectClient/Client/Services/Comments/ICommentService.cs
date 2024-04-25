@@ -9,7 +9,8 @@ namespace SchoolProjectClient.Client.Services.Comments
 		Task<BaseResponse<GetByIdComment>> GetByIdCommentAsync(string id);
 		Task<BaseResponse<Comment>> AddCommentAsync(AddComment addComment);
 		Task<BaseResponse<Comment>> UpdateCommentAsync(UpdateComment updateComment);
-		Task<BaseResponse<Comment>> DeleteCommentAsync(string id);
-	}
+		Task<BaseResponse<Comment>> DeleteCommentAsync(CommentUpdateRequest commentUpdateRequest);
+
+    }
 }
 
