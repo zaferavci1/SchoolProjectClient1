@@ -2,6 +2,7 @@
 
 @using SchoolProjectClient.Client.Services.Comments;
 @using SchoolProjectClient.Client.Services.Users;
+@using SchoolProjectClient.Client.Services.Posts;
 @using SchoolProjectClient.Client.Model.Comment;
 @using SchoolProjectClient.Client.Pages.Comments;
 @using MudBlazor
@@ -9,6 +10,7 @@
 
 @inject ICommentService _commentService;
 @inject IUserService _userService;
+@inject IPostService _postService;
 @inject IDialogService _dialogService;
 
 
@@ -16,19 +18,20 @@
 
 <MudTable Items="@Comments" Class="full-width-table">
     <HeaderContent>
-        <MudTh>User Name</MudTh> 
+        <MudTh>User Name</MudTh>
         <MudTh>Post Id</MudTh>
         <MudTh>Content</MudTh>
         <MudTh>Like Count</MudTh>
         <MudTh>Actions</MudTh>
     </HeaderContent>
     <RowTemplate>
-        <MudTd DataLabel="User Name">@(await GetUserNameByIdAsync(context.UserId))</MudTd>
-        <MudTd DataLabel="Post Id">@context.PostId</MudTd>
+        <MudTd DataLabel="User Name">@UserNames[context.UserId])</MudTd>
+        <MudTd DataLabel="Post Id">@PostNames[context.PostId])</MudTd>
         <MudTd DataLabel="Content">@context.Content</MudTd>
         <MudTd DataLabel="Like Count">@context.LikeCount</MudTd>
         <MudTd>
             <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditCommentPopup(context.Id))">Edit</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="@(() => OpenDeleteCommentPopup(context.Id))">Delete</MudButton>
         </MudTd>
     </RowTemplate>
 </MudTable>
@@ -36,7 +39,7 @@
 
 <style>
     .full-width-table .mud-table-container {
-        width: 100%; 
+        width: 100%;
         overflow-x: auto;
     }
 </style>
@@ -44,8 +47,11 @@
 <br />
 
 @code {
-    public List<Comment> Comments { get; set; } = new List<Comment>();
 
+
+    public List<Comment> Comments { get; set; } = new List<Comment>();
+    public Dictionary<string, string> UserNames { get; set; } = new Dictionary<string, string>();
+    public Dictionary<string, string> PostNames { get; set; } = new Dictionary<string, string>();
 
     protected override async Task OnInitializedAsync()
     {
@@ -55,9 +61,10 @@
     private async Task LoadDataAsync()
     {
         Comments = (await _commentService.GetAllCommentListAsync(0, 5)).Data.Comments;
+        UserNames = await GetUserNameByUserIdsAsync(Comments.Select(c => c.UserId));
+        PostNames = await GetPostNameByUserIdsAsync(Comments.Select(c => c.PostId));
         Console.WriteLine();
     }
-
 
     private void OpenAddCommentPopup()
     {
@@ -77,6 +84,29 @@
         }
     }
 
+    private async void OpenDeleteCommentPopup(string id)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("CommentId", id); // Önemli: Uygun parametre adı burada 'CommentId' olabilir
+
+        var options = new MudBlazor.DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.Small };
+
+        var dialog = _dialogService.Show<DeleteCommentPopup>("Delete Comment", parameters, options);
+        var dialogResult = await dialog.Result;
+
+        if (!dialogResult.Cancelled)
+        {
+            // Kullanıcının silme işlemini onayladığı durumda gerçekleştirilecek eylemler. 
+            // Örn: yorumu silme API çağrısı, listeyi yenileme, mesaj gösterme, vb.
+            await OnInitializedAsync(); // Yorumun silindiğini varsayarak sayfayı yenileyin
+        }
+    }
+
+    // MudBlazor dialog kullanacağınızı belli edin
+
+
+
+
     public async Task<string> GetUserNameByIdAsync(string userId)
     {
         var response = await _userService.GetUserByIdAsync(userId);
@@ -86,8 +116,39 @@
         }
         return "Unknown";
     }
-    public string Name { get; set; } =  GetUserNameByIdAsync();
-
-
+    public async Task<Dictionary<string, string>> GetUserNameByUserIdsAsync(IEnumerable<string> userIds)
+    {
+        var userNameDictionary = new Dictionary<string, string>();
+        foreach (var userId in userIds)
+        {
+            var response = await _userService.GetUserByIdAsync(userId);
+            if (response.IsSucceeded && response.Data != null)
+            {
+                userNameDictionary[userId] = response.Data.NickName;
+            }
+            else
+            {
+                userNameDictionary[userId] = "Unknown"; // Kullanıcı bilgisi bulunamadıysa
+            }
+        }
+        return userNameDictionary;
+    }
+    public async Task<Dictionary<string, string>> GetPostNameByUserIdsAsync(IEnumerable<string> userIds)
+    {
+        var postNameDictionary = new Dictionary<string, string>();
+        foreach (var userId in userIds)
+        {
+            var response = await _postService.GetByIdPostAsync(userId);
+            if (response.IsSucceeded && response.Data != null)
+            {
+                postNameDictionary[userId] = response.Data.Title;
+            }
+            else
+            {
+                postNameDictionary[userId] = "Unknown"; // Kullanıcı bilgisi bulunamadıysa
+            }
+        }
+        return postNameDictionary;
+    }
 }
 

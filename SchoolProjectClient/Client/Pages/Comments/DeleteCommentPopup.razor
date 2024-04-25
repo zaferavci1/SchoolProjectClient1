@@ -1,0 +1,46 @@
+﻿@page "/delete-comment"
+
+@using SchoolProjectClient.Client.Services.Comments
+@using MudBlazor
+
+@inject ICommentService _commentService
+@inject ISnackbar _snackbar
+
+<MudDialog>
+    <DialogContent>
+        <p>Are you sure you want to delete this comment?</p>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Error" OnClick="ConfirmDelete">Delete Comment</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [Parameter] public string CommentId { get; set; }
+
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    void Cancel() => MudDialog.Cancel();
+
+    async Task ConfirmDelete()
+    {
+        try
+        {
+            var result = await _commentService.DeleteCommentAsync(CommentId);
+            if (result.IsSucceeded)
+            {
+                _snackbar.Add("Comment deleted successfully", Severity.Success);
+                MudDialog.Close(DialogResult.Ok(true)); 
+            }
+            else
+            {
+                _snackbar.Add("Failed to delete comment: " + result.Message, Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            _snackbar.Add("Exception during comment deletion: " + ex.Message, Severity.Error);
+        }
+    }
+}

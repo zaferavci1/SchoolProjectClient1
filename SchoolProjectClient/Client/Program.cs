@@ -7,6 +7,8 @@ using MudBlazor.Services;
 using SchoolProjectClient.Client;
 using SchoolProjectClient.Client.Services;
 using SchoolProjectClient.Client.Services.Baskets;
+using SchoolProjectClient.Client.Services.Comments;
+using SchoolProjectClient.Client.Services.Posts;
 using SchoolProjectClient.Client.Services.Users;
 
 
@@ -18,6 +20,8 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IBasketService, BasketService>();
+builder.Services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<IHttpClientService, HttpClientService>();
 builder.Services.AddMudServices();
 

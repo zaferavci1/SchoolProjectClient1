@@ -13,19 +13,19 @@ namespace SchoolProjectClient.Client.Services.Baskets
         }
 
         public async Task<BaseResponse<Basket>> AddBasketAsync(AddBasket addBasket)
-            => await _httpClientService.PostAsync<AddBasket, BaseResponse<Basket>>(new RequestParameter() { Controller = "Baskets", Action = "Add" }, addBasket);
+            => await _httpClientService.PostAsync<AddBasket, BaseResponse<Basket>>(new RequestParameter() { Controller = "Basket", Action = "Add" }, addBasket);
 
         public async Task<BaseResponse<Basket>> DeleteBasketAsync(string id)
-            => await _httpClientService.DeleteAsync<BaseResponse<Basket>>(new() { Controller = "Baskets", Action = "Delete" }, id);
+            => await _httpClientService.DeleteAsync<BaseResponse<Basket>>(new() { Controller = "Basket", Action = "Delete" }, id);
 
         public async Task<BaseResponse<BasketResponse>> GetAllBasketListAsync(int page, int size)
-            => await _httpClientService.GetAsync<BaseResponse<BasketResponse>>(new() { Controller = "Baskets", Action = "GetAll", QueryString = $"page={page}&size={size}" });
+            => await _httpClientService.GetAsync<BaseResponse<BasketResponse>>(new() { Controller = "Basket", Action = "GetAll", QueryString = $"page={page}&size={size}" });
 
         public Task<BaseResponse<GetByIdBasket>> GetByIdBasketAsync(string id)
-            => _httpClientService.GetAsync<BaseResponse<GetByIdBasket>>(new() { Controller = "Baskets", Action = "GetById" }, id);
+            => _httpClientService.GetAsync<BaseResponse<GetByIdBasket>>(new() { Controller = "Basket", Action = "GetById" }, id);
 
         public Task<BaseResponse<Basket>> UpdateBasketAsync(UpdateBasket updateBasket)
-            => _httpClientService.PutAsync<UpdateBasket, BaseResponse<Basket>>(new RequestParameter() { Controller = "Baskets", Action = "Update" }, updateBasket);
+            => _httpClientService.PutAsync<UpdateBasket, BaseResponse<Basket>>(new RequestParameter() { Controller = "Basket", Action = "Update" }, updateBasket);
     }
 }
 

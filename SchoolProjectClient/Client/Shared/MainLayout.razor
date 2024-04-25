@@ -1,12 +1,43 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider/>
-<MudDialogProvider/>
-<MudSnackbarProvider/>
+@using Microsoft.AspNetCore.Components.Routing
 
+
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+@*<MudPaper Width="250px" Elevation="0">
+    <MudNavMenu Rounded="true" Margin="Margin.Dense" Color="Color.Primary" Class="pa-2">
+        <MudNavLink Href="/dashboard" Icon="@Icons.Material.Filled.Dashboard">Dashboard</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.Prefix" Href="/manage-users" Icon="@Icons.Material.Filled.Storage">User</MudNavLink>
+        <MudNavLink Href="/thelab" Icon="@Icons.Material.Filled.Science">The Lab</MudNavLink>
+    </MudNavMenu>
+</MudPaper>*@
 <MudLayout>
+    <MudPaper Width="250px" Elevation="0">
+        <MudNavMenu>
+            <MudNavMenu Rounded="true" Margin="Margin.Normal" Color="Color.Tertiary" Class="pa-2">
+                <MudNavLink Href="/" Icon="@Icons.Material.Filled.Dashboard">Dashboard</MudNavLink>
+                <MudNavLink Href="/manage-users" Icon="@Icons.Material.Filled.SupervisedUserCircle">Users</MudNavLink>
+                <MudNavLink Href="/manage-comments" Icon="@Icons.Material.Filled.Comment">Comments</MudNavLink>
+            </MudNavMenu>
+        </MudNavMenu>
+    </MudPaper>
     <MudMainContent>
         @Body
     </MudMainContent>
+
 </MudLayout>
+
+@code {
+    bool drawerOpen = true;
+
+
+    void ToggleDrawer()
+    {
+        drawerOpen = !drawerOpen;
+    }
+}
+
 
