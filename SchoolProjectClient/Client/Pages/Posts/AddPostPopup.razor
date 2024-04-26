@@ -1,0 +1,43 @@
+﻿@page "/add-post" 
+
+@using SchoolProjectClient.Client.Services.Posts;
+@using SchoolProjectClient.Client.Model.Post;
+
+@inject IPostService _postService;
+@inject ISnackbar _snackbar;
+
+<MudDialog>
+    <DialogContent>
+        <MudTextField T="string" @bind-Value="addPost.UserId" Label="UserId" FullWidth></MudTextField>
+        <MudTextField T="string" @bind-Value="addPost.Title" Label="Title" FullWidth></MudTextField>
+        <MudTextField T="string" @bind-Value="addPost.Content" Label="Content" FullWidth></MudTextField>
+    </DialogContent>
+    <DialogContent>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Add">Add Post</MudButton>
+    </DialogContent>
+</MudDialog>
+
+
+@code {
+    AddPost addPost = new();
+
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    void Cancel() => MudDialog.Cancel();
+
+    async Task Add()
+    {
+        try
+        {
+            var result = await _postService.AddPostAsync(addPost);
+            _snackbar.Add("Post added successfully: " + result.Message, Severity.Success);
+            MudDialog.Close(DialogResult.Ok(true));
+        }
+        catch(Exception ex)
+        {
+            _snackbar.Add("Failed to add user: " + ex.Message, Severity.Error);
+        }
+    }
+}
+

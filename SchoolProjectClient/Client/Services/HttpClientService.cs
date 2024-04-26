@@ -55,7 +55,7 @@ namespace SchoolProjectClient.Client.Services
         {
             StringBuilder urlBuilder = new StringBuilder();
             //urlBuilder.Append(!String.IsNullOrEmpty(requestParameter.BaseUrl) ? requestParameter.BaseUrl : _configuration["BaseUrl"]);
-            urlBuilder.Append("https://localhost:7154/api/");
+            urlBuilder.Append("http://localhost:5239/api/");
             urlBuilder.Append(requestParameter.Controller + "/");
             urlBuilder.Append(!String.IsNullOrEmpty(requestParameter.Action) ? requestParameter.Action : "");
             urlBuilder.Append((!String.IsNullOrEmpty(requestParameter.QueryString) ? "?" + requestParameter.QueryString : "/"));

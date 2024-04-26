@@ -16,8 +16,8 @@ namespace SchoolProjectClient.Client.Services.Posts
         public async Task<BaseResponse<Post>> AddPostAsync(AddPost addPost)
             => await _httpClientService.PostAsync<AddPost, BaseResponse<Post>>(new() { Controller = "Post", Action = "Add" }, addPost);
 
-        public async Task<BaseResponse<Post>> DeletePostAsync(string id)
-            => await _httpClientService.DeleteAsync<BaseResponse<Post>>(new() { Controller = "Post", Action = "Delete" }, id);
+        public async Task<BaseResponse<Post>> DeletePostAsync(PostUpdateRequest postUpdateRequest)
+            => await _httpClientService.PutAsync<PostUpdateRequest,BaseResponse<Post>>(new() { Controller = "Post", Action = "Delete" }, postUpdateRequest);
 
         public async Task<BaseResponse<PostResponse>> GetAllPostAsync(int page, int size)
             => await _httpClientService.GetAsync<BaseResponse<PostResponse>>(new() { Controller = "Post", Action = "GetAll", QueryString = $"page={page}&size={size}" });

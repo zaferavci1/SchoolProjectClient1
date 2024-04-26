@@ -9,7 +9,7 @@ namespace SchoolProjectClient.Client.Services.Posts
 		Task<BaseResponse<PostResponse>> GetAllPostAsync(int page, int size);
 		Task<BaseResponse<GetByIdPost>> GetByIdPostAsync(string id);
 		Task<BaseResponse<Post>> AddPostAsync(AddPost addPost);
-		Task<BaseResponse<Post>> DeletePostAsync(string id);
+		Task<BaseResponse<Post>> DeletePostAsync(PostUpdateRequest postUpdateRequest);
 		Task<BaseResponse<Post>> UpdatePostAsync(UpdatePost updatePost);
 
 	}
