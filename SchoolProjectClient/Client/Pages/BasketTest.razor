@@ -1,0 +1,65 @@
+﻿@page "/manage-baskets"
+
+@using SchoolProjectClient.Client.Services.Baskets
+@using SchoolProjectClient.Client.Model.Basket
+@using SchoolProjectClient.Client.Pages.Baskets
+@using Variant = MudBlazor.Variant
+
+@inject IBasketService _basketService;
+@inject IDialogService _dialogService;
+
+<MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="OpenAddBasketPopup">Add New Basket</MudButton>
+<MudTable Items="@Baskets" Class="full-width-table">
+    <HeaderContent>
+        <MudTh>Basket Name</MudTh>
+        <MudTh>Like Count</MudTh>
+        <MudTh>Actions</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Basket Name">@context.BasketName</MudTd>
+        <MudTd DataLabel="Like Count">@context.LikeCount</MudTd>
+        <MudTd>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditBasketPopup(context.Id))">Edit</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="@(() => OpenDeleteBasketPopup(context.Id))">Delete</MudButton>
+        </MudTd>
+    </RowTemplate>
+</MudTable>
+
+<style>
+    .full-width-table .mud-table-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+</style>
+
+<br />
+
+@code {
+    public List<Basket> Baskets { get; set; } = new List<Basket>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadDataAsync();
+    }
+
+    private async Task LoadDataAsync()
+    {
+        Baskets = (await _basketService.GetAllBasketListAsync(0, 8)).Data.Baskets;
+        Console.WriteLine();
+    }
+
+    private void OpenAddBasketPopup()
+    {
+        _dialogService.Show<AddBasketPopup>("Add Post");
+    }
+
+    private async void OpenEditBasketPopup(string id)
+    {
+        // Implement the logic to open the Edit Basket Popup
+    }
+
+    private void OpenDeleteBasketPopup(string id)
+    {
+        // Implement the logic to open the Delete Basket Popup
+    }
+}

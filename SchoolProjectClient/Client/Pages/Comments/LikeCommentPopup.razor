@@ -1,4 +1,4 @@
-﻿@page "/edit-comment/{commentId}"
+﻿
 
 @using SchoolProjectClient.Client.Services.Comments
 @using SchoolProjectClient.Client.Model.Comment
@@ -9,21 +9,13 @@
 @inject ISnackbar _snackbar;
 @inject NavigationManager _navigationManager;
 
-<MudDialog>
-    <DialogContent>
-        <MudTextField T="string" @bind-Value="getByIdComment.Content" Label="Comment Content" FullWidth></MudTextField>
-    </DialogContent>
-    <DialogActions>
-        <MudButton OnClick="Cancel">Cancel</MudButton>
-        <MudButton Color="Color.Primary" OnClick="Update">Save Changes</MudButton>
-    </DialogActions>
-</MudDialog>
+
 
 @code {
     [Parameter] public string Id { get; set; }
     [Parameter] public string UserId { get; set; }
-    private UpdateComment editComment = new();
     private GetByIdComment getByIdComment = new();
+    private AddLikeComment addLikeComment = new();
     private bool loading = false;
 
     [CascadingParameter] MudDialogInstance MudDialog { get; set; }
@@ -44,34 +36,32 @@
         {
             loading = false;
         }
-    }
 
-    void Cancel() => MudDialog.Cancel();
-
-    async Task Update()
-    {
         loading = true;
         try
         {
-            editComment = getByIdComment.Adapt<UpdateComment>();
-            var result = await _commentService.UpdateCommentAsync(editComment);
+            addLikeComment = getByIdComment.Adapt<AddLikeComment>();
+
+            var result = await _commentService.LikeCommentAsync(addLikeComment);
             if (result.IsSucceeded)
             {
-                _snackbar.Add("Comment updated successfully!", Severity.Success);
+                _snackbar.Add("Comment like successfully!", Severity.Success);
                 MudDialog.Close(DialogResult.Ok(true));
             }
             else
             {
-                _snackbar.Add("Failed to update comment: " + result.Message, Severity.Error);
+                _snackbar.Add("Failed to like comment: " + result.Message, Severity.Error);
             }
         }
         catch (Exception ex)
         {
-            _snackbar.Add("Failed to update comment: " + ex.Message, Severity.Error);
+            _snackbar.Add("Failed to like comment: " + ex.Message, Severity.Error);
         }
         finally
         {
             loading = false;
         }
     }
+
+    void Cancel() => MudDialog.Cancel();
 }

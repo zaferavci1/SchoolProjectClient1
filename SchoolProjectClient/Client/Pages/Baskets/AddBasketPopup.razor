@@ -1,0 +1,63 @@
+﻿@page "/add-basket"
+
+@using SchoolProjectClient.Client.Services.Baskets;
+@using SchoolProjectClient.Client.Services.Users;
+@using SchoolProjectClient.Client.Model.Basket;
+@using SchoolProjectClient.Client.Model.User;
+
+@inject IBasketService _basketService;
+@inject IUserService _userService;
+
+@inject ISnackbar _snackbar;
+
+<MudDialog>
+    <DialogContent>
+        <MudTextField T="string" @bind-Value="addBasket.BasketName" Label="Basket Name" FullWidth></MudTextField>
+        <MudTextField T="string" @bind-Value="addBasket.UserId" Label="User ID" FullWidth></MudTextField>
+        <MudSelect T="string" Label="User ID" @bind-Value="addBasket.UserId" FullWidth>
+            @foreach (var user in Users)
+            {
+                <MudSelectItem Value="@user.Id" Text="@user.NickName" />
+            }
+        </MudSelect>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Add">Add Basket</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    AddBasket addBasket = new();
+    List<User> Users = new();
+
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    void Cancel() => MudDialog.Cancel();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Users = (await _userService.GetAllUserListAsync(0, 10)).Data.UsersDTOs;
+    }
+
+    async Task Add()
+    {
+        try
+        {
+            var result = await _basketService.AddBasketAsync(addBasket);
+            if (result.IsSucceeded)
+            {
+                _snackbar.Add("Basket added successfully", Severity.Success);
+                MudDialog.Close(DialogResult.Ok(true));
+            }
+            else
+            {
+                _snackbar.Add("Failed to add basket: " + result.Message, Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            _snackbar.Add("Exception during basket addition: " + ex.Message, Severity.Error);
+        }
+    }
+}

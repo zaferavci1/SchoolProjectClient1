@@ -5,7 +5,6 @@
 @using SchoolProjectClient.Client.Services.Posts;
 @using SchoolProjectClient.Client.Model.Comment;
 @using SchoolProjectClient.Client.Pages.Comments;
-@using MudBlazor
 @using Variant = MudBlazor.Variant
 
 @inject ICommentService _commentService;
@@ -30,8 +29,9 @@
         <MudTd DataLabel="Content">@context.Content</MudTd>
         <MudTd DataLabel="Like Count">@context.LikeCount</MudTd>
         <MudTd>
-            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditCommentPopup(context.Id))">Edit</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditCommentPopup(context.Id, context.UserId))">Edit</MudButton>
             <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="@(() => OpenDeleteCommentPopup(context.Id, context.UserId))">Delete</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="@(() => OpenLikeCommentPopup(context.Id, context.UserId))">Like</MudButton>
         </MudTd>
     </RowTemplate>
 </MudTable>
@@ -62,7 +62,6 @@
         Comments = (await _commentService.GetAllCommentListAsync(0, 5)).Data.Comments;
         UserNames = await GetUserNameByUserIdsAsync(Comments.Select(c => c.UserId));
         PostNames = await GetPostNameByUserIdsAsync(Comments.Select(c => c.PostId));
-        Console.WriteLine();
     }
 
     private void OpenAddCommentPopup()
@@ -70,11 +69,24 @@
         _dialogService.Show<AddCommentPopup>("Add Comment");
     }
 
-    private async void OpenEditCommentPopup(string id)
+    private async void OpenLikeCommentPopup(string id, string userId)
     {
         var parameters = new DialogParameters();
         parameters.Add("Id", id);
+        parameters.Add("UserId", userId);
+        var dialog = await _dialogService.ShowAsync<LikeCommentPopup>("Like Comment", parameters);
+        if (!(await dialog.Result).Cancelled)
+        {
+            await OnInitializedAsync();
+            dialog.Close();
+        }
+    }
 
+    private async void OpenEditCommentPopup(string id, string userId)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("Id", id);
+        parameters.Add("UserId", userId);
         var dialog = await _dialogService.ShowAsync<EditCommentPopup>("Edit Comment", parameters);
         if (!(await dialog.Result).Cancelled)
         {

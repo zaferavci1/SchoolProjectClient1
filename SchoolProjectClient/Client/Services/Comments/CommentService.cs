@@ -23,7 +23,10 @@ namespace SchoolProjectClient.Client.Services.Comments
             => _httpClientService.GetAsync<BaseResponse<CommentResponse>>(new() { Controller = "Comment", Action = "GetAll", QueryString = $"page={page}&size={size}" });
 
         public Task<BaseResponse<GetByIdComment>> GetByIdCommentAsync(string id)
-            => _httpClientService.GetAsync<BaseResponse<GetByIdComment>>(new() { Controller = "Comment", Action = "GetByID" });
+            => _httpClientService.GetAsync<BaseResponse<GetByIdComment>>(new() { Controller = "Comment", Action = "GetByID" }, id);
+
+        public Task<BaseResponse<Comment>> LikeCommentAsync(AddLikeComment addLikeComment)
+            => _httpClientService.PutAsync<AddLikeComment, BaseResponse<Comment>>(new RequestParameter() { Controller = "Comment", Action = "Like" }, addLikeComment);
 
         public Task<BaseResponse<Comment>> UpdateCommentAsync(UpdateComment updateComment)
             => _httpClientService.PutAsync<UpdateComment, BaseResponse<Comment>>(new RequestParameter() { Controller = "Comment", Action = "Update" }, updateComment);
