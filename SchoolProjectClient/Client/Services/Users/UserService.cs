@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using SchoolProjectClient.Client.Model.Common;
 using SchoolProjectClient.Client.Model.User;
 
@@ -25,6 +26,21 @@ namespace SchoolProjectClient.Client.Services.Users
 
         public async Task<BaseResponse<GetByIdUser>> GetUserByIdAsync(string id)
             => await _httpClientService.GetAsync<BaseResponse<GetByIdUser>>(new() { Controller = "User", Action = "GetById" }, id);
+
+        public async Task<BaseResponse<AuthenticationResponse>> LoginUserAsync(LoginRequest request)
+        {
+            var response = await _httpClientService.("/api/auth/login", request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<BaseResponse<AuthenticationResponse>>();
+            }
+            else
+            {
+                // Hata durumunda BaseResponse döndürün (hata mesajı, kodları vb. içerebilir)
+                return new BaseResponse<AuthenticationResponse>() { IsSucceeded = false };
+            }
+        }
 
         public async Task<BaseResponse<User>> UpdateUserAsync(UpdateUser updateUser)
             => await _httpClientService.PutAsync<UpdateUser, BaseResponse<User>>(new RequestParameter() { Controller = "User", Action = "Update" }, updateUser);

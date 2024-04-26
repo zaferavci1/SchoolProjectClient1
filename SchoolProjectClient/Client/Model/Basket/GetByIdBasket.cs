@@ -6,7 +6,7 @@ namespace SchoolProjectClient.Client.Model.Basket
         public string Id { get; set; }
         public string BasketName { get; set; }
         public int LikeCount { get; set; }
+        public string UserId { get; set; }
         //public List<Crypto> Cryptos { get; set; }
     }
 }
-

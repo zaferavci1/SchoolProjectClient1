@@ -3,6 +3,7 @@
 @using SchoolProjectClient.Client.Services.Baskets
 @using SchoolProjectClient.Client.Model.Basket
 @using SchoolProjectClient.Client.Pages.Baskets
+@using MudBlazor
 @using Variant = MudBlazor.Variant
 
 @inject IBasketService _basketService;
@@ -17,9 +18,9 @@
     </HeaderContent>
     <RowTemplate>
         <MudTd DataLabel="Basket Name">@context.BasketName</MudTd>
-        <MudTd DataLabel="Like Count">@context.LikeCount</MudTd>
+        <MudTd DataLabel="Like Count">@context.LikeCount.ToString()</MudTd>
         <MudTd>
-            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditBasketPopup(context.Id))">Edit</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditBasketPopup(context.Id, context.UserId))">Edit</MudButton>
             <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="@(() => OpenDeleteBasketPopup(context.Id))">Delete</MudButton>
         </MudTd>
     </RowTemplate>
@@ -44,22 +45,41 @@
 
     private async Task LoadDataAsync()
     {
-        Baskets = (await _basketService.GetAllBasketListAsync(0, 8)).Data.Baskets;
-        Console.WriteLine();
+        var result = await _basketService.GetAllBasketListAsync(0, 8);
+        if (result.IsSucceeded && result.Data != null)
+        {
+            Baskets = result.Data.GetAllBasketsDTOs;
+        }
+        else
+        {
+            // Handle error or show message if necessary
+        }
     }
 
     private void OpenAddBasketPopup()
     {
-        _dialogService.Show<AddBasketPopup>("Add Post");
+        _dialogService.Show<AddBasketPopup>("Add Basket");
     }
 
-    private async void OpenEditBasketPopup(string id)
+
+    private async void OpenEditBasketPopup(string id, string userId)
     {
-        // Implement the logic to open the Edit Basket Popup
+        var parameters = new DialogParameters();
+        parameters.Add("Id", id);
+        parameters.Add("UserId", userId);
+        var dialog = await _dialogService.ShowAsync<EditBasketPopup>("Edit Basket", parameters);
+        if (!(await dialog.Result).Cancelled)
+        {
+            await OnInitializedAsync();
+            dialog.Close();
+        }
     }
+
+
 
     private void OpenDeleteBasketPopup(string id)
     {
-        // Implement the logic to open the Delete Basket Popup
+        //var parameters = new DialogParameters { { "Id", id } };
+        //_dialogService.Show<DeleteBasketPopup>("Delete Basket", parameters);
     }
 }

@@ -13,7 +13,6 @@
 <MudDialog>
     <DialogContent>
         <MudTextField T="string" @bind-Value="addBasket.BasketName" Label="Basket Name" FullWidth></MudTextField>
-        <MudTextField T="string" @bind-Value="addBasket.UserId" Label="User ID" FullWidth></MudTextField>
         <MudSelect T="string" Label="User ID" @bind-Value="addBasket.UserId" FullWidth>
             @foreach (var user in Users)
             {

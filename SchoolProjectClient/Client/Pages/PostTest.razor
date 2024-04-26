@@ -16,8 +16,8 @@
 <MudTable Items="@Posts" >
     <HeaderContent>
         <MudTh>User Id</MudTh>
-        <MudTh>Content</MudTh>
         <MudTh>Title</MudTh>
+        <MudTh>Content</MudTh>
         <MudTh>Like Count</MudTh>
         <MudTh>Actions</MudTh>
     </HeaderContent>
@@ -27,7 +27,7 @@
         <MudTd DataLabel="Content">@context.Content</MudTd>
         <MudTd DataLabel="Like Count">@context.LikeCount</MudTd>
          <MudTh>
-             <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditPostPopup(context.Id))">Edit</MudButton>
+             <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditPostPopup(context.Id, context.UserId))">Edit</MudButton>
              <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="@(() => OpenDeletePostPopup(context.Id, context.UserId))">Delete</MudButton>
         </MudTh> 
      </RowTemplate>
@@ -48,11 +48,11 @@
         _dialogServices.Show<AddPostPopup>("Add Post");
     }
 
-     private async void OpenEditPostPopup(string id)
+     private async void OpenEditPostPopup(string id, string userId)
     {
         var parameters = new DialogParameters();
-        parameters.Add("Id", id);
-
+        parameters.Add("id", id);
+        parameters.Add("UserId", userId);
         var dialog = await _dialogServices.ShowAsync<EditPostPopup>("Edit Post", parameters);
         if (!(await dialog.Result).Cancelled)
         {

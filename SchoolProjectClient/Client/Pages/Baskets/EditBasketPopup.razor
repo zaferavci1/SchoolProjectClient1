@@ -1,0 +1,76 @@
+﻿@page "/edit-basket/{basketId}"
+
+@using SchoolProjectClient.Client.Services.Baskets
+@using SchoolProjectClient.Client.Model.Basket
+@using MudBlazor;
+@using Mapster;
+
+@inject IBasketService _basketService;
+@inject ISnackbar _snackbar;
+@inject NavigationManager _navigationManager;
+
+<MudDialog>
+    <DialogContent>
+        <MudTextField T="string" @bind-Value="getByIdBasket.BasketName" Label="Basket Name" FullWidth></MudTextField>
+        <!-- UserId burada değiştirilemez varsayılmıştır, eğer değiştirilebilir olmasını isterseniz bir input ekleyebilirsiniz. -->
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Update">Save Changes</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [Parameter] public string Id { get; set; }
+    private UpdateBasket editBasket = new();
+    private GetByIdBasket getByIdBasket = new();
+    private bool loading = false;
+
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        loading = true;
+        try
+        {
+            getByIdBasket = (await _basketService.GetByIdBasketAsync(Id)).Data;
+        }
+        catch (Exception ex)
+        {
+            _snackbar.Add("Error loading basket: " + ex.Message, Severity.Error);
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
+
+    void Cancel() => MudDialog.Cancel();
+
+    async Task Update()
+    {
+        loading = true;
+        try
+        {
+            editBasket = getByIdBasket.Adapt<UpdateBasket>();
+            var result = await _basketService.UpdateBasketAsync(editBasket);
+            if (result.IsSucceeded)
+            {
+                _snackbar.Add("Basket updated successfully!", Severity.Success);
+                MudDialog.Close(DialogResult.Ok(true));
+            }
+            else
+            {
+                _snackbar.Add("Failed to update basket: " + result.Message, Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            _snackbar.Add("Failed to update basket: " + ex.Message, Severity.Error);
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
+}

@@ -22,8 +22,6 @@
 @code {
     [Parameter] public string Id{ get; set; }
     [Parameter] public string UserId { get; set; }
-    [Parameter] public string Title { get; set; }
-    [Parameter] public string Content { get; set; }
     private UpdatePost editPost = new();
     private GetByIdPost getByIdPost = new();
     private bool loading = false;
@@ -36,7 +34,6 @@
         try
         {
             getByIdPost = (await _postService.GetByIdPostAsync(Id)).Data;
-            Console.WriteLine();
         }
         catch(Exception ex)
         {
