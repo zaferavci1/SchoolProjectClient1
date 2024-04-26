@@ -1,0 +1,79 @@
+﻿@page "/edit-post/{postId}"
+
+@using SchoolProjectClient.Client.Services.Posts
+@using SchoolProjectClient.Client.Model.Post
+@using MudBlazor;
+@using Mapster
+
+@inject IPostService _postService;
+@inject ISnackbar _snackbar;
+@inject NavigationManager _navigationManager;
+
+<MudDialog>
+    <DialogContent>
+        <MudTextField T="string" @bind-Value="getByIdPost.Content" Label="Post Content" FullWidth></MudTextField>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Update">Save Changes</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [Parameter] public string Id{ get; set; }
+    [Parameter] public string UserId { get; set; }
+    [Parameter] public string Title { get; set; }
+    [Parameter] public string Content { get; set; }
+    private UpdatePost editPost = new();
+    private GetByIdPost getByIdPost = new();
+    private bool loading = false;
+
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        loading = true;
+        try
+        {
+            getByIdPost = (await _postService.GetByIdPostAsync(Id)).Data;
+            Console.WriteLine();
+        }
+        catch(Exception ex)
+        {
+            _snackbar.Add("Error loading comment: " + ex.Message, Severity.Error);
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
+
+    void Cancel() => MudDialog.Cancel();
+
+    async Task Update()
+    {
+        loading = true;
+        try
+        {
+            editPost = getByIdPost.Adapt<UpdatePost>();
+            var result = await _postService.UpdatePostAsync(editPost);
+            if(result.IsSucceeded)
+            {
+                _snackbar.Add("Post updated succesfully!", Severity.Success);
+                MudDialog.Close(DialogResult.Ok(true));
+            }
+            else
+            {
+                _snackbar.Add("Failed to update post: " + result.Message, Severity.Error);
+            }
+        }
+        catch(Exception ex)
+        {
+            _snackbar.Add("Failed to update post: " + ex.Message, Severity.Error);
+        }
+        finally
+        {
+            loading = false;
+        }
+    }
+}
