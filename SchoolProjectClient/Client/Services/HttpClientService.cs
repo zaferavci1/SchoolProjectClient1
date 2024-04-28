@@ -2,6 +2,8 @@
 using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
+using SchoolProjectClient.Client.Model.Common;
+using SchoolProjectClient.Client.Model.User;
 
 namespace SchoolProjectClient.Client.Services
 {
@@ -51,11 +53,29 @@ namespace SchoolProjectClient.Client.Services
             return await httpResponseMessage.Content.ReadFromJsonAsync<TResponse>();
         }
 
+        public async Task<BaseResponse<AuthenticationResponse>> LoginUserAsync(LoginRequest request)
+        {
+            var url = _configuration["BaseUrl"] + "/api/Auth/Login"; 
+
+            var response = await _httpClient.PostAsJsonAsync(url, request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<BaseResponse<AuthenticationResponse>>();
+            }
+            else
+            {
+                return new BaseResponse<AuthenticationResponse>() { IsSucceeded = false };
+            }
+        }
+
+
+
         private string Url(RequestParameter requestParameter)
         {
             StringBuilder urlBuilder = new StringBuilder();
             //urlBuilder.Append(!String.IsNullOrEmpty(requestParameter.BaseUrl) ? requestParameter.BaseUrl : _configuration["BaseUrl"]);
-            urlBuilder.Append("http://localhost:5239/api/");
+            urlBuilder.Append("https://localhost:7154/api/");
             urlBuilder.Append(requestParameter.Controller + "/");
             urlBuilder.Append(!String.IsNullOrEmpty(requestParameter.Action) ? requestParameter.Action : "");
             urlBuilder.Append((!String.IsNullOrEmpty(requestParameter.QueryString) ? "?" + requestParameter.QueryString : "/"));

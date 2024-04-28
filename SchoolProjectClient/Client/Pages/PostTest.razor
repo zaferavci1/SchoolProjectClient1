@@ -3,17 +3,17 @@
 @using SchoolProjectClient.Client.Pages.Users
 @using SchoolProjectClient.Client.Services.Posts;
 @using SchoolProjectClient.Client.Model.Post;
- @using SchoolProjectClient.Client.Pages.Posts;  
+@using SchoolProjectClient.Client.Pages.Posts;
 @using SchoolProjectClient.Client.Services.Users;
-@using MudBlazor
 @using Variant = MudBlazor.Variant
+@using Mapster;
 
 @inject IPostService _postService;
 @inject IUserService _userService;
 @inject IDialogService _dialogServices;
 
 <MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="OpenAddPostPopup">Add New Post</MudButton>
-<MudTable Items="@Posts" >
+<MudTable Items="@Posts">
     <HeaderContent>
         <MudTh>User Id</MudTh>
         <MudTh>Title</MudTh>
@@ -21,16 +21,16 @@
         <MudTh>Like Count</MudTh>
         <MudTh>Actions</MudTh>
     </HeaderContent>
-    <RowTemplate>      
+    <RowTemplate>
         <MudTd DataLabel="User Id">@context.UserId</MudTd>
         <MudTh DataLabel="Title">@context.Title</MudTh>
         <MudTd DataLabel="Content">@context.Content</MudTd>
         <MudTd DataLabel="Like Count">@context.LikeCount</MudTd>
-         <MudTh>
-             <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditPostPopup(context.Id, context.UserId))">Edit</MudButton>
-             <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="@(() => OpenDeletePostPopup(context.Id, context.UserId))">Delete</MudButton>
-        </MudTh> 
-     </RowTemplate>
+        <MudTh>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditPostPopup(context.Id, context.UserId))">Edit</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="@(() => OpenDeletePostPopup(context.Id, context.UserId))">Delete</MudButton>
+        </MudTh>
+    </RowTemplate>
 </MudTable>
 <br />
 
@@ -48,7 +48,7 @@
         _dialogServices.Show<AddPostPopup>("Add Post");
     }
 
-     private async void OpenEditPostPopup(string id, string userId)
+    private async void OpenEditPostPopup(string id, string userId)
     {
         var parameters = new DialogParameters();
         parameters.Add("id", id);
@@ -61,12 +61,12 @@
         }
     }
 
-      private async Task LoadDataAsync()
+    private async Task LoadDataAsync()
     {
-        Posts = (await _postService.GetAllPostAsync(0, 8)).Data.Posts;
+        Posts = (await _postService.GetAllPostAsync(0, 8)).Data.Posts.Select(p => p.Adapt<Post>()).ToList();
     }
 
-     private void OpenDeletePostPopup(string id, string UserId)
+    private void OpenDeletePostPopup(string id, string UserId)
     {
         var parameters = new DialogParameters();
         parameters.Add("id", id);
@@ -74,5 +74,5 @@
 
         _dialogServices.Show<DeletePostPopup>("Delete User", parameters);
     }
-    
+
 }

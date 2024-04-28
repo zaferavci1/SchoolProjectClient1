@@ -6,10 +6,11 @@
 @using SchoolProjectClient.Client.Model.Comment
 @using SchoolProjectClient.Client.Model.User
 @using SchoolProjectClient.Client.Model.Post
+@using Mapster;
 
 @inject ICommentService _commentService;
-@inject IUserService _userService;     
-@inject IPostService _postService;     
+@inject IUserService _userService;
+@inject IPostService _postService;
 @inject ISnackbar _snackbar;
 
 <MudDialog>
@@ -38,15 +39,15 @@
 
 @code {
     AddComment addComment = new();
-    List<User> Users = new(); 
-    List<Post> Posts = new(); 
+    List<User> Users = new();
+    List<Post> Posts = new();
 
     [CascadingParameter] MudDialogInstance MudDialog { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         Users = (await _userService.GetAllUserListAsync(0, 10)).Data.UsersDTOs;
-        Posts = (await _postService.GetAllPostAsync(0, 10)).Data.Posts;
+        Posts = (await _postService.GetAllPostAsync(0, 10)).Data.Posts.Select(p=>p.Adapt<Post>()).ToList();
     }
 
     void Cancel() => MudDialog.Cancel();

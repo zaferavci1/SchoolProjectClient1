@@ -1,5 +1,4 @@
-﻿using System;
-using SchoolProjectClient.Client.Model.Common;
+﻿using SchoolProjectClient.Client.Model.Common;
 using SchoolProjectClient.Client.Model.Post;
 
 namespace SchoolProjectClient.Client.Services.Posts
@@ -11,7 +10,8 @@ namespace SchoolProjectClient.Client.Services.Posts
 		Task<BaseResponse<Post>> AddPostAsync(AddPost addPost);
 		Task<BaseResponse<Post>> DeletePostAsync(PostUpdateRequest postUpdateRequest);
 		Task<BaseResponse<Post>> UpdatePostAsync(UpdatePost updatePost);
+        Task<BaseResponse<Post>> LikePostAsync(AddLikePost addLikePost);
 
-	}
+    }
 }
 

@@ -1,0 +1,108 @@
+﻿@page "/post"
+
+@using SchoolProjectClient.Client.Services.Posts
+@using SchoolProjectClient.Client.Services.Users
+@using SchoolProjectClient.Client.Services.Comments
+@using SchoolProjectClient.Client.Model.Post
+@using SchoolProjectClient.Client.Pages.Comments
+@using SchoolProjectClient.Client.Model.Comment
+@using Variant = MudBlazor.Variant
+@using MudBlazorDialogOptions = MudBlazor.DialogOptions;
+
+
+@inject IPostService _postService
+@inject IUserService _userService
+@inject ICommentService _commentService
+@inject ISnackbar _snackbar
+@inject IDialogService _dialogService
+
+<div class="posts-list">
+    @foreach (var post in Posts)
+    {
+        <div class="post-card">
+            <div class="post-header">
+                <span class="user-name">@UserNames[post.UserId]</span>
+            </div>
+            <div class="post-body">
+                <h3>@post.Title</h3>
+                <p>@post.Content</p>
+            </div>
+            <div class="post-footer">
+                <span class="like-count">Likes: @post.LikeCount</span>
+                <MudButton Variant="Variant.Text" Color="Color.Primary" OnClick="@(() => LikePost(post.Adapt<Post>()))">Like</MudButton>
+                <MudButton Variant="Variant.Text" Color="Color.Secondary" OnClick="@(() => OpenCommentsDialog(post.Comments))">Comments</MudButton>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    public List<GetAllPost> Posts { get; set; } = new List<GetAllPost>();
+    public Dictionary<string, string> UserNames { get; set; } = new Dictionary<string, string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Posts = (await _postService.GetAllPostAsync(0, 8)).Data.Posts;
+        await LoadUserNames();
+    }
+
+    private async Task LoadUserNames()
+    {
+        foreach (var post in Posts)
+        {
+            var userName = await GetUserNameByIdAsync(post.UserId);
+            if (!UserNames.ContainsKey(post.UserId))
+            {
+                UserNames.Add(post.UserId, userName);
+            }
+        }
+    }
+
+    public async Task<string> GetUserNameByIdAsync(string userId)
+    {
+        var response = await _userService.GetUserByIdAsync(userId);
+        if (response.IsSucceeded && response.Data != null)
+        {
+            return response.Data.NickName;
+        }
+        return "Unknown";
+    }
+
+    private async Task LikePost(Post post)
+    {
+        var addLikePost = new AddLikePost
+        {
+            Id = post.Id,
+            UserID = post.UserId // Gönderiyi beğenen kullanıcının ID'si.
+        };
+
+        try
+        {
+            var result = await _postService.LikePostAsync(addLikePost);
+            if (result.IsSucceeded)
+            {
+                _snackbar.Add("Post liked successfully!", Severity.Success);
+                post.LikeCount++;
+            }
+            else
+            {
+                _snackbar.Add(result.Message, Severity.Warning);
+            }
+        }
+        catch (Exception ex)
+        {
+            _snackbar.Add($"Failed to like post: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private void OpenCommentsDialog(List<Comment> comments)
+    {
+
+        var parameters = new DialogParameters();
+        parameters.Add("Comments", comments);
+        var options = new MudBlazorDialogOptions { CloseOnEscapeKey = true, MaxWidth = MaxWidth.Medium, FullWidth = true };
+        _dialogService.Show<CommentDialog>("Comments", parameters, options);
+    }
+
+
+}

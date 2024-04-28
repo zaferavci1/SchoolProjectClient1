@@ -1,6 +1,7 @@
-﻿namespace SchoolProjectClient.Client.Model.Comment
-{
+﻿using SchoolProjectClient.Client.Model.User;
 
+namespace SchoolProjectClient.Client.Model.Comment
+{
     public class Comment
     {
         public string UserId { get; set; }
@@ -17,4 +18,3 @@
         public int TotalCommentCount { get; set; }
     }
 }
-

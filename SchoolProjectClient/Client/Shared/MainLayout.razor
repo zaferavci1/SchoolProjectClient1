@@ -1,45 +1,49 @@
 ﻿@inherits LayoutComponentBase
 
-@using Microsoft.AspNetCore.Components.Routing
-
-
 <MudThemeProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
-@*<MudPaper Width="250px" Elevation="0">
-    <MudNavMenu Rounded="true" Margin="Margin.Dense" Color="Color.Primary" Class="pa-2">
-        <MudNavLink Href="/dashboard" Icon="@Icons.Material.Filled.Dashboard">Dashboard</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.Prefix" Href="/manage-users" Icon="@Icons.Material.Filled.Storage">User</MudNavLink>
-        <MudNavLink Href="/thelab" Icon="@Icons.Material.Filled.Science">The Lab</MudNavLink>
-    </MudNavMenu>
-</MudPaper>*@
 <MudLayout>
-    <MudPaper Width="250px" Elevation="0">
+    <MudAppBar>
+        <MudIconButton Icon="@Icons.Filled.Menu" Edge="Edge.Start" Color="Color.Inherit" OnClick="@ToggleDrawer" />
+        <div class="mud-toolbar-gutters">
+            <img src="SocialMarket.png" alt="SocialMarket Logo" class="logo" />
+        </div>
+    </MudAppBar>
+    <MudDrawer @bind-Open="drawerOpen">
         <MudNavMenu>
-            <MudNavMenu Rounded="true" Margin="Margin.Normal" Color="Color.Tertiary" Class="pa-2">
-                <MudNavLink Href="/" Icon="@Icons.Material.Filled.Dashboard">Dashboard</MudNavLink>
-                <MudNavLink Href="/manage-users" Icon="@Icons.Material.Filled.SupervisedUserCircle">Users</MudNavLink>
-                <MudNavLink Href="/manage-comments" Icon="@Icons.Material.Filled.Comment">Comments</MudNavLink>
-                <MudNavLink Href="/manage-baskets" Icon="@Icons.Material.Filled.Comment">Baskets</MudNavLink>
-                <MudNavLink Href="/manage-posts" Icon="@Icons.Material.Filled.Comment">Posts</MudNavLink>
-            </MudNavMenu>
+            <MudNavLink Href="/" Icon="@Icons.Material.Filled.Dashboard">Dashboard</MudNavLink>
+            <MudNavLink Href="/manage-users" Icon="@Icons.Material.Filled.SupervisedUserCircle">Users</MudNavLink>
+            <MudNavLink Href="/manage-comments" Icon="@Icons.Material.Filled.Comment">Comments</MudNavLink>
+            <MudNavLink Href="/manage-baskets" Icon="@Icons.Material.Filled.ShoppingBasket">Baskets</MudNavLink>
+            <MudNavLink Href="/manage-posts" Icon="@Icons.Material.Filled.PostAdd">Posts</MudNavLink>
         </MudNavMenu>
-    </MudPaper>
+    </MudDrawer>
     <MudMainContent>
         @Body
     </MudMainContent>
-
 </MudLayout>
 
-@code {
-    bool drawerOpen = true;
+<style>
+    /* Logo stilini özelleştirme */
+    .logo {
+        height: 60px; /* Logo boyutunu ayarlayabilirsiniz */
+    }
 
+    /* Seçili MudNavLink alt çizgisini kaldırma */
+    .mud-nav-link.mud-ripple.mud-ripple-rounded.mud-nav-link-active {
+        border: none !important;
+        box-shadow: none !important; /* Eğer bir gölge varsa */
+    }
+</style>
+
+
+@code {
+    private bool drawerOpen = true;
 
     void ToggleDrawer()
     {
         drawerOpen = !drawerOpen;
     }
 }
-
-

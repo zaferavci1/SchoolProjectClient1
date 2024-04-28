@@ -1,6 +1,8 @@
 ﻿using System;
+using SchoolProjectClient.Client.Model.Comment;
 using SchoolProjectClient.Client.Model.Common;
 using SchoolProjectClient.Client.Model.Post;
+using SchoolProjectClient.Client.Services;
 
 namespace SchoolProjectClient.Client.Services.Posts
 {
@@ -25,8 +27,10 @@ namespace SchoolProjectClient.Client.Services.Posts
         public async Task<BaseResponse<GetByIdPost>> GetByIdPostAsync(string id)
             => await _httpClientService.GetAsync<BaseResponse<GetByIdPost>>(new() { Controller = "Post", Action = "GetById" }, id);
 
+        public async Task<BaseResponse<Post>> LikePostAsync(AddLikePost addLikePost)
+            => await _httpClientService.PutAsync<AddLikePost, BaseResponse<Post>>(new RequestParameter() { Controller = "Post", Action = "Like" }, addLikePost);
+
         public async Task<BaseResponse<Post>> UpdatePostAsync(UpdatePost updatePost)
             => await _httpClientService.PutAsync<UpdatePost, BaseResponse<Post>>(new RequestParameter() { Controller = "Post", Action = "Update" }, updatePost);
     }
 }
-

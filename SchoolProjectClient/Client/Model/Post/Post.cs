@@ -12,7 +12,7 @@ namespace SchoolProjectClient.Client.Model.Post
 
     public class PostResponse
     {
-        public List<Post> Posts { get; set; }
+        public List<GetAllPost> Posts { get; set; }
         public int TotalPostCount { get; set; }
     }
 }

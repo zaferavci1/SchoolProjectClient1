@@ -29,18 +29,20 @@ namespace SchoolProjectClient.Client.Services.Users
 
         public async Task<BaseResponse<AuthenticationResponse>> LoginUserAsync(LoginRequest request)
         {
-            var response = await _httpClientService.("/api/auth/login", request);
+            //var response = await _httpClientService.("/api/auth/login", request);
 
-            if (response.IsSuccessStatusCode)
-            {
-                return await response.Content.ReadFromJsonAsync<BaseResponse<AuthenticationResponse>>();
-            }
-            else
-            {
-                // Hata durumunda BaseResponse döndürün (hata mesajı, kodları vb. içerebilir)
-                return new BaseResponse<AuthenticationResponse>() { IsSucceeded = false };
-            }
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    return await response.Content.ReadFromJsonAsync<BaseResponse<AuthenticationResponse>>();
+            //}
+            //else
+            //{
+            //    // Hata durumunda BaseResponse döndürün (hata mesajı, kodları vb. içerebilir)
+            //    return new BaseResponse<AuthenticationResponse>() { IsSucceeded = false };
+            //}
+            throw new NotImplementedException();
         }
+
 
         public async Task<BaseResponse<User>> UpdateUserAsync(UpdateUser updateUser)
             => await _httpClientService.PutAsync<UpdateUser, BaseResponse<User>>(new RequestParameter() { Controller = "User", Action = "Update" }, updateUser);

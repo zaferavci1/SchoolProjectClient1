@@ -1,0 +1,66 @@
+﻿
+@using SchoolProjectClient.Client.Services.Users
+@using SchoolProjectClient.Client.Services.Posts
+@using SchoolProjectClient.Client.Model.Post
+@using SchoolProjectClient.Client.Model.User
+
+@inject IPostService _postService
+@inject IUserService _userService
+@inject ISnackbar _snackbar
+
+<div class="share-post-container">
+    <div class="user-avatar">
+        <!-- Kullanıcı avatarı. Buraya dinamik veri bağlamalısınız. -->
+        <img src="avatar.png" alt="Avatar" />
+    </div>
+    <MudTextField T="string" @bind-Value="newPost.Title" Label="Post Title" FullWidth />
+    <MudTextField T="string" @bind-Value="newPost.Content" Label="Post Content" FullWidth />
+    <MudSelect T="string" Label="User ID" @bind-Value="newPost.UserId" FullWidth>
+        @foreach (var user in Users)
+        {
+            <MudSelectItem Value="@user.Id" Text="@user.NickName" />
+        }
+    </MudSelect>
+    <!-- Ekstra medya ekleme butonları (görüntü, müzik, vs.) -->
+    <div class="post-actions">
+        <!-- İkonlar ve butonlar için MUD Blazor bileşenlerini veya özel CSS sınıflarını kullanabilirsiniz. -->
+    </div>
+    <div class="post-submit">
+        <MudButton Color="Color.Primary" OnClick="SubmitPost">Paylaş</MudButton>
+    </div>
+</div>
+
+@code {
+    AddPost newPost = new();
+    List<User> Users = new();
+
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Users = (await _userService.GetAllUserListAsync(0, 10)).Data.UsersDTOs;
+    }
+
+    void Cancel() => MudDialog.Cancel();
+
+    async Task SubmitPost()
+    {
+        try
+        {
+            var result = await _postService.AddPostAsync(newPost);
+            if (result.IsSucceeded)
+            {
+                _snackbar.Add("Post added successfully", Severity.Success);
+                MudDialog.Close(DialogResult.Ok(true));
+            }
+            else
+            {
+                _snackbar.Add($"Failed to add post: {result.Message}", Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            _snackbar.Add($"Exception during post submission: {ex.Message}", Severity.Error);
+        }
+    }
+}
