@@ -1,0 +1,23 @@
+﻿.sidebar {
+    width: 300px; /* veya istediğiniz bir genişlik */
+    position: fixed;
+    right: 0;
+    top: 0; /* veya istediğiniz bir pozisyon */
+    padding: 20px;
+    background-color: white;
+    /* Diğer stiller */
+}
+
+.sidebar-item-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.userhandle {
+    color: grey;
+}

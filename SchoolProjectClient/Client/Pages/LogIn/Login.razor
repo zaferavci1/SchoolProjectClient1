@@ -1,0 +1,75 @@
+﻿@page "/login"
+
+
+@inject AppUserId AppUserId
+@inject ILoginService LoginService
+
+<RadzenRow Gap="0" Class="rz-my-12 rz-mx-auto rz-border-radius-6 rz-shadow-10" Style="width: 100%; max-width: 800px; overflow: hidden;">
+    <!-- Your existing code for the first column -->
+    <RadzenColumn Size="12" SizeMD="6">
+        <RadzenCard Class="rz-shadow-0 rz-border-radius-0 rz-p-12">
+            <RadzenText TextStyle="TextStyle.H5" TagName="TagName.H2" Class="rz-mb-6">
+                Login
+            </RadzenText>
+            <RadzenTemplateForm Data=@loginModel TModel="LoginModel" >
+                <RadzenTextBox @bind-Value=@loginModel.UserNameOrMail Placeholder="Username" Style="width: 100%" />
+                <RadzenPassword @bind-Value=@loginModel.Password Placeholder="Password" Style="width: 100%" />
+                <RadzenButton Text="Login" ButtonType="Radzen.ButtonType.Submit"  Click="@(async () => await HandleLogin())" Style="width: 100%; margin-top: 20px;" />
+            </RadzenTemplateForm>
+        </RadzenCard>
+    </RadzenColumn>
+</RadzenRow>
+
+@code {
+    private LoginRequest loginModel = new LoginRequest();
+    public string UserId { get; set; }
+
+    private async Task HandleLogin()
+    {
+        var loginRequest = new LoginRequest
+        {
+            UserNameOrMail = loginModel.UserNameOrMail,
+            Password = loginModel.Password
+        };
+
+        var response = await LoginService.LoginUserAsync(loginRequest);
+        LoginService.UpdateJwtToken(response.Data.TokenDTO.AccessToken);
+
+        if (response.IsSucceeded && response.Data.UserDTO?.Id != null)
+        {
+            // Kullanıcı ID'sini güvenli bir şekilde saklayın
+            AppUserId.UserId = response.Data.UserDTO.Id;
+
+            // Ana sayfaya yönlendirin
+            NavigationManager.NavigateTo("/");
+        }
+        else
+        {
+            // Hata mesajı göster
+        }
+    }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var loginRequest = new LoginRequest
+        {
+            UserNameOrMail = loginModel.UserNameOrMail,
+            Password = loginModel.Password
+        };
+
+        var response = await LoginService.LoginUserAsync(loginRequest);
+        if (response.IsSucceeded && response.Data.UserDTO?.Id != null)
+        {
+            // Kullanıcı ID'sini güvenli bir şekilde saklayın
+            AppUserId.UserId = response.Data.UserDTO.Id;
+
+            // Ana sayfaya yönlendirin
+            NavigationManager.NavigateTo("/");
+        }
+        else
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+    }
+}

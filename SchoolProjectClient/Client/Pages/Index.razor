@@ -1,15 +1,15 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
 
-<SchoolProjectClient.Client.Pages.Posts.SharePost />
-<SchoolProjectClient.Client.Pages.Posts.AddPostPopup />
+<div class="main-content">
+    <!-- Ana içerik burada olacak, örneğin bir blog listesi veya dashboard -->
+    <SchoolProjectClient.Client.Pages.Posts.SharePost />
+    <SchoolProjectClient.Client.Pages.Posts.AddPostPopup />
+    <SchoolProjectClient.Client.Pages.Deneme />
+</div>
 
+<div class="sidebar">
+    <!-- Sağdaki sabit kutu burada yer alacak -->
+    <SchoolProjectClient.Client.Pages.Users.UserList />
+</div>
 
-@*<MudNavMenu>
-    <MudNavLink Href="/" Match="NavLinkMatch.All">Dashboard</MudNavLink>
-    <MudNavLink Href="/manage-comments" Match="NavLinkMatch.Prefix">Comments</MudNavLink>
-    <MudNavLink Href="/manage-users" Match="NavLinkMatch.Prefix">Users</MudNavLink>
-</MudNavMenu>*@
-
-<SchoolProjectClient.Client.Pages.Deneme/>

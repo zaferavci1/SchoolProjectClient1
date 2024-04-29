@@ -1,0 +1,98 @@
+/* SharePost.razor.css veya site.css dosyasına ekleyin */
+.share-post-container[b-9xxwpwrqye] {
+    display: flex;
+    align-items: flex-start; /* textarea yüksekliği için ayar */
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 20px 0;
+}
+
+.user-avatar img[b-9xxwpwrqye] {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-right: 10px; /* Arayüzdeki boşluk için */
+}
+
+.post-text[b-9xxwpwrqye] {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    margin-right: 10px; /* Butonlarla arasındaki boşluk için */
+    resize: vertical; /* Yalnızca dikey olarak yeniden boyutlandırma */
+}
+
+
+.post-actions[b-9xxwpwrqye] {
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+.action-btn[b-9xxwpwrqye] {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 5px;
+}
+
+.submit-btn[b-9xxwpwrqye] {
+    background-color: #f00;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Örnek olarak kullanılan ikon sınıflarınız, gerçek ikonlarınıza göre ayarlanmalıdır */
+.icon-picture[b-9xxwpwrqye]:before {
+    content: url('ikonunuzun-yolu');
+}
+
+/* ... Diğer ikon sınıfları için benzer CSS ... */
+
+/* Paylaş butonuna basıldığında hover efekti */
+.submit-btn:hover[b-9xxwpwrqye] {
+    background-color: #c00;
+}
+
+
+/* AddPostPopup.razor.css dosyanıza bu stil kodlarını ekleyin */
+.share-post-container[b-9xxwpwrqye] {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.user-avatar img[b-9xxwpwrqye] {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.post-actions[b-9xxwpwrqye] {
+    /* İkonlar ve medya ekleme butonlarınız için stil tanımlamaları */
+}
+
+.post-submit[b-9xxwpwrqye] {
+    margin-left: 10px;
+}
+
+/* MUD Blazor bileşenlerinin varsayılan stillerini değiştirmeniz gerekebilir, bu durumda aşağıdaki gibi bir stil ekleyebilirsiniz: */
+.mud-text-field[b-9xxwpwrqye], .mud-select[b-9xxwpwrqye] {
+    flex-grow: 1;
+    margin-right: 10px;
+}

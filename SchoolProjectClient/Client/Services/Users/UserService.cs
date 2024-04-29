@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using SchoolProjectClient.Client.Model.Common;
+using SchoolProjectClient.Client.Model.Login;
 using SchoolProjectClient.Client.Model.User;
 
 namespace SchoolProjectClient.Client.Services.Users
@@ -42,7 +43,6 @@ namespace SchoolProjectClient.Client.Services.Users
             //}
             throw new NotImplementedException();
         }
-
 
         public async Task<BaseResponse<User>> UpdateUserAsync(UpdateUser updateUser)
             => await _httpClientService.PutAsync<UpdateUser, BaseResponse<User>>(new RequestParameter() { Controller = "User", Action = "Update" }, updateUser);

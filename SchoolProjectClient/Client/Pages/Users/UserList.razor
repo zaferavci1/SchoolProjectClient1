@@ -1,0 +1,37 @@
+﻿@using SchoolProjectClient.Client.Model.User
+@using SchoolProjectClient.Client.Services.Users
+
+@inject IUserService _userService
+
+<MudList Style="max-width: 300px; margin: auto;">
+    <MudText Typo="Typo.h6">Kullanıcılar</MudText>
+    @foreach (var user in Users)
+    {
+        <MudListItem>
+            <MudItem>
+                <MudText>@user.Name (@user.Name)</MudText>
+                <MudText>@user.NickName (@user.NickName)</MudText>
+            </MudItem>
+            <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="@(() => FollowUser(user))">Takip et</MudButton>
+        </MudListItem>
+    }
+</MudList>
+
+@code {
+    public List<User> Users { get; set; } = new List<User>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadUsers();
+    }
+
+    private async Task LoadUsers()
+    {
+        Users = (await _userService.GetAllUserListAsync(0, 8)).Data.UsersDTOs;
+    }
+
+    private void FollowUser(User user)
+    {
+        // Implement the follow user functionality
+    }
+}

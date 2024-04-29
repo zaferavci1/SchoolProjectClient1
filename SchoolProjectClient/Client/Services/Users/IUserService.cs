@@ -1,4 +1,5 @@
 ﻿using SchoolProjectClient.Client.Model.Common;
+using SchoolProjectClient.Client.Model.Login;
 using SchoolProjectClient.Client.Model.User;
 
 namespace SchoolProjectClient.Client.Services.Users

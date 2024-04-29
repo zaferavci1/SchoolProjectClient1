@@ -1,20 +1,9 @@
 ﻿@page "/post"
 
-@using SchoolProjectClient.Client.Services.Posts
-@using SchoolProjectClient.Client.Services.Users
-@using SchoolProjectClient.Client.Services.Comments
-@using SchoolProjectClient.Client.Model.Post
-@using SchoolProjectClient.Client.Pages.Comments
-@using SchoolProjectClient.Client.Model.Comment
-@using Variant = MudBlazor.Variant
-@using MudBlazorDialogOptions = MudBlazor.DialogOptions;
 
+@inject AppUserId AppUserId
 
-@inject IPostService _postService
-@inject IUserService _userService
-@inject ICommentService _commentService
-@inject ISnackbar _snackbar
-@inject IDialogService _dialogService
+<a>@AppUserId.UserId</a>
 
 <div class="posts-list">
     @foreach (var post in Posts)

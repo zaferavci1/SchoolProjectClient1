@@ -1,4 +1,4 @@
-﻿.sidebar {
+.sidebar[b-6xixl5xn1y] {
     position: fixed; /* Sabit konum */
     top: 100px; /* Üstten 100px boşluk */
     right: 20px; /* Sağdan 20px boşluk */
@@ -14,33 +14,33 @@
 }
 
 /* Eğer sidebar'ın içeriği ekran boyutunu aşıyorsa dikey kaydırma çubuğu gözükür */
-.sidebar-container {
+.sidebar-container[b-6xixl5xn1y] {
     max-height: calc(100vh - 120px);
     overflow-y: auto;
 }
 
 /* Sidebar'ın içeriği altındaki ana içeriğin üzerine çıkmamasını sağlar */
-.main-content {
+.main-content[b-6xixl5xn1y] {
     padding-left: 20px; /* Sol tarafta boşluk bırakır */
     padding-right: 480px; /* Sidebar genişliği + sağ tarafta boşluk bırakır */
 }
 
 
-.sidebar-item-content {
+.sidebar-item-content[b-6xixl5xn1y] {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.username {
+.username[b-6xixl5xn1y] {
     font-weight: bold;
 }
 
-.userhandle {
+.userhandle[b-6xixl5xn1y] {
     color: grey;
 }
 
-.follow-section {
+.follow-section[b-6xixl5xn1y] {
     position: sticky; /* Yada 'fixed' kullanabilirsiniz */
     top: 85px; /* Header'ınıza göre bu değeri ayarlayın */
     width: 250px; /* Kutunun genişliği */
@@ -54,7 +54,7 @@
 }
 
 /* Eğer 'fixed' kullanırsanız ve sidebar içeriği çok fazlaysa ekleyebilirsiniz */
-.follow-section-container {
+.follow-section-container[b-6xixl5xn1y] {
     height: 100vh;
     overflow-y: auto;
 }
