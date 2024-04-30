@@ -1,8 +1,9 @@
 ﻿@page "/login"
 
-
-@inject AppUserId AppUserId
 @inject ILoginService LoginService
+@inject AuthenticationStateProvider _authenticationStateProvider
+@inject HttpClient _httpClient
+@inject Blazored.LocalStorage.ILocalStorageService _localStorageService;
 
 <RadzenRow Gap="0" Class="rz-my-12 rz-mx-auto rz-border-radius-6 rz-shadow-10" Style="width: 100%; max-width: 800px; overflow: hidden;">
     <!-- Your existing code for the first column -->
@@ -11,10 +12,10 @@
             <RadzenText TextStyle="TextStyle.H5" TagName="TagName.H2" Class="rz-mb-6">
                 Login
             </RadzenText>
-            <RadzenTemplateForm Data=@loginModel TModel="LoginModel" >
+            <RadzenTemplateForm Data=@loginModel TModel="LoginModel">
                 <RadzenTextBox @bind-Value=@loginModel.UserNameOrMail Placeholder="Username" Style="width: 100%" />
                 <RadzenPassword @bind-Value=@loginModel.Password Placeholder="Password" Style="width: 100%" />
-                <RadzenButton Text="Login" ButtonType="Radzen.ButtonType.Submit"  Click="@(async () => await HandleLogin())" Style="width: 100%; margin-top: 20px;" />
+                <RadzenButton Text="Login" ButtonType="Radzen.ButtonType.Submit" Click="@(async () => await HandleLogin())" Style="width: 100%; margin-top: 20px;" />
             </RadzenTemplateForm>
         </RadzenCard>
     </RadzenColumn>
@@ -32,44 +33,30 @@
             Password = loginModel.Password
         };
 
-        var response = await LoginService.LoginUserAsync(loginRequest);
-        LoginService.UpdateJwtToken(response.Data.TokenDTO.AccessToken);
-
-        if (response.IsSucceeded && response.Data.UserDTO?.Id != null)
+        try
         {
-            // Kullanıcı ID'sini güvenli bir şekilde saklayın
-            AppUserId.UserId = response.Data.UserDTO.Id;
 
-            // Ana sayfaya yönlendirin
-            NavigationManager.NavigateTo("/");
+            var response = await LoginService.LoginUserAsync(loginRequest);
+
+            if (!response.IsSucceeded)
+            {
+                _snackbar.Add(response.Message, Severity.Error);
+            }
+            else
+            {
+                (_authenticationStateProvider as AuthStateProvider).NotifyUserLogin(response.Data.UserDTO.Id);
+                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", response.Data.TokenDTO.AccessToken);
+
+                await _localStorageService.SetItemAsync("Token", response.Data.TokenDTO.AccessToken);
+                await _localStorageService.SetItemAsync("UserId", response.Data.UserDTO.Id);
+                //LoginService.UpdateJwtToken(response.Data.TokenDTO.AccessToken);
+                NavigationManager.NavigateTo("/");
+            }
         }
-        else
+        catch (NullReferenceException ex)
         {
-            // Hata mesajı göster
+            _snackbar.Add($"Login failed: {ex.Message}", Severity.Error);
         }
-    }
 
-
-    protected override async Task OnInitializedAsync()
-    {
-        var loginRequest = new LoginRequest
-        {
-            UserNameOrMail = loginModel.UserNameOrMail,
-            Password = loginModel.Password
-        };
-
-        var response = await LoginService.LoginUserAsync(loginRequest);
-        if (response.IsSucceeded && response.Data.UserDTO?.Id != null)
-        {
-            // Kullanıcı ID'sini güvenli bir şekilde saklayın
-            AppUserId.UserId = response.Data.UserDTO.Id;
-
-            // Ana sayfaya yönlendirin
-            NavigationManager.NavigateTo("/");
-        }
-        else
-        {
-            NavigationManager.NavigateTo("/login");
-        }
     }
 }

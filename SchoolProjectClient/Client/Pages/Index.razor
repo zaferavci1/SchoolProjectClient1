@@ -1,15 +1,17 @@
 ﻿@page "/"
 
+<AuthorizeView>
+    <Authorized>
+        <div class="main-content">
+            <!-- Ana içerik burada olacak, örneğin bir blog listesi veya dashboard -->
+            <SchoolProjectClient.Client.Pages.Posts.SharePost />
+            <SchoolProjectClient.Client.Pages.Posts.AddPostPopup />
+            <SchoolProjectClient.Client.Pages.Deneme />
+        </div>
 
-<div class="main-content">
-    <!-- Ana içerik burada olacak, örneğin bir blog listesi veya dashboard -->
-    <SchoolProjectClient.Client.Pages.Posts.SharePost />
-    <SchoolProjectClient.Client.Pages.Posts.AddPostPopup />
-    <SchoolProjectClient.Client.Pages.Deneme />
-</div>
-
-<div class="sidebar">
-    <!-- Sağdaki sabit kutu burada yer alacak -->
-    <SchoolProjectClient.Client.Pages.Users.UserList />
-</div>
-
+        <div class="sidebar">
+            <!-- Sağdaki sabit kutu burada yer alacak -->
+            <SchoolProjectClient.Client.Pages.Users.UserList />
+        </div>
+    </Authorized>
+</AuthorizeView>

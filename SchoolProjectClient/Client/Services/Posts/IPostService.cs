@@ -11,6 +11,7 @@ namespace SchoolProjectClient.Client.Services.Posts
 		Task<BaseResponse<Post>> DeletePostAsync(PostUpdateRequest postUpdateRequest);
 		Task<BaseResponse<Post>> UpdatePostAsync(UpdatePost updatePost);
         Task<BaseResponse<Post>> LikePostAsync(AddLikePost addLikePost);
+        Task<BaseResponse<Post>> UnlikePost(UnLikePost unLikePost);
 
     }
 }

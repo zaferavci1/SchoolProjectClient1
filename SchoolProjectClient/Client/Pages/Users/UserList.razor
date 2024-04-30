@@ -1,6 +1,7 @@
 ﻿@using SchoolProjectClient.Client.Model.User
 @using SchoolProjectClient.Client.Services.Users
 
+@inject AppUserId AppUserId
 @inject IUserService _userService
 
 <MudList Style="max-width: 300px; margin: auto;">
@@ -12,13 +13,14 @@
                 <MudText>@user.Name (@user.Name)</MudText>
                 <MudText>@user.NickName (@user.NickName)</MudText>
             </MudItem>
-            <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="@(() => FollowUser(user))">Takip et</MudButton>
+            <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="@(() => FollowUser(user.Id))">Takip et</MudButton>
         </MudListItem>
     }
 </MudList>
 
 @code {
     public List<User> Users { get; set; } = new List<User>();
+    public string UserId { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -27,11 +29,26 @@
 
     private async Task LoadUsers()
     {
+        UserId = await localStorage.GetItemAsync<string>("UserId");
         Users = (await _userService.GetAllUserListAsync(0, 8)).Data.UsersDTOs;
+
     }
 
-    private void FollowUser(User user)
+    private async Task FollowUser(string followId)
     {
-        // Implement the follow user functionality
+        var result = await _userService.FollowUserAsync(new FollowUser() { user1 = UserId, user2 = followId });
+
+        if (result.IsSucceeded)
+        {
+            _snackbar.Add($"{result.Data.Name}'i başarıyla takip ettiniz.", Severity.Success);
+        }
+        else if (result.Message == "User Already Followed")
+        {
+            _snackbar.Add($"{result.Data.Name} zaten takip ediliyor.", Severity.Info);
+        }
+        else
+        {
+            _snackbar.Add($"Kullanıcı zaten takip ediliyor: {result.Message}", Severity.Error);
+        }
     }
 }

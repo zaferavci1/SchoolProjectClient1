@@ -7,6 +7,7 @@
 @inject IPostService _postService
 @inject IUserService _userService
 @inject ISnackbar _snackbar
+@inject Blazored.LocalStorage.ILocalStorageService _localStorageService;
 
 <div class="share-post-container">
     <div class="user-avatar">
@@ -15,12 +16,7 @@
     </div>
     <MudTextField T="string" @bind-Value="newPost.Title" Label="Post Title" FullWidth />
     <MudTextField T="string" @bind-Value="newPost.Content" Label="Post Content" FullWidth />
-    <MudSelect T="string" Label="User ID" @bind-Value="newPost.UserId" FullWidth>
-        @foreach (var user in Users)
-        {
-            <MudSelectItem Value="@user.Id" Text="@user.NickName" />
-        }
-    </MudSelect>
+    
     <!-- Ekstra medya ekleme butonları (görüntü, müzik, vs.) -->
     <div class="post-actions">
         <!-- İkonlar ve butonlar için MUD Blazor bileşenlerini veya özel CSS sınıflarını kullanabilirsiniz. -->
@@ -39,7 +35,12 @@
     protected override async Task OnInitializedAsync()
     {
         Users = (await _userService.GetAllUserListAsync(0, 10)).Data.UsersDTOs;
+        newPost.UserId = await _localStorageService.GetItemAsync<string>("UserId");
     }
+
+
+
+
 
     void Cancel() => MudDialog.Cancel();
 

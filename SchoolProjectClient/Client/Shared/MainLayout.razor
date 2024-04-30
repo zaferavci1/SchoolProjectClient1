@@ -1,49 +1,50 @@
-﻿@inherits LayoutComponentBase
+﻿@using System.Security.Claims
+@inherits LayoutComponentBase
 
-<MudThemeProvider />
-<MudDialogProvider />
-<MudSnackbarProvider />
+@inject Blazored.LocalStorage.ILocalStorageService _localStorageService;
+@inject NavigationManager _navigationManager;
 
-<MudLayout>
-    <MudAppBar>
-        <MudIconButton Icon="@Icons.Filled.Menu" Edge="Edge.Start" Color="Color.Inherit" OnClick="@ToggleDrawer" />
-        <div class="mud-toolbar-gutters">
-            <img src="SocialMarket.png" alt="SocialMarket Logo" class="logo" />
+<RadzenDialog />
+<RadzenContextMenu />
+<RadzenNotification />
+<RadzenTooltip />
+
+<RadzenLayout>
+    @* <RadzenHeader></RadzenHeader> *@
+    <RadzenSidebar>
+        <div class="rz-p-4">
+            <NavMenu />
         </div>
-    </MudAppBar>
-    <MudDrawer @bind-Open="drawerOpen">
-        <MudNavMenu>
-            <MudNavLink Href="/" Icon="@Icons.Material.Filled.Dashboard">Dashboard</MudNavLink>
-            <MudNavLink Href="/manage-users" Icon="@Icons.Material.Filled.SupervisedUserCircle">Users</MudNavLink>
-            <MudNavLink Href="/manage-comments" Icon="@Icons.Material.Filled.Comment">Comments</MudNavLink>
-            <MudNavLink Href="/manage-baskets" Icon="@Icons.Material.Filled.ShoppingBasket">Baskets</MudNavLink>
-            <MudNavLink Href="/manage-posts" Icon="@Icons.Material.Filled.PostAdd">Posts</MudNavLink>
-        </MudNavMenu>
-    </MudDrawer>
-    <MudMainContent>
-        @Body
-    </MudMainContent>
-</MudLayout>
-
-<style>
-    /* Logo stilini özelleştirme */
-    .logo {
-        height: 60px; /* Logo boyutunu ayarlayabilirsiniz */
-    }
-
-    /* Seçili MudNavLink alt çizgisini kaldırma */
-    .mud-nav-link.mud-ripple.mud-ripple-rounded.mud-nav-link-active {
-        border: none !important;
-        box-shadow: none !important; /* Eğer bir gölge varsa */
-    }
-</style>
-
+    </RadzenSidebar>
+    <RadzenBody>
+        <div class="rz-p-4">
+            @Body
+        </div>
+    </RadzenBody>
+    @*  <RadzenFooter>
+        </RadzenFooter> *@
+</RadzenLayout>
 
 @code {
-    private bool drawerOpen = true;
 
-    void ToggleDrawer()
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthenticationState { get; set; }
+
+    [Inject]
+    Blazored.LocalStorage.ILocalStorageService LocalStorageService { get; set; }
+
+    private string loginStr = "about";
+
+    protected async override Task OnInitializedAsync()
     {
-        drawerOpen = !drawerOpen;
+        var authState = await AuthenticationState;
+        if (authState.User.Identity.IsAuthenticated)
+        {
+            loginStr = await _localStorageService.GetItemAsStringAsync("UserId");
+        }
+        else
+        {
+            _navigationManager.NavigateTo("/login");
+        }
     }
 }

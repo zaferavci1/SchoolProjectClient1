@@ -1,47 +1,59 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">SchoolProjectClient</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
+﻿@inherits LayoutComponentBase
 
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </div>
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<AuthorizeView>
+    <Authorized>
+        <MudLayout>
+            <MudAppBar>
+                <MudIconButton Icon="@Icons.Filled.Menu" Edge="Edge.Start" Color="Color.Inherit" OnClick="@ToggleDrawer" />
+                <div class="mud-toolbar-gutters">
+                    <img src="SocialMarket.png" alt="SocialMarket Logo" class="logo" />
+                </div>
+            </MudAppBar>
+            <MudDrawer @bind-Open="drawerOpen">
+                <MudNavMenu>
+                    <MudNavLink Href="/" Icon="@Icons.Material.Filled.Dashboard">Dashboard</MudNavLink>
+                    <MudNavLink Href="/manage-users" Icon="@Icons.Material.Filled.SupervisedUserCircle">Users</MudNavLink>
+                    <MudNavLink Href="/manage-comments" Icon="@Icons.Material.Filled.Comment">Comments</MudNavLink>
+                    <MudNavLink Href="/manage-baskets" Icon="@Icons.Material.Filled.ShoppingBasket">Baskets</MudNavLink>
+                    <MudNavLink Href="/manage-posts" Icon="@Icons.Material.Filled.PostAdd">Posts</MudNavLink>
+                    <MudNavLink Href="/logout" Icon="@Icons.Material.Filled.Logout">Logout</MudNavLink>
+                </MudNavMenu>
+            </MudDrawer>
+            <MudMainContent>
+                @Body
+            </MudMainContent>
+        </MudLayout>
+    </Authorized>
+
+    <NotAuthorized>
+        <MudNavLink Href="/login" Icon="@Icons.Material.Filled.Login">Login</MudNavLink>
+    </NotAuthorized>
+</AuthorizeView>
+
+<style>
+    /* Logo stilini özelleştirme */
+    .logo {
+        height: 60px; /* Logo boyutunu ayarlayabilirsiniz */
+    }
+
+    /* Seçili MudNavLink alt çizgisini kaldırma */
+    .mud-nav-link.mud-ripple.mud-ripple-rounded.mud-nav-link-active {
+        border: none !important;
+        box-shadow: none !important; /* Eğer bir gölge varsa */
+    }
+</style>
 
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="buttons">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Test Button
-            </NavLink>
-        </div>
-    </nav>
-</div>
 
 @code {
-    private bool collapseNavMenu = true;
+    private bool drawerOpen = true;
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+    void ToggleDrawer()
     {
-        collapseNavMenu = !collapseNavMenu;
+        drawerOpen = !drawerOpen;
     }
 }
-

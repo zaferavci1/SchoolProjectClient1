@@ -30,6 +30,9 @@ namespace SchoolProjectClient.Client.Services.Posts
         public async Task<BaseResponse<Post>> LikePostAsync(AddLikePost addLikePost)
             => await _httpClientService.PutAsync<AddLikePost, BaseResponse<Post>>(new RequestParameter() { Controller = "Post", Action = "Like" }, addLikePost);
 
+        public async Task<BaseResponse<Post>> UnlikePost(UnLikePost unLikePost)
+            => await _httpClientService.PutAsync<UnLikePost, BaseResponse<Post>>(new RequestParameter() { Controller = "Post", Action = "UnLike" }, unLikePost);
+
         public async Task<BaseResponse<Post>> UpdatePostAsync(UpdatePost updatePost)
             => await _httpClientService.PutAsync<UpdatePost, BaseResponse<Post>>(new RequestParameter() { Controller = "Post", Action = "Update" }, updatePost);
     }

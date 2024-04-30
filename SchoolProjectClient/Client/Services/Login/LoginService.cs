@@ -6,6 +6,10 @@ namespace SchoolProjectClient.Client.Services.Login
 {
     public class LoginService : ILoginService
     {
+        public AppUserId AppUserId { get; set; }
+
+        public AppUserId User => new AppUserId();
+
         public readonly IHttpClientService _httpClientService;
 
         public LoginService(IHttpClientService httpClientService)
@@ -13,13 +17,13 @@ namespace SchoolProjectClient.Client.Services.Login
             _httpClientService = httpClientService;
 
         }
-
         public async Task<BaseResponse<AuthenticationResponse>> LoginUserAsync(LoginRequest loginRequest)
-            => await _httpClientService.PutAsync<LoginRequest, BaseResponse<AuthenticationResponse>>(new RequestParameter() { Controller = "Auth", Action = "Login" }, loginRequest);
+            => await _httpClientService.LoginAsync<LoginRequest, BaseResponse<AuthenticationResponse>>(new RequestParameter() { Controller = "Auth", Action = "Login" }, loginRequest);
 
-        public void UpdateJwtToken(string jwt)
+
+        public Task Logout()
         {
-            _httpClientService.AddJwtFirstTime(jwt);
+            throw new NotImplementedException();
         }
         //=> await _httpClientService.LoginUserAsync<BaseResponse<AuthenticationResponse>>(new RequestParameter() { Controller = "Auth", Action = "Login" }, loginRequest);
     }

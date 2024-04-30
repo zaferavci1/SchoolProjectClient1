@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
+    margin-top: 100px; /* Navbar'ın yüksekliğine göre bu değeri ayarlayın */
+    background-color: #f9f9f9;
 }
 
 .post-card {

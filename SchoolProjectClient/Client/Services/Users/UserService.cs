@@ -17,10 +17,13 @@ namespace SchoolProjectClient.Client.Services.Users
         }
 
         public async Task<BaseResponse<User>> AddUserAsync(AddUser addUser)
-            => await _httpClientService.PostAsync<AddUser, BaseResponse<User>>(new RequestParameter() { Controller = "User", Action = "Add" }, addUser);
+            => await _httpClientService.PostAsync<AddUser, BaseResponse<User>>(new RequestParameter() { Controller = "Auth", Action = "Register" }, addUser);
 
         public async Task<BaseResponse<User>> DeleteUserAsync(string id)
             => await _httpClientService.DeleteAsync<BaseResponse<User>>(new() { Controller = "User", Action = "Delete" }, id);
+
+        public async Task<BaseResponse<UserDTO>> FollowUserAsync(FollowUser followUser)
+            => await _httpClientService.PutAsync<FollowUser, BaseResponse<UserDTO>>(new RequestParameter() { Controller = "User", Action = "Follow" }, followUser);
 
         public async Task<BaseResponse<UserResponse>> GetAllUserListAsync(int page, int size)
             => await _httpClientService.GetAsync<BaseResponse<UserResponse>>(new() { Controller = "User", Action = "GetAll", QueryString = $"page={page}&size={size}" });

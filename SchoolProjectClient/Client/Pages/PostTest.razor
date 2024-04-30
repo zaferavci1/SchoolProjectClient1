@@ -63,7 +63,7 @@
 
     private async Task LoadDataAsync()
     {
-        Posts = (await _postService.GetAllPostAsync(0, 8)).Data.Posts.Select(p => p.Adapt<Post>()).ToList();
+        Posts = (await _postService.GetAllPostAsync(0, 100)).Data.Posts.Select(p => p.Adapt<Post>()).Reverse().ToList();
     }
 
     private void OpenDeletePostPopup(string id, string UserId)

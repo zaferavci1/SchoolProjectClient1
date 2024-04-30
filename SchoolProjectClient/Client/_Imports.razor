@@ -25,8 +25,9 @@
 @using SchoolProjectClient.Client.Services.Posts
 @using SchoolProjectClient.Client.Services.Users
 @using SchoolProjectClient.Client.Services.Comments
-@using SchoolProjectClient.Client.Model.Post
 @using SchoolProjectClient.Client.Pages.Comments
+@using SchoolProjectClient.Client.Model.Post
+@using SchoolProjectClient.Client.Model.Utils
 @using SchoolProjectClient.Client.Model.Comment
 
 
@@ -35,9 +36,14 @@
 
 @using MudBlazorDialogOptions = MudBlazor.DialogOptions;
 
+@using Microsoft.AspNetCore.Components.Authorization
+
 @inject NavigationManager NavigationManager
 @inject IPostService _postService
 @inject IUserService _userService
 @inject ICommentService _commentService
 @inject ISnackbar _snackbar
 @inject IDialogService _dialogService
+@inject AppUserId AppUserId
+@inject IUserService _userService
+@inject Blazored.LocalStorage.ILocalStorageService localStorage

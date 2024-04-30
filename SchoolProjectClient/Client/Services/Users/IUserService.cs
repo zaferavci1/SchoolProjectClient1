@@ -12,6 +12,7 @@ namespace SchoolProjectClient.Client.Services.Users
         Task<BaseResponse<User>> UpdateUserAsync(UpdateUser updateUser);
         Task<BaseResponse<User>> DeleteUserAsync(string id);
         Task<BaseResponse<AuthenticationResponse>> LoginUserAsync(LoginRequest request);
+        Task<BaseResponse<UserDTO>> FollowUserAsync(FollowUser followUser);
     }
 }
 
