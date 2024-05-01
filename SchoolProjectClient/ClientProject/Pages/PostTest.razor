@@ -48,6 +48,14 @@
         _dialogServices.Show<AddPostPopup>("Add Post");
     }
 
+
+    private async Task LoadDataAsync()
+    {
+        Posts = (await _postService.GetAllPostAsync(0, 100)).Data.Posts.Select(p => p.Adapt<Post>()).Reverse().ToList();
+    }
+
+
+
     private async void OpenEditPostPopup(string id, string userId)
     {
         var parameters = new DialogParameters();
@@ -59,11 +67,6 @@
             await OnInitializedAsync();
             dialog.Close();
         }
-    }
-
-    private async Task LoadDataAsync()
-    {
-        Posts = (await _postService.GetAllPostAsync(0, 100)).Data.Posts.Select(p => p.Adapt<Post>()).Reverse().ToList();
     }
 
     private void OpenDeletePostPopup(string id, string UserId)

@@ -1,11 +1,9 @@
-﻿@inherits LayoutComponentBase
-
-<MudThemeProvider />
-<MudDialogProvider />
-<MudSnackbarProvider />
+﻿@inject NavigationManager Navigation
+@inherits LayoutComponentBase
 
 <AuthorizeView>
     <Authorized>
+        <!-- Yetkili kullanıcılar bu kısmı görecek -->
         <MudLayout>
             <MudAppBar>
                 <MudIconButton Icon="@Icons.Filled.Menu" Edge="Edge.Start" Color="Color.Inherit" OnClick="@ToggleDrawer" />
@@ -31,8 +29,13 @@
     </Authorized>
 
     <NotAuthorized>
-        <MudNavLink Href="/login" Icon="@Icons.Material.Filled.Login">Login</MudNavLink>
-        <MudNavLink Href="/register" Icon="@Icons.Material.Filled.Create">Register</MudNavLink>
+        @* Kullanıcı giriş yapmamışsa giriş sayfasına yönlendirme *@
+        @code {
+            protected override void OnInitialized()
+            {
+                Navigation.NavigateTo("/login");
+            }
+        }
     </NotAuthorized>
 </AuthorizeView>
 
@@ -62,9 +65,6 @@
         margin-right: 16px; /* Sağa boşluk */
     }
 </style>
-
-
-
 
 @code {
     private bool drawerOpen = true;
