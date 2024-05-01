@@ -21,6 +21,22 @@
       "PackagePath": "staticwebassets/service-worker.js"
     },
     {
+      "Id": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/wwwroot/.DS_Store",
+      "PackagePath": "staticwebassets/.DS_Store"
+    },
+    {
+      "Id": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/wwwroot/SocialMarket.png",
+      "PackagePath": "staticwebassets/SocialMarket.png"
+    },
+    {
+      "Id": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/wwwroot/css/.DS_Store",
+      "PackagePath": "staticwebassets/css/.DS_Store"
+    },
+    {
+      "Id": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/wwwroot/css/PostCss.css",
+      "PackagePath": "staticwebassets/css/PostCss.css"
+    },
+    {
       "Id": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/wwwroot/css/app.css",
       "PackagePath": "staticwebassets/css/app.css"
     },
@@ -83,6 +99,14 @@
     {
       "Id": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/wwwroot/index.html",
       "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/wwwroot/jpg/.DS_Store",
+      "PackagePath": "staticwebassets/jpg/.DS_Store"
+    },
+    {
+      "Id": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/wwwroot/jpg/avatar.png",
+      "PackagePath": "staticwebassets/jpg/avatar.png"
     },
     {
       "Id": "/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/Client/wwwroot/manifest.json",

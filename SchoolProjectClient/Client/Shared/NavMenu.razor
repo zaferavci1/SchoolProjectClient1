@@ -21,6 +21,7 @@
                     <MudNavLink Href="/manage-baskets" Icon="@Icons.Material.Filled.ShoppingBasket">Baskets</MudNavLink>
                     <MudNavLink Href="/manage-posts" Icon="@Icons.Material.Filled.PostAdd">Posts</MudNavLink>
                     <MudNavLink Href="/logout" Icon="@Icons.Material.Filled.Logout">Logout</MudNavLink>
+                    <MudNavLink Href="/main" Icon="@Icons.Material.Filled.Accessibility">User-Profile</MudNavLink>
                 </MudNavMenu>
             </MudDrawer>
             <MudMainContent>
@@ -31,6 +32,7 @@
 
     <NotAuthorized>
         <MudNavLink Href="/login" Icon="@Icons.Material.Filled.Login">Login</MudNavLink>
+        <MudNavLink Href="/register" Icon="@Icons.Material.Filled.Create">Register</MudNavLink>
     </NotAuthorized>
 </AuthorizeView>
 
@@ -45,7 +47,22 @@
         border: none !important;
         box-shadow: none !important; /* Eğer bir gölge varsa */
     }
+
+    /* MudDrawer yatay düzenleme */
+    .mud-drawer-content {
+        display: flex;
+        flex-direction: row; /* Yatay hizalama */
+        align-items: center; /* Dikeyde ortala */
+        overflow-x: auto; /* Taşma durumunda kaydırma çubuğu */
+        padding: 8px; /* İç boşluk */
+    }
+
+    /* MudNavLink öğelerinin arasındaki boşluğu ayarlama */
+    .mud-nav-link {
+        margin-right: 16px; /* Sağa boşluk */
+    }
 </style>
+
 
 
 

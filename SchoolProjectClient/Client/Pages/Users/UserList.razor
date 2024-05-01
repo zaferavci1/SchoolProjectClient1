@@ -30,7 +30,7 @@
     private async Task LoadUsers()
     {
         UserId = await localStorage.GetItemAsync<string>("UserId");
-        Users = (await _userService.GetAllUserListAsync(0, 8)).Data.UsersDTOs;
+        Users = (await _userService.GetAllUserListAsync(0, 100)).Data.UsersDTOs;
 
     }
 

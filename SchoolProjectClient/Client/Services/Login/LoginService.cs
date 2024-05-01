@@ -6,10 +6,6 @@ namespace SchoolProjectClient.Client.Services.Login
 {
     public class LoginService : ILoginService
     {
-        public AppUserId AppUserId { get; set; }
-
-        public AppUserId User => new AppUserId();
-
         public readonly IHttpClientService _httpClientService;
 
         public LoginService(IHttpClientService httpClientService)
@@ -21,10 +17,6 @@ namespace SchoolProjectClient.Client.Services.Login
             => await _httpClientService.LoginAsync<LoginRequest, BaseResponse<AuthenticationResponse>>(new RequestParameter() { Controller = "Auth", Action = "Login" }, loginRequest);
 
 
-        public Task Logout()
-        {
-            throw new NotImplementedException();
-        }
         //=> await _httpClientService.LoginUserAsync<BaseResponse<AuthenticationResponse>>(new RequestParameter() { Controller = "Auth", Action = "Login" }, loginRequest);
     }
 }

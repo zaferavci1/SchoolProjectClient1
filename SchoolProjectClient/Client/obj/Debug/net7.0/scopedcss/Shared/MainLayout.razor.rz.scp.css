@@ -13,6 +13,32 @@ main[b-8trpk9dgvf] {
 }
 
 
+/* Logo stilini özelleştirme */
+.logo[b-8trpk9dgvf] {
+    height: 60px; /* Logo boyutunu ayarlayabilirsiniz */
+}
+
+/* Seçili MudNavLink alt çizgisini kaldırma */
+.mud-nav-link.mud-ripple.mud-ripple-rounded.mud-nav-link-active[b-8trpk9dgvf] {
+    border: none !important;
+    box-shadow: none !important; /* Eğer bir gölge varsa */
+}
+
+/* MudDrawer yatay düzenleme */
+.mud-drawer-content[b-8trpk9dgvf] {
+    display: flex;
+    flex-direction: row; /* Yatay hizalama */
+    align-items: center; /* Dikeyde ortala */
+    overflow-x: auto; /* Taşma durumunda kaydırma çubuğu */
+    padding: 8px; /* İç boşluk */
+}
+
+/* MudNavLink öğelerinin arasındaki boşluğu ayarlama */
+.mud-nav-link[b-8trpk9dgvf] {
+    margin-right: 16px; /* Sağa boşluk */
+}
+
+
 
 .mud-nav-item[b-8trpk9dgvf] {
     border: none;

@@ -1,5 +1,9 @@
 ﻿@page "/register"
 
+
+@inject IUserService _userService;
+@inject ISnackbar _snackbar;
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,37 +15,60 @@
 <body>
     <div class="container">
         <div class="title">Kayıt alanı</div>
-        <form action="home">
+        <EditForm Model="@addUser" OnValidSubmit="Add">
             <div class="user_details">
                 <div class="input_pox">
                     <span class="datails">Ad</span>
-                    <input type="text" placeholder="Adınızı giriniz" required>
+                    <InputText @bind-Value="addUser.Name" placeholder="Adınızı giriniz" required />
                 </div>
                 <div class="input_pox">
                     <span class="datails">Soyad</span>
-                    <input type="text" placeholder="Soyadınızı giriniz" required>
-                </div> 
+                    <InputText @bind-Value="addUser.Surname" placeholder="Soyadınızı giriniz" required />
+                </div>
                 <div class="input_pox">
-                    <span class="datails">Kullanıcı adınız giriniz</span>
-                    <input type="text" placeholder="Kullanıcı adınızı girin" required>
+                    <span class="datails">Kullanıcı Adınızı Giriniz</span>
+                    <InputText @bind-Value="addUser.NickName" placeholder="Kullanıcı adınızı girin" required />
                 </div>
                 <div class="input_pox">
                     <span class="datails">Email</span>
-                    <input type="text" placeholder="Enter your Email" required>
+                    <InputText @bind-Value="addUser.Mail" placeholder="Enter your Email" required />
                 </div>
                 <div class="input_pox">
                     <span class="datails">Phone Number</span>
-                    <input type="text" placeholder="Enter your Phone" required>
+                    <InputText @bind-Value="addUser.PhoneNumber" placeholder="Enter your Phone" required />
                 </div>
                 <div class="input_pox">
                     <span class="datails">Password</span>
-                    <input type="text" placeholder="Enter your Password" required>
+                    <InputText @bind-Value="addUser.Password" type="password" placeholder="Enter your Password" required />
                 </div>
             </div>
             <div class="button">
-                <input type="submit" value="Kayıt ol">
+                <button type="submit">Kayıt Ol</button>
             </div>
-        </form>
+        </EditForm>
     </div>
 </body>
 </html>
+
+@code{
+    AddUser addUser = new AddUser();
+
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+    void Cancel() => MudDialog.Cancel();
+
+    async Task Add()
+    {
+        try
+        {
+            var result = await _userService.AddUserAsync(addUser);
+            _snackbar.Add("User added successfully: " + result.Message, Severity.Success);
+            MudDialog.Close(DialogResult.Ok(true));
+
+            NavigationManager.NavigateTo("/login");
+        }
+        catch (Exception ex)
+        {
+            _snackbar.Add("Failed to add user: " + ex.Message, Severity.Error);
+        }
+    }
+}

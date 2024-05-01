@@ -13,6 +13,32 @@ main {
 }
 
 
+/* Logo stilini özelleştirme */
+.logo {
+    height: 60px; /* Logo boyutunu ayarlayabilirsiniz */
+}
+
+/* Seçili MudNavLink alt çizgisini kaldırma */
+.mud-nav-link.mud-ripple.mud-ripple-rounded.mud-nav-link-active {
+    border: none !important;
+    box-shadow: none !important; /* Eğer bir gölge varsa */
+}
+
+/* MudDrawer yatay düzenleme */
+.mud-drawer-content {
+    display: flex;
+    flex-direction: row; /* Yatay hizalama */
+    align-items: center; /* Dikeyde ortala */
+    overflow-x: auto; /* Taşma durumunda kaydırma çubuğu */
+    padding: 8px; /* İç boşluk */
+}
+
+/* MudNavLink öğelerinin arasındaki boşluğu ayarlama */
+.mud-nav-link {
+    margin-right: 16px; /* Sağa boşluk */
+}
+
+
 
 .mud-nav-item {
     border: none;

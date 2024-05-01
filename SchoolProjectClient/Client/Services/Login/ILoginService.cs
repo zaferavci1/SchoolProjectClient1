@@ -7,9 +7,7 @@ namespace SchoolProjectClient.Client.Services.Login
 {
 	public interface ILoginService
 	{
-        AppUserId User { get; }
         Task<BaseResponse<AuthenticationResponse>> LoginUserAsync(LoginRequest request);
-        Task Logout();
     }
 }
 

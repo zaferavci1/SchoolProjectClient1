@@ -2,12 +2,15 @@
 @inherits LayoutComponentBase
 
 @inject Blazored.LocalStorage.ILocalStorageService _localStorageService;
+@inject IUserService _userService
 @inject NavigationManager _navigationManager;
 
 <RadzenDialog />
 <RadzenContextMenu />
 <RadzenNotification />
 <RadzenTooltip />
+
+
 
 <RadzenLayout>
     @* <RadzenHeader></RadzenHeader> *@
@@ -33,14 +36,15 @@
     [Inject]
     Blazored.LocalStorage.ILocalStorageService LocalStorageService { get; set; }
 
-    private string loginStr = "about";
+    private string userMail = "about";
 
     protected async override Task OnInitializedAsync()
     {
         var authState = await AuthenticationState;
         if (authState.User.Identity.IsAuthenticated)
         {
-            loginStr = await _localStorageService.GetItemAsStringAsync("UserId");
+            userMail = await _localStorageService.GetItemAsStringAsync("UserId");
+            userMail = (await _userService.GetUserByIdAsync(userMail)).Data.Mail;
         }
         else
         {

@@ -2,6 +2,7 @@
 using System.Net.Http;
 using SchoolProjectClient.Client.Model.Common;
 using SchoolProjectClient.Client.Model.Login;
+using SchoolProjectClient.Client.Model.Post;
 using SchoolProjectClient.Client.Model.User;
 
 namespace SchoolProjectClient.Client.Services.Users
@@ -27,6 +28,9 @@ namespace SchoolProjectClient.Client.Services.Users
 
         public async Task<BaseResponse<UserResponse>> GetAllUserListAsync(int page, int size)
             => await _httpClientService.GetAsync<BaseResponse<UserResponse>>(new() { Controller = "User", Action = "GetAll", QueryString = $"page={page}&size={size}" });
+
+        public async Task<BaseResponse<GetByIdUserPosts>> GetByIdUserPost(string id)
+            => await _httpClientService.GetAsync<BaseResponse<GetByIdUserPosts>>(new() { Controller = "User", Action = "GetByIdUsersPosts" }, id);
 
         public async Task<BaseResponse<GetByIdUser>> GetUserByIdAsync(string id)
             => await _httpClientService.GetAsync<BaseResponse<GetByIdUser>>(new() { Controller = "User", Action = "GetById" }, id);
