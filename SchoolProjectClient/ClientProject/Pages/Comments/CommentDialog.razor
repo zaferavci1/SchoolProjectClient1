@@ -1,0 +1,60 @@
+﻿@page "/comment-dialog"
+
+@using SchoolProjectClient.Client.Services.Posts
+@using SchoolProjectClient.Client.Services.Users
+@using SchoolProjectClient.Client.Services.Comments
+@using SchoolProjectClient.Client.Model.Post
+@using SchoolProjectClient.Client.Model.Comment
+@using MudBlazorDialogOptions = MudBlazor.DialogOptions;
+
+
+@inject IPostService _postService
+@inject IUserService _userService
+@inject ICommentService _commentService
+@inject ISnackbar _snackbar
+@inject IDialogService _dialogService
+
+
+<MudDialog>
+    <MudContainer>
+        <MudText Typo="Typo.h6">Comments</MudText>
+        @if (Comments == null || Comments.Count == 0)
+        {
+            <MudText>No comments yet.</MudText>
+        }
+        else
+        {
+            foreach (var comment in Comments)
+            {
+                <div class="comment-item">
+                    <MudText>@comment.UserName: @comment.Content</MudText>
+                </div>
+            }
+        }
+    </MudContainer>
+</MudDialog>
+
+@code {
+    [Parameter] public List<Comment>? Comments { get; set; }
+
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+
+    //private async Task AddComment()
+    //{
+    //    if (!string.IsNullOrWhiteSpace(newComment))
+    //    {
+    //        var commentToAdd = new Comment { Content = newComment, PostId = PostId, UserId = "current-user-id" }; // Bu örnekte kullanıcı ID'si geçici olarak belirtilmiştir.
+    //        var result = await _commentService.AddCommentAsync(commentToAdd);
+    //        if (result.IsSucceeded)
+    //        {
+    //            comments.Add(commentToAdd);
+    //            newComment = string.Empty; // Yorum eklendikten sonra input alanını temizle.
+    //        }
+    //    }
+    //}
+}

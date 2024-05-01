@@ -1,0 +1,157 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = ClientProject
+build_property.RootNamespace = ClientProject
+build_property.ProjectDir = /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Custom Compenents/Button/BaseButtonComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q3VzdG9tIENvbXBlbmVudHMvQnV0dG9uL0Jhc2VCdXR0b25Db21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Custom Compenents/Button/ButtonComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q3VzdG9tIENvbXBlbmVudHMvQnV0dG9uL0J1dHRvbkNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Custom Compenents/Button/CustomEditButtonCompenent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q3VzdG9tIENvbXBlbmVudHMvQnV0dG9uL0N1c3RvbUVkaXRCdXR0b25Db21wZW5lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Baskets/AddBasketPopup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQmFza2V0cy9BZGRCYXNrZXRQb3B1cC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Baskets/EditBasketPopup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQmFza2V0cy9FZGl0QmFza2V0UG9wdXAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/BasketTest.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQmFza2V0VGVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/ButtonTest.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQnV0dG9uVGVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Comments/AddCommentPopup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tbWVudHMvQWRkQ29tbWVudFBvcHVwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Comments/CommentDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tbWVudHMvQ29tbWVudERpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Comments/DeleteCommentPopup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tbWVudHMvRGVsZXRlQ29tbWVudFBvcHVwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Comments/EditCommentPopup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tbWVudHMvRWRpdENvbW1lbnRQb3B1cC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Comments/LikeCommentPopup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tbWVudHMvTGlrZUNvbW1lbnRQb3B1cC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/CommentTest.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tbWVudFRlc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Deneme.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGVuZW1lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/LogIn/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9nSW4vTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Logout/Logout.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9nb3V0L0xvZ291dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Posts/AddPostPopup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUG9zdHMvQWRkUG9zdFBvcHVwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Posts/DeletePostPopup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUG9zdHMvRGVsZXRlUG9zdFBvcHVwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Posts/EditPostPopup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUG9zdHMvRWRpdFBvc3RQb3B1cC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/PostTest.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUG9zdFRlc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Test.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Users/AddUserPopup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlcnMvQWRkVXNlclBvcHVwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Users/DeleteUserPopup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlcnMvRGVsZXRlVXNlclBvcHVwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Users/EditUserPopup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlcnMvRWRpdFVzZXJQb3B1cC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-txpmmkhdky
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Posts/SharePost.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUG9zdHMvU2hhcmVQb3N0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-nlnifq8gfi
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Register/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVnaXN0ZXIvUmVnaXN0ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-5eoq0q3cak
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Pages/Users/UserList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlcnMvVXNlckxpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-8umshkv224
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ly4nvkclsu
+
+[/Users/zaferavci/Documents/GitHub/SchoolProjectClient1/SchoolProjectClient/ClientProject/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-vjbc1qnrue

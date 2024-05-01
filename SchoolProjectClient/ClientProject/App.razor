@@ -1,0 +1,26 @@
+﻿@using ClientProject.Shared
+
+<Router AppAssembly="@typeof(App).Assembly">
+    <Found Context="routeData">
+        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+            <Authorizing>
+                <RadzenText>
+                    Please Wait, We Are Authorizing the user
+                </RadzenText>
+            </Authorizing>
+            <NotAuthorized>
+                <RadzenText>
+                    You Are Not Authorized to access to this page
+                </RadzenText>
+            </NotAuthorized>
+        </AuthorizeRouteView>
+
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found>
+    <NotFound>
+        <PageTitle>Not found</PageTitle>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <p role="alert">Sorry, there's nothing at this address.</p>
+        </LayoutView>
+    </NotFound>
+</Router>

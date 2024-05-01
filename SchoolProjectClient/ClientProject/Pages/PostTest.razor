@@ -1,0 +1,78 @@
+﻿@page "/manage-posts"
+
+
+@using ClientProject.Pages.Posts
+@using SchoolProjectClient.Client.Services.Posts;
+@using SchoolProjectClient.Client.Model.Post;
+@using SchoolProjectClient.Client.Services.Users;
+@using Variant = MudBlazor.Variant
+@using Mapster;
+
+@inject IPostService _postService;
+@inject IUserService _userService;
+@inject IDialogService _dialogServices;
+
+<MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="OpenAddPostPopup">Add New Post</MudButton>
+<MudTable Items="@Posts">
+    <HeaderContent>
+        <MudTh>User Id</MudTh>
+        <MudTh>Title</MudTh>
+        <MudTh>Content</MudTh>
+        <MudTh>Like Count</MudTh>
+        <MudTh>Actions</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="User Id">@context.UserId</MudTd>
+        <MudTh DataLabel="Title">@context.Title</MudTh>
+        <MudTd DataLabel="Content">@context.Content</MudTd>
+        <MudTd DataLabel="Like Count">@context.LikeCount</MudTd>
+        <MudTh>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditPostPopup(context.Id, context.UserId))">Edit</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="@(() => OpenDeletePostPopup(context.Id, context.UserId))">Delete</MudButton>
+        </MudTh>
+    </RowTemplate>
+</MudTable>
+<br />
+
+@code{
+    public List<Post> Posts { get; set; } = new List<Post>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadDataAsync();
+    }
+
+
+    private void OpenAddPostPopup()
+    {
+        _dialogServices.Show<AddPostPopup>("Add Post");
+    }
+
+    private async void OpenEditPostPopup(string id, string userId)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("id", id);
+        parameters.Add("UserId", userId);
+        var dialog = await _dialogServices.ShowAsync<EditPostPopup>("Edit Post", parameters);
+        if (!(await dialog.Result).Cancelled)
+        {
+            await OnInitializedAsync();
+            dialog.Close();
+        }
+    }
+
+    private async Task LoadDataAsync()
+    {
+        Posts = (await _postService.GetAllPostAsync(0, 100)).Data.Posts.Select(p => p.Adapt<Post>()).Reverse().ToList();
+    }
+
+    private void OpenDeletePostPopup(string id, string UserId)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("id", id);
+        parameters.Add("UserId", UserId);
+
+        _dialogServices.Show<DeletePostPopup>("Delete User", parameters);
+    }
+
+}

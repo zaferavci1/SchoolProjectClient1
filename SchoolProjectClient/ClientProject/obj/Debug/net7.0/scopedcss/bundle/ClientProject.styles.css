@@ -1,0 +1,497 @@
+/* /Pages/Index.razor.rz.scp.css */
+.sidebar[b-txpmmkhdky] {
+    position: fixed; /* Sabit konum */
+    top: 100px; /* Üstten 100px boşluk */
+    right: 20px; /* Sağdan 20px boşluk */
+    width: 250px;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    z-index: 1000; /* Diğer içeriklerden üstte olacak şekilde z-index */
+    max-height: calc(100vh - 120px); /* Üstteki boşluğu hesaba katarak viewport yüksekliği */
+    overflow-y: auto;
+}
+
+/* Eğer sidebar'ın içeriği ekran boyutunu aşıyorsa dikey kaydırma çubuğu gözükür */
+.sidebar-container[b-txpmmkhdky] {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+}
+
+/* Sidebar'ın içeriği altındaki ana içeriğin üzerine çıkmamasını sağlar */
+.main-content[b-txpmmkhdky] {
+    padding-left: 20px; /* Sol tarafta boşluk bırakır */
+    padding-right: 480px; /* Sidebar genişliği + sağ tarafta boşluk bırakır */
+}
+
+
+.sidebar-item-content[b-txpmmkhdky] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.username[b-txpmmkhdky] {
+    font-weight: bold;
+}
+
+.userhandle[b-txpmmkhdky] {
+    color: grey;
+}
+
+.follow-section[b-txpmmkhdky] {
+    position: sticky; /* Yada 'fixed' kullanabilirsiniz */
+    top: 85px; /* Header'ınıza göre bu değeri ayarlayın */
+    width: 250px; /* Kutunun genişliği */
+    border: 1px solid #ccc; /* Çizgileri belirginleştirmek için */
+    margin-left: auto; /* Sağ tarafa yaslamak için */
+    padding: 1rem; /* İçerikle sınırlar arasında boşluk bırakmak için */
+    background-color: white; /* Arka plan rengi */
+    z-index: 10; /* İçeriklerin üzerinde gözükmesini sağlar */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Kutuya gölge ekler */
+    height: max-content; /* İçeriğe göre yükseklik ayarlar */
+}
+
+/* Eğer 'fixed' kullanırsanız ve sidebar içeriği çok fazlaysa ekleyebilirsiniz */
+.follow-section-container[b-txpmmkhdky] {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+
+/* /Pages/Posts/SharePost.razor.rz.scp.css */
+/* SharePost.razor.css veya site.css dosyasına ekleyin */
+.share-post-container[b-nlnifq8gfi] {
+    display: flex;
+    align-items: flex-start; /* textarea yüksekliği için ayar */
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 20px 0;
+}
+
+.user-avatar img[b-nlnifq8gfi] {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-right: 10px; /* Arayüzdeki boşluk için */
+}
+
+.post-text[b-nlnifq8gfi] {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    margin-right: 10px; /* Butonlarla arasındaki boşluk için */
+    resize: vertical; /* Yalnızca dikey olarak yeniden boyutlandırma */
+}
+
+
+.post-actions[b-nlnifq8gfi] {
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+.action-btn[b-nlnifq8gfi] {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 5px;
+}
+
+.submit-btn[b-nlnifq8gfi] {
+    background-color: #f00;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Örnek olarak kullanılan ikon sınıflarınız, gerçek ikonlarınıza göre ayarlanmalıdır */
+.icon-picture[b-nlnifq8gfi]:before {
+    content: url('ikonunuzun-yolu');
+}
+
+/* ... Diğer ikon sınıfları için benzer CSS ... */
+
+/* Paylaş butonuna basıldığında hover efekti */
+.submit-btn:hover[b-nlnifq8gfi] {
+    background-color: #c00;
+}
+
+
+/* AddPostPopup.razor.css dosyanıza bu stil kodlarını ekleyin */
+.share-post-container[b-nlnifq8gfi] {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.user-avatar img[b-nlnifq8gfi] {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.post-actions[b-nlnifq8gfi] {
+    /* İkonlar ve medya ekleme butonlarınız için stil tanımlamaları */
+}
+
+.post-submit[b-nlnifq8gfi] {
+    margin-left: 10px;
+}
+
+/* MUD Blazor bileşenlerinin varsayılan stillerini değiştirmeniz gerekebilir, bu durumda aşağıdaki gibi bir stil ekleyebilirsiniz: */
+.mud-text-field[b-nlnifq8gfi], .mud-select[b-nlnifq8gfi] {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+/* /Pages/Register/Register.razor.rz.scp.css */
+import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+*[b-5eoq0q3cak] {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+body[b-5eoq0q3cak] {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(123deg, #71b8e7,#9b59b6);
+}
+
+.container[b-5eoq0q3cak] {
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+
+    .container .title[b-5eoq0q3cak] {
+        font-size: 25px;
+        font-weight: 500;
+        position: relative;
+    }
+
+     .container .title[b-5eoq0q3cak]::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 30px;
+            background: linear-gradient(123deg, #71b8e7,#9b59b6);
+        }
+
+    .container form .user_details[b-5eoq0q3cak] {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+form .user_details .input_pox[b-5eoq0q3cak] {
+    margin-bottom: 15px;
+    margin: 20px 0 12px 0;
+    width: calc(100% / 2 - 20px);
+}
+
+.user_details .input_pox .datails[b-5eoq0q3cak] {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.user_details .input_pox input[b-5eoq0q3cak] {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+    .user_details .input_pox input:focus[b-5eoq0q3cak],
+    .user_details .input_pox input:valid[b-5eoq0q3cak] {
+        border-color: #9b59b6;
+    }
+
+form .gender_details .gender_title[b-5eoq0q3cak] {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+form .gender_details .category[b-5eoq0q3cak] {
+    display: flex;
+    width: 80%;
+    margin: 14px 0;
+    justify-content: space-between;
+}
+
+.gender_details .category label[b-5eoq0q3cak] {
+    display: flex;
+}
+
+.gender_details .category .dot[b-5eoq0q3cak] {
+    height: 18px;
+    width: 18px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 5px solid transparent;
+}
+
+#dot-1:checked ~ .category label .one[b-5eoq0q3cak],
+#dot-2:checked ~ .category label .two[b-5eoq0q3cak],
+#dot-3:checked ~ .category label .three[b-5eoq0q3cak] {
+    border-color: #d9d9d9;
+    background-color: #9b59b6;
+}
+
+form input[type="radio"][b-5eoq0q3cak] {
+    display: none;
+}
+
+form .button[b-5eoq0q3cak] {
+    height: 45px;
+    margin: 45px 0;
+}
+
+    form .button input[b-5eoq0q3cak] {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        color: #fff;
+        border: none;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        background: linear-gradient(123deg, #71b8e7,#9b59b6);
+    }
+
+        form .button input :hover[b-5eoq0q3cak] {
+            background: linear-gradient(-123deg, #71b8e7,#9b59b6);
+        }
+
+media (max-width: 584px)[b-5eoq0q3cak] {
+    .container
+
+{
+    max-width: 100%;
+}
+
+form .user_details .input_pox[b-5eoq0q3cak] {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+form .gender_details .category[b-5eoq0q3cak] {
+    width: 100%;
+}
+
+.container form .user_details[b-5eoq0q3cak] {
+    max-height: 300px;
+    overflow: scroll;
+}
+
+.user_details[b-5eoq0q3cak]::-webkit-scrollber {
+    width: 0;
+}
+}
+/* /Pages/Users/UserList.razor.rz.scp.css */
+.sidebar[b-8umshkv224] {
+    width: 300px; /* veya istediğiniz bir genişlik */
+    position: fixed;
+    right: 0;
+    top: 0; /* veya istediğiniz bir pozisyon */
+    padding: 20px;
+    background-color: white;
+    /* Diğer stiller */
+}
+
+.sidebar-item-content[b-8umshkv224] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.username[b-8umshkv224] {
+    font-weight: bold;
+}
+
+.userhandle[b-8umshkv224] {
+    color: grey;
+}
+/* /Shared/MainLayout.razor.rz.scp.css */
+.page[b-ly4nvkclsu] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main[b-ly4nvkclsu] {
+    flex: 1;
+}
+
+.sidebar[b-ly4nvkclsu] {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
+
+.top-row[b-ly4nvkclsu] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-ly4nvkclsu]  a, .top-row[b-ly4nvkclsu]  .btn-link {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+        text-decoration: none;
+    }
+
+    .top-row[b-ly4nvkclsu]  a:hover, .top-row[b-ly4nvkclsu]  .btn-link:hover {
+        text-decoration: underline;
+    }
+
+    .top-row[b-ly4nvkclsu]  a:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row:not(.auth)[b-ly4nvkclsu] {
+        display: none;
+    }
+
+    .top-row.auth[b-ly4nvkclsu] {
+        justify-content: space-between;
+    }
+
+    .top-row[b-ly4nvkclsu]  a, .top-row[b-ly4nvkclsu]  .btn-link {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-ly4nvkclsu] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-ly4nvkclsu] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-ly4nvkclsu] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .top-row.auth[b-ly4nvkclsu]  a:first-child {
+        flex: 1;
+        text-align: right;
+        width: 0;
+    }
+
+    .top-row[b-ly4nvkclsu], article[b-ly4nvkclsu] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+/* /Shared/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-vjbc1qnrue] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-vjbc1qnrue] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-vjbc1qnrue] {
+    font-size: 1.1rem;
+}
+
+.oi[b-vjbc1qnrue] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-vjbc1qnrue] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-vjbc1qnrue] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-vjbc1qnrue] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-vjbc1qnrue]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-vjbc1qnrue]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-vjbc1qnrue]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-vjbc1qnrue] {
+        display: none;
+    }
+
+    .collapse[b-vjbc1qnrue] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+    
+    .nav-scrollable[b-vjbc1qnrue] {
+        /* Allow sidebar to scroll for tall menus */
+        height: calc(100vh - 3.5rem);
+        overflow-y: auto;
+    }
+}

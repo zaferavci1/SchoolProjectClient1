@@ -1,0 +1,47 @@
+﻿@using System.Net.Http
+@using System.Net.Http.Json
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using Microsoft.AspNetCore.Components.WebAssembly.Http
+@using Microsoft.JSInterop
+@using SchoolProjectClient.Client
+
+
+@using Radzen
+@using Radzen.Blazor
+
+@using Mapster
+@using Variant = MudBlazor.Variant
+
+@using MudBlazor
+@using MudBlazor.Dialog
+
+
+@using SchoolProjectClient.Client.Services.Posts
+@using SchoolProjectClient.Client.Services.Users
+@using SchoolProjectClient.Client.Services.Comments
+@using SchoolProjectClient.Client.Model.Post
+@using SchoolProjectClient.Client.Model.Utils
+@using SchoolProjectClient.Client.Model.Comment
+@using SchoolProjectClient.Client.Model.User
+
+
+
+@using SchoolProjectClient.Client.Services.Login
+@using SchoolProjectClient.Client.Model.Login
+
+@using MudBlazorDialogOptions = MudBlazor.DialogOptions;
+
+@using Microsoft.AspNetCore.Components.Authorization
+
+@inject NavigationManager NavigationManager
+@inject IPostService _postService
+@inject IUserService _userService
+@inject ICommentService _commentService
+@inject ISnackbar _snackbar
+@inject IDialogService _dialogService
+@inject AppUserId AppUserId
+@inject IUserService _userService
+@inject Blazored.LocalStorage.ILocalStorageService localStorage

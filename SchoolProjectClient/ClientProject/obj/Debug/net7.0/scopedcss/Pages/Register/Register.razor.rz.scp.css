@@ -1,0 +1,159 @@
+import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+*[b-5eoq0q3cak] {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+body[b-5eoq0q3cak] {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(123deg, #71b8e7,#9b59b6);
+}
+
+.container[b-5eoq0q3cak] {
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+
+    .container .title[b-5eoq0q3cak] {
+        font-size: 25px;
+        font-weight: 500;
+        position: relative;
+    }
+
+     .container .title[b-5eoq0q3cak]::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 30px;
+            background: linear-gradient(123deg, #71b8e7,#9b59b6);
+        }
+
+    .container form .user_details[b-5eoq0q3cak] {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+form .user_details .input_pox[b-5eoq0q3cak] {
+    margin-bottom: 15px;
+    margin: 20px 0 12px 0;
+    width: calc(100% / 2 - 20px);
+}
+
+.user_details .input_pox .datails[b-5eoq0q3cak] {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.user_details .input_pox input[b-5eoq0q3cak] {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+    .user_details .input_pox input:focus[b-5eoq0q3cak],
+    .user_details .input_pox input:valid[b-5eoq0q3cak] {
+        border-color: #9b59b6;
+    }
+
+form .gender_details .gender_title[b-5eoq0q3cak] {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+form .gender_details .category[b-5eoq0q3cak] {
+    display: flex;
+    width: 80%;
+    margin: 14px 0;
+    justify-content: space-between;
+}
+
+.gender_details .category label[b-5eoq0q3cak] {
+    display: flex;
+}
+
+.gender_details .category .dot[b-5eoq0q3cak] {
+    height: 18px;
+    width: 18px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 5px solid transparent;
+}
+
+#dot-1:checked ~ .category label .one[b-5eoq0q3cak],
+#dot-2:checked ~ .category label .two[b-5eoq0q3cak],
+#dot-3:checked ~ .category label .three[b-5eoq0q3cak] {
+    border-color: #d9d9d9;
+    background-color: #9b59b6;
+}
+
+form input[type="radio"][b-5eoq0q3cak] {
+    display: none;
+}
+
+form .button[b-5eoq0q3cak] {
+    height: 45px;
+    margin: 45px 0;
+}
+
+    form .button input[b-5eoq0q3cak] {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        color: #fff;
+        border: none;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        background: linear-gradient(123deg, #71b8e7,#9b59b6);
+    }
+
+        form .button input :hover[b-5eoq0q3cak] {
+            background: linear-gradient(-123deg, #71b8e7,#9b59b6);
+        }
+
+media (max-width: 584px)[b-5eoq0q3cak] {
+    .container
+
+{
+    max-width: 100%;
+}
+
+form .user_details .input_pox[b-5eoq0q3cak] {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+form .gender_details .category[b-5eoq0q3cak] {
+    width: 100%;
+}
+
+.container form .user_details[b-5eoq0q3cak] {
+    max-height: 300px;
+    overflow: scroll;
+}
+
+.user_details[b-5eoq0q3cak]::-webkit-scrollber {
+    width: 0;
+}
+}
