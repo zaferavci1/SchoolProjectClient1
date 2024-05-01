@@ -1,4 +1,6 @@
 ﻿using System;
+using SchoolProjectClient.Client.Model.User;
+
 namespace SchoolProjectClient.Client.Model.User
 {
 	public class UserDTO
@@ -10,5 +12,9 @@ namespace SchoolProjectClient.Client.Model.User
         public string Mail { get; set; }
         public string PhoneNumber { get; set; }
     }
+}
+public class GetAllUserExceptUsersFolloweesResponse
+{
+	public List<UserDTO> UserDtos { get; set; }
 }
 
