@@ -14,6 +14,7 @@ namespace SchoolProjectClient.Client.Services.Users
         Task<BaseResponse<GetByIdUserPosts>> GetByIdUserPost(string id);
         Task<BaseResponse<AuthenticationResponse>> LoginUserAsync(LoginRequest request);
         Task<BaseResponse<UserDTO>> FollowUserAsync(FollowUser followUser);
+        Task<BaseResponse<GetAllUserExceptUsersFolloweesResponse>> GetAllUsersExceptUsersFollowees(GetAllUserExceptUsersFollowees exceptUsersFollowees);
     }
 }
 
