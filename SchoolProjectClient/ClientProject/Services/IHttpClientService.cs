@@ -13,7 +13,7 @@ namespace SchoolProjectClient.Client.Services
         Task<TResponse> PutAsync<TRequest, TResponse>(RequestParameter requestParameter, TRequest body);
         Task<TResponse> DeleteAsync<TResponse>(RequestParameter requestParameter, string id);
         Task<TResponse> LoginAsync<TRequest, TResponse>(RequestParameter requestParameter, TRequest body);
-        Task UpdateAutdhorizationHeader();
+        Task UpdateAuthorizationHeader();
     }
 }
 
