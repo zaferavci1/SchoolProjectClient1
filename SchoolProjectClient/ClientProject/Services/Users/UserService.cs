@@ -26,6 +26,9 @@ namespace SchoolProjectClient.Client.Services.Users
         public async Task<BaseResponse<UserDTO>> FollowUserAsync(FollowUser followUser)
             => await _httpClientService.PutAsync<FollowUser, BaseResponse<UserDTO>>(new RequestParameter() { Controller = "User", Action = "Follow" }, followUser);
 
+        public async Task<BaseResponse<GetAllUserExceptUsersFolloweesResponse>> GetAllUsersExceptUsersFollowees(GetAllUserExceptUsersFollowees exceptUsersFollowees)
+            => await _httpClientService.PutAsync<GetAllUserExceptUsersFollowees, BaseResponse<GetAllUserExceptUsersFolloweesResponse>>(new RequestParameter() { Controller = "User", Action = "GetAllUserExceptUsersFollowees" }, exceptUsersFollowees);
+
         public async Task<BaseResponse<UserResponse>> GetAllUserListAsync(int page, int size)
             => await _httpClientService.GetAsync<BaseResponse<UserResponse>>(new() { Controller = "User", Action = "GetAll", QueryString = $"page={page}&size={size}" });
 

@@ -441,8 +441,8 @@
                                                 <a href="#!"><img class="avatar-img rounded border border-white border-3" src="assets/images/avatar/07.jpg" alt=""></a>
                                             </div>
                                             <!-- Info -->
-                                            <h5 class="mb-0"> <a href="#!">Sam Lanson </a> </h5>
-                                            <small>Web Developer at Webestica</small>
+                                            <h3 class="mb-0"><a>@user.NickName</a></h3>
+                                            <h6 class="mb-0"> <a>@user.Name @user.Surname</a> </h6>
                                             <p class="mt-3">I'd love to change the world, but they won’t give me the source code.</p>
 
                                             <!-- User stat START -->
@@ -808,7 +808,7 @@
                                 <!-- Card header END -->
                                 <!-- Card body START -->
                                 <div class="card-body">
-                                    @foreach (var user in Users)
+                                    @foreach (var user in response.UserDtos)
                                     {
                                         <div class="hstack gap-2 mb-3">
                                             <!-- Title -->
@@ -1680,7 +1680,8 @@
 @code{
     public List<User> Users { get; set; } = new List<User>();
     public string UserId { get; set; }
-
+    public GetAllUserExceptUsersFolloweesResponse response =new GetAllUserExceptUsersFolloweesResponse();
+    public GetByIdUser user = new GetByIdUser(); 
     protected override async Task OnInitializedAsync()
     {
         await LoadUsers();
@@ -1688,8 +1689,11 @@
 
     private async Task LoadUsers()
     {
+        
         UserId = await localStorage.GetItemAsync<string>("UserId");
+        user = (await _userService.GetUserByIdAsync(UserId)).Data;
         Users = (await _userService.GetAllUserListAsync(0, 100)).Data.UsersDTOs;
+        response = (await _userService.GetAllUsersExceptUsersFollowees(new GetAllUserExceptUsersFollowees() { Id = UserId })).Data;
         Console.WriteLine(  );
     }
 
