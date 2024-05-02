@@ -19,9 +19,6 @@ namespace SchoolProjectClient.Client.Services
         public HttpClientService(HttpClient httpClient, IConfiguration configuration, ILocalStorageService localStorage)
         {
             _httpClient = httpClient;
-
-            _httpClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", jwtToken);
             _configuration = configuration;
             this.localStorage = localStorage;
         }
@@ -37,7 +34,7 @@ namespace SchoolProjectClient.Client.Services
 
         public async Task<TResponse> GetAsync<TResponse>(RequestParameter requestParameter, string id = null)
         {
-            await UpdateAutdhorizationHeader();
+            await UpdateAuthorizationHeader();
             JsonSerializerOptions options = new();
             options.PropertyNameCaseInsensitive = true;
             StringBuilder urlBuilder = new StringBuilder();
@@ -48,6 +45,7 @@ namespace SchoolProjectClient.Client.Services
 
         public async Task<TResponse> PostAsync<TRequest, TResponse>(RequestParameter requestParameter, TRequest body)
         {
+            await UpdateAuthorizationHeader();
             string url = Url(requestParameter);
             HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync<TRequest>(url, body);
             return await httpResponseMessage.Content.ReadFromJsonAsync<TResponse>();
@@ -55,6 +53,7 @@ namespace SchoolProjectClient.Client.Services
 
         public async Task<TResponse> PutAsync<TRequest, TResponse>(RequestParameter requestParameter, TRequest body)
         {
+            await UpdateAuthorizationHeader();
             JsonSerializerOptions jsonSerializerOptions = new();
             jsonSerializerOptions.PropertyNameCaseInsensitive = true;
             string url = Url(requestParameter);
@@ -64,57 +63,38 @@ namespace SchoolProjectClient.Client.Services
 
         public async Task<TResponse> LoginAsync<TRequest, TResponse>(RequestParameter requestParameter, TRequest body)
         {
+            await UpdateAuthorizationHeader();
             JsonSerializerOptions jsonSerializerOptions = new();
             jsonSerializerOptions.PropertyNameCaseInsensitive = true;
             string url = Url(requestParameter);
             HttpResponseMessage httpResponseMessage = await _httpClient.PutAsJsonAsync<TRequest>(url, body, jsonSerializerOptions);
             
             return await httpResponseMessage.Content.ReadFromJsonAsync<TResponse>();
-            //var url = _configuration["BaseUrl"] + "/api/Auth/Login";
-            //var response = await _httpClient.PostAsJsonAsync(url, loginRequest);
-
-            //if (response.IsSuccessStatusCode)
-            //{
-            //    var authResponse = await response.Content.ReadFromJsonAsync<BaseResponse<AuthenticationResponse>>();
-            //    if (authResponse.IsSucceeded)
-            //    {
-            //        // Giriş yanıtından alınan JWT token'ını saklayın
-            //        jwtToken = authResponse.Data.TokenDTO.AccessToken; // 'Token' yerine gerçek token değerini tutan özelliğin adını kullanın
-
-            //        // Authorization header'ını güncelleyin
-            //        _httpClient.DefaultRequestHeaders.Authorization =
-            //            new AuthenticationHeaderValue("Bearer", jwtToken);
-            //    }
-            //    return authResponse;
-            //}
-            //else
-            //{
-            //    return new BaseResponse<AuthenticationResponse>() { IsSucceeded = false };
-            //}
+            
         }
 
-        public async Task UpdateAutdhorizationHeader()
+        public async Task UpdateAuthorizationHeader()
         {
             try
             {
-                string a = await localStorage.GetItemAsync<string>("Token");
-                if (string.IsNullOrWhiteSpace(a))
+                string token = await localStorage.GetItemAsync<string>("Token");
+                if (!string.IsNullOrWhiteSpace(token))
                 {
                     _httpClient.DefaultRequestHeaders.Authorization =
-                       new AuthenticationHeaderValue("Bearer", jwtToken);
+                       new AuthenticationHeaderValue("Bearer", token);
+                }
+                else
+                {
+                    _httpClient.DefaultRequestHeaders.Authorization = null;
                 }
             }
             catch (Exception ex)
             {
-                
+                // Log the exception or handle it
+                throw new Exception("Failed to update the authorization header.", ex);
             }
-           
-            //if (!jwtToken.IsNullOrWhiteSpace(jwtToken))
-            //{
-            //    _httpClient.DefaultRequestHeaders.Authorization =
-            //        new AuthenticationHeaderValue("Bearer", jwtToken);
-            //}
         }
+
 
 
         private string Url(RequestParameter requestParameter)
