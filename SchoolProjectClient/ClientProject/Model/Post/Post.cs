@@ -8,6 +8,7 @@ namespace SchoolProjectClient.Client.Model.Post
         public string Title { get; set; }
         public string Content { get; set; }
         public int LikeCount { get; set; }
+        public SchoolProjectClient.Client.Model.User.UserDTO PostOfUser { get; set; }
     }
 
     public class PostResponse
@@ -16,4 +17,3 @@ namespace SchoolProjectClient.Client.Model.Post
         public int TotalPostCount { get; set; }
     }
 }
-
