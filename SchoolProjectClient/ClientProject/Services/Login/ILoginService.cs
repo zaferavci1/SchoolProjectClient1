@@ -8,6 +8,8 @@ namespace SchoolProjectClient.Client.Services.Login
 	public interface ILoginService
 	{
         Task<BaseResponse<AuthenticationResponse>> LoginUserAsync(LoginRequest request);
-    }
+		Task<BaseResponse<AuthenticationResponse>> RegisterUserAsync(AddUser request);
+
+	}
 }
 
