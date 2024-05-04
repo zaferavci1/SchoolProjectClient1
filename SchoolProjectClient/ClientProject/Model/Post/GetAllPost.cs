@@ -12,6 +12,7 @@ namespace SchoolProjectClient.Client.Model.Post
         public int LikeCount { get; set; }
         public List<Comment.Comment> Comments { get; set; }
         public User.UserDTO PostOfUser { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }
 

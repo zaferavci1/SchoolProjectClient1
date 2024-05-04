@@ -54,6 +54,9 @@ namespace SchoolProjectClient.Client.Services.Users
             throw new NotImplementedException();
         }
 
+        public async Task<BaseResponse<UserDTO>> UnFollowUserAsync(FollowUser unFollowUser)
+            => await _httpClientService.PutAsync<FollowUser, BaseResponse<UserDTO>>(new RequestParameter() { Controller = "User", Action = "UnFollow" }, unFollowUser);
+
         public async Task<BaseResponse<User>> UpdateUserAsync(UpdateUser updateUser)
             => await _httpClientService.PutAsync<UpdateUser, BaseResponse<User>>(new RequestParameter() { Controller = "User", Action = "Update" }, updateUser);
     }
