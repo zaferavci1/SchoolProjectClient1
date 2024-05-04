@@ -10,8 +10,6 @@ namespace SchoolProjectClient.Client.Model.Comment
         public int LikeCount { get; set; }
         public string Content { get; set; }
         public string UserName { get; set; }
-        
-        public DateTime CreatedDate { get; set; }
     }
 
     public class CommentResponse
