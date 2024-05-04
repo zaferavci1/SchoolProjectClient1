@@ -1,7 +1,4 @@
 ﻿
-using ClientProject.Pages.Users;
-using SchoolProjectClient.Client.Model.Comment;
-
 namespace SchoolProjectClient.Client.Model.User
 {
 	public class GetByIdUser
@@ -14,10 +11,10 @@ namespace SchoolProjectClient.Client.Model.User
         public string PhoneNumber { get; set; }
         public bool IsProfilePrivate { get; set; }
         public string Password { get; set; }
-        public List<PublicUserDTO> Followers { get; set; }
-        public List<PublicUserDTO> Follows { get; set; }
-        public List<Post.Post> Posts { get; set; }
-        public List<GetAllComment> Comments { get; set; }
+        //public List<SchoolProjectClient.Client.Model.User.UserDTO> Followers { get; set; }
+        //public List<SchoolProjectClient.Client.Model.User.UserDTO> Follows { get; set; }
+        //public List<Post> Posts { get; set; }
+        //public List<GetAllCommentsDTO> Comments { get; set; }
     }
 
     public class PublicProfilesDTO
