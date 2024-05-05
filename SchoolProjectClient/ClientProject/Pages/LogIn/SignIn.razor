@@ -410,7 +410,7 @@
                         <div class="card card-body p-4 p-sm-5 mt-sm-n5 mb-n5">
                             <!-- Title -->
                             <h2 class="h1 mb-2">Sign in</h2>
-                            <p>Don't have an account?<a href="sign-up.html"> Click here to sign up</a></p>
+                            <p>Don't have an account?<a href="register"> Click here to sign up</a></p>
                             <!-- Form START -->
                             <form class="mt-4">
                                 <!-- Email -->
@@ -485,17 +485,9 @@
             </div>
         </div>
     </footer>
-    <!-- =======================
-    Footer END -->
-    <!-- **************** MAIN CONTENT END **************** -->
-    <!-- =======================
-    JS libraries, plugins and custom scripts -->
-    <!-- Bootstrap JS -->
 
 
 </body>
-
-<!-- Mirrored from social.webestica.com/sign-in-advance.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2024 09:28:25 GMT -->
 </html>
 
 @code {
@@ -515,7 +507,6 @@
         {
 
             var response = await LoginService.LoginUserAsync(loginRequest);
-            Console.WriteLine(response.Data.TokenDTO);
 
             if (!response.IsSucceeded)
             {
