@@ -13,6 +13,7 @@ using SchoolProjectClient.Client.Services.Baskets;
 using SchoolProjectClient.Client.Services.Comments;
 using SchoolProjectClient.Client.Services.Login;
 using SchoolProjectClient.Client.Services.Posts;
+using SchoolProjectClient.Client.Services.PublicProfile;
 using SchoolProjectClient.Client.Services.Users;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -28,6 +29,7 @@ builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IHttpClientService, HttpClientService>();
+builder.Services.AddScoped<IPublicProfileService, PublicProfileService>();
 builder.Services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
 builder.Services.AddMudServices();
 builder.Services.AddMapster();

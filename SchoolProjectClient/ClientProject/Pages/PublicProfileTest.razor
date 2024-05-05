@@ -1,4 +1,4 @@
-﻿@page "/my-profile"
+﻿@page "/publicProfile"
 
 @inject IPostService _postService;
 
@@ -875,7 +875,7 @@
 </html>
 
 @code{
-    public GetByIdUser UserById { get; set; }
+    public SchoolProjectClient.Client.Model.PublicProfile.GetByIdPublicProfile UserById { get; set; }
     public List<GetAllPost> UserOfPost { get; set; }
     public string UserId { get; set; } = "";
     public Comment PostComment { get; set; }
@@ -887,7 +887,7 @@
     {
         UserId = await localStorage.GetItemAsync<string>("UserId");
         UserOfPost = (await _userService.GetByIdUserPost(UserId)).Data.usersPosts;
-        UserById = (await _userService.GetUserByIdAsync(UserId)).Data;
+        UserById = (await _publicProfileService.GetPublicProfileByIdAsync(UserId)).Data;
         Users = (await _userService.GetAllUserListAsync(0, 100)).Adapt<GetAllUser>();
     }
 
