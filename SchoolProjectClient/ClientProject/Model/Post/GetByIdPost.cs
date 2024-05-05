@@ -8,6 +8,7 @@ namespace SchoolProjectClient.Client.Model.Post
         public string Title { get; set; }
         public string Content { get; set; }
         public int likeCount { get; set; }
+        public string OwnersName { get; set; }
         public DateTime CreatedDate { get; set; }
         public List<Comment.Comment> Comments { get; set; }
     }

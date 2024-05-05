@@ -9,7 +9,7 @@ namespace SchoolProjectClient.Client.Model.Comment
         public string Id { get; set; }
         public int LikeCount { get; set; }
         public string Content { get; set; }
-        public string UserName { get; set; }
+        public string OwnersName { get; set; }
         public DateTime CreatedDate { get; set; }
     }
 
