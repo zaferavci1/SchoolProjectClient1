@@ -32,8 +32,10 @@
 
   <ItemGroup>
     <None Remove="Pages\MainPage\" />
+    <None Remove="Services\PublicProfile\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\MainPage\" />
+    <Folder Include="Services\PublicProfile\" />
   </ItemGroup>
 </Project>

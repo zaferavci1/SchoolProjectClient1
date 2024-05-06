@@ -1,4 +1,8 @@
 ﻿using System;
+using SchoolProjectClient.Client.Model.Comment;
+using SchoolProjectClient.Client.Model.Post;
+using SchoolProjectClient.Client.Model.User;
+
 namespace SchoolProjectClient.Client.Model.PublicProfile
 {
 	public class GetByIdPublicProfile
@@ -7,10 +11,11 @@ namespace SchoolProjectClient.Client.Model.PublicProfile
         public string NickName { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        //public List<PublicProfilesDTO> Followers { get; set; }
-        //public List<PublicProfilesDTO> Follows { get; set; }
-        //public List<GetAllPostsDTO> Posts { get; set; }
-        //public List<GetAllCommentsDTO> Comments { get; set; }
+        public List<UserDTO> Followers { get; set; }
+        public List<UserDTO> Follows { get; set; }
+        public List<Post.Post> Posts { get; set; }
+        public List<Comment.GetAllComment> Comments { get; set; }
     }
 }
+
 
