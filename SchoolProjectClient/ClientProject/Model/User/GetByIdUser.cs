@@ -11,6 +11,8 @@ namespace SchoolProjectClient.Client.Model.User
         public string PhoneNumber { get; set; }
         public bool IsProfilePrivate { get; set; }
         public string Password { get; set; }
+        
+        public byte ProfilePictureId { get; set; }
         public List<UserDTO> Followers { get; set; }
         public List<UserDTO> Follows { get; set; }
         public List<Post.Post> Posts { get; set; }

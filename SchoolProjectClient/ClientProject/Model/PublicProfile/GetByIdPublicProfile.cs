@@ -11,11 +11,14 @@ namespace SchoolProjectClient.Client.Model.PublicProfile
         public string NickName { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        public int ProfilePictureId { get; set; }
         public List<UserDTO> Followers { get; set; }
         public List<UserDTO> Follows { get; set; }
         public List<Post.Post> Posts { get; set; }
+        
         public List<Comment.GetAllComment> Comments { get; set; }
     }
+
 }
 
 

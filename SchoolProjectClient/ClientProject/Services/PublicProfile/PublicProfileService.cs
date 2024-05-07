@@ -17,6 +17,10 @@ namespace SchoolProjectClient.Client.Services.PublicProfile
 
         public async Task<BaseResponse<GetByIdPublicProfile>> GetPublicProfileByIdAsync(string id)
             => await _httpClientService.GetAsync<BaseResponse<GetByIdPublicProfile>>(new() { Controller = "PublicProfile", Action = "GetById" }, id);
+
+        public async Task<BaseResponse<GetByIdPublicProfile>> GetPublicProfileByNickNameAsync(GetUserByNickNameQueryRequest request)
+            => await _httpClientService.PutAsync<GetUserByNickNameQueryRequest,BaseResponse<GetByIdPublicProfile>>(new() { Controller = "PublicProfile", Action = "GetByNickName" }, request);
+
     }
 }
 
