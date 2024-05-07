@@ -59,6 +59,7 @@ namespace SchoolProjectClient.Client.Services.Users
 
         public async Task<BaseResponse<User>> UpdateUserAsync(UpdateUser updateUser)
             => await _httpClientService.PutAsync<UpdateUser, BaseResponse<User>>(new RequestParameter() { Controller = "User", Action = "Update" }, updateUser);
+        
     }
 }
 

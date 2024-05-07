@@ -9,6 +9,7 @@ namespace SchoolProjectClient.Client.Services.PublicProfile
 	{
 
         Task<BaseResponse<GetByIdPublicProfile>> GetPublicProfileByIdAsync(string id);
+        Task<BaseResponse<GetByIdPublicProfile>> GetPublicProfileByNickNameAsync(GetUserByNickNameQueryRequest request);
     }
 }
 
