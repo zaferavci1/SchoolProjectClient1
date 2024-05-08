@@ -91,29 +91,29 @@
                     <div class="card card-body rounded-3 p-4 p-sm-5">
                         <div class="text-center">
                             <!-- Title -->
-                            <h1 class="mb-2">Sign up</h1>
-                            <span class="d-block">Already have an account? <a href="sign-in.html">Sign in here</a></span>
+                            <h1 class="mb-2">Kayıt Ol</h1>
+                            <span class="d-block">Hali hazırda hesabın varmı? <a href="signin">Tıkla ve giriş yap</a></span>
                         </div>
                         <!-- Form START -->
                         <form class="mt-4">
                             <!-- Email -->
                             <div class="mb-3 input-group-lg">
-                                <input type="text" class="form-control" @bind-value=@addUser.Name placeholder="Enter Name">
-                                <small>We'll never share your email with anyone else.</small>
+                                <input type="text" class="form-control" @bind-value=@addUser.Name placeholder="Adınız">
                             </div>
                             <div class="mb-3 input-group-lg">
-                                <input type="text" class="form-control" @bind-value=@addUser.Surname placeholder="Enter Surname">
+                                <input type="text" class="form-control" @bind-value=@addUser.Surname placeholder="Sayadınız">
 
                             </div>
                             <div class="mb-3 input-group-lg">
-                                <input type="text" class="form-control" @bind-value=@addUser.NickName placeholder="Enter Nickname">
+                                <input type="text" class="form-control" @bind-value=@addUser.NickName placeholder="Kullancı adınız">
 
                             </div>
                             <div class="mb-3 input-group-lg">
-                                <input type="email" class="form-control" @bind-value=@addUser.Mail placeholder="Enter Email">
+                                <input type="email" class="form-control" @bind-value=@addUser.Mail placeholder="Emailiniz">
+
                             </div>
                             <div class="mb-3 input-group-lg">
-                                <input type="text" class="form-control" @bind-value=@addUser.PhoneNumber placeholder="Enter PhoneNumber ">
+                                <input type="text" class="form-control" @bind-value=@addUser.PhoneNumber placeholder="Telefon Numaranız ">
 
                             </div>
 
@@ -121,7 +121,7 @@
                             <div class="mb-3 position-relative">
                                 <!-- Input group -->
                                 <div class="input-group input-group-lg">
-                                    <input class="form-control fakepassword" @bind-value=@password1 type="password" id="psw-input" placeholder="Enter new password">
+                                    <input class="form-control fakepassword" @bind-value=@password1 type="password" id="psw-input" placeholder="Yeni şifrenizi giriniz">
                                     <span class="input-group-text p-0">
                                         <i class="fakepasswordicon fa-solid fa-eye-slash cursor-pointer p-2 w-40px"></i>
                                     </span>
@@ -139,17 +139,14 @@
                             </div>
                             <!-- Confirm password -->
                             <div class="mb-3 input-group-lg">
-                                <input class="form-control" type="password" @bind-value=@password2 placeholder="Confirm password">
+                                <input class="form-control" type="password" @bind-value=@password2 placeholder="Şifrenizi onaylayın">
                             </div>
                             <!-- Keep me signed in -->
-                            <div class="mb-3 text-start">
-                                <input type="checkbox" class="form-check-input" id="keepsingnedCheck">
-                                <label class="form-check-label" for="keepsingnedCheck"> Keep me signed in</label>
-                            </div>
+     
                             <!-- Button -->
-                            <div class="d-grid"><button type="button" onclick="@(async () => await HandleRegister())" class="btn btn-lg btn-primary">Sign me up</button></div>
+                            <div class="d-grid"><button type="button" onclick="@(async () => await HandleRegister())" class="btn btn-lg btn-primary">Kayıt Ol</button></div>
                             <!-- Copyright -->
-                            <p class="mb-0 mt-3 text-center">©2024 <Social target="_blank" href="/">Social Market</Social> All rights reserved</p>
+                            <p class="mb-0 mt-3 text-center">©2024 <Social target="_blank" href="/">Social Market</Social> Tüm Hakları Saklıdır!</p>
                         </form>
                         <!-- Form END -->
                     </div>

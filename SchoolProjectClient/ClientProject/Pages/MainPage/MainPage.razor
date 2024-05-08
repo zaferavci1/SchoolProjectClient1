@@ -1,17 +1,16 @@
-﻿@page "/assetq" 
+﻿@page "/main" 
 
 <!DOCTYPE html>
 <html lang="en">
 
 <!-- Mirrored from social.webestica.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2024 09:27:31 GMT -->
 <head>
-    <title>Social - Network, Community and Event Theme</title>
+    <title>Social Market Tracker</title>
 
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Webestica.com">
-    <meta name="description" content="Bootstrap 5 based Social Media Network and Community Theme">
+
 
     <!-- Dark mode -->
     @*<script>
@@ -137,7 +136,7 @@
                     <div class="nav mt-3 mt-lg-0 flex-nowrap align-items-center px-4 px-lg-0">
                         <div class="nav-item w-100">
                             <form class="rounded position-relative">
-                                <input class="form-control ps-5 bg-light" type="search" placeholder="Search..." aria-label="Search">
+                                <input class="form-control ps-5 bg-light" type="search" placeholder="Ara..." aria-label="Search">
                                 <button class="btn bg-transparent px-2 py-0 position-absolute top-50 start-0 translate-middle-y" type="submit"><i class="bi bi-search fs-5"> </i></button>
                             </form>
                         </div>
@@ -150,31 +149,17 @@
                         
                         <!-- Nav item 3 Post -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account </a>
+                            <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hesap Ayarları </a>
                             <ul class="dropdown-menu" aria-labelledby="postMenu">
-                                <li> <a class="dropdown-item" href="create-page.html">Create a page</a></li>
-                                <li> <a class="dropdown-item" href="profileSetting">Account Settings</a> </li>
-                                <li> <a class="dropdown-item" href="notifications.html">Notifications</a> </li>
-                                <!-- dropdown submenu open left -->
-                                <li class="dropdown-submenu dropstart">
-                                    <a class="dropdown-item dropdown-toggle" href="#">Authentication</a>
-                                    <ul class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
-                                        <li> <a class="dropdown-item" href="sign-in.html">Sign in</a> </li>
-                                        <li> <a class="dropdown-item" href="sign-up.html">Sing up</a> </li>
-                                        <li> <a class="dropdown-item" href="forgot-password.html">Forgot password</a> </li>
-                                        <li class="dropdown-divider"></li>
-                                        <li> <a class="dropdown-item" href="sign-in-advance.html">Sign in advance</a> </li>
-                                        <li> <a class="dropdown-item" href="sign-up-advance.html">Sing up advance</a> </li>
-                                        <li> <a class="dropdown-item" href="forgot-password-advance.html">Forgot password advance</a> </li>
-                                    </ul>
-                                </li>
-                                <li> <a class="dropdown-item" href="privacy-and-terms.html">Privacy & terms</a> </li>
+                                <li> <a class="dropdown-item" href="profileSetting">Hesap ayarları</a> </li>
+
+                                <li> <a class="dropdown-item" href="/logout">Çıkış Yap</a> </li>
                             </ul>
                         </li>
 
                         <!-- Nav item 4 Mega menu -->
                         <li class="nav-item">
-                            <a class="nav-link" href="my-profile">My network</a>
+                            <a class="nav-link" href="my-profile">Hesabım</a>
                         </li>
                     </ul>
                 </div>
@@ -187,7 +172,7 @@
                         </a>
                     </li>
                     <li class="nav-item ms-2">
-                        <a class="nav-link bg-light icon-md btn btn-light p-0" href="settings.html">
+                        <a class="nav-link bg-light icon-md btn btn-light p-0" href="profileSetting">
                             <i class="bi bi-gear-fill fs-6"> </i>
                         </a>
                     </li>
@@ -215,10 +200,7 @@
                                                         <p class="small mb-2"><b>Judy Nguyen</b> sent you a friend request.</p>
                                                         <p class="small ms-3 text-nowrap">Just now</p>
                                                     </div>
-                                                    <div class="d-flex">
-                                                        <button class="btn btn-sm py-1 btn-primary me-2">Accept </button>
-                                                        <button class="btn btn-sm py-1 btn-danger-soft">Delete </button>
-                                                    </div>
+
                                                 </div>
                                             </div>
                                         </li>
@@ -246,7 +228,7 @@
                                                 <div class="ms-sm-3">
                                                     <div class="d-flex">
                                                         <p class="small mb-2">Webestica has 15 like and 1 new activity</p>
-                                                        <p class="small ms-3">1hr</p>
+                                   
                                                     </div>
                                                 </div>
                                             </a>
@@ -265,9 +247,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="card-footer text-center">
-                                    <a href="#" class="btn btn-sm btn-primary-soft">See all incoming activity</a>
-                                </div>
+                              
                             </div>
                         </div>
                     </li>
@@ -286,26 +266,18 @@
                                         <img class="avatar-img rounded-circle" src="@GetProfilePicturePath(user.ProfilePictureId)" alt="avatar">
                                     </div>
                                     <div>
-                                        <a class="h6 stretched-link" href="#">Lori Ferguson</a>
+                                        <a class="h6 stretched-link" href="my-profile">@user.Name</a>
                                         <p class="small m-0">Web Developer</p>
                                     </div>
                                 </div>
-                                <a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center" href="my-profile">View profile</a>
+                                <a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center" href="my-profile">Profilini Görüntüle</a>
                             </li>
                             <!-- Links -->
-                            <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear fa-fw me-2"></i>Settings & Privacy</a></li>
-                            <li>
-                                <a class="dropdown-item" href="https://support.webestica.com/" target="_blank">
-                                    <i class="fa-fw bi bi-life-preserver me-2"></i>Support
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="docs/index.html" target="_blank">
-                                    <i class="fa-fw bi bi-card-text me-2"></i>Documentation
-                                </a>
-                            </li>
+                            <li><a class="dropdown-item" href="profileSetting"><i class="bi bi-gear fa-fw me-2"></i>Ayarlar</a></li>
+                            
+                         
                             <li class="dropdown-divider"></li>
-                            <li><a class="dropdown-item bg-danger-soft-hover" href="sign-in-advance.html"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+                            <li><a class="dropdown-item bg-danger-soft-hover" href="/logout"><i class="bi bi-power fa-fw me-2"></i>Çıkış Yap</a></li>
                             <li> <hr class="dropdown-divider"></li>
                             <!-- Dark mode options START -->
                             <li>
@@ -392,21 +364,21 @@
                                                 <!-- User stat item -->
                                                 <div>
                                                     <h6 class="mb-0">@user.Posts.Count</h6>
-                                                    <small>Posts</small>
+                                                    <small>Gönderiler</small>
                                                 </div>
                                                 <!-- Divider -->
                                                 <div class="vr"></div>
                                                 <!-- User stat item -->
                                                 <div>
                                                     <h6 class="mb-0">@user.Followers.Count</h6>
-                                                    <small>Followers</small>
+                                                    <small>Takipçiler</small>
                                                 </div>
                                                 <!-- Divider -->
                                                 <div class="vr"></div>
                                                 <!-- User stat item -->
                                                 <div>
                                                     <h6 class="mb-0">@user.Follows.Count</h6>
-                                                    <small>Follows</small>
+                                                    <small>Takip Edilenler</small>
                                                 </div>
                                             </div>
                                             <!-- User stat END -->
@@ -418,16 +390,16 @@
                                         <!-- Side Nav START -->
                                         <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="my-profile"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/home-outline-filled.svg" alt=""><span>Feed </span></a>
+                                                <a class="nav-link" href="my-profile"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/home-outline-filled.svg" alt=""><span>Anasayfa</span></a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="my-profile-connections"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/person-outline-filled.svg"  alt=""><span>Connections </span></a>
+                                                <a class="nav-link" href="my-profile-connections"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/person-outline-filled.svg"  alt=""><span>Bağlantılarım</span></a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="notifications.html"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/notification-outlined-filled.svg" alt=""><span>Notifications </span></a>
+                                                <a class="nav-link" href="notifications.html"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/notification-outlined-filled.svg" alt=""><span>Bildirimler</span></a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="profileSetting"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/cog-outline-filled.svg" alt=""><span>Acoount Settings </span></a>
+                                                <a class="nav-link" href="profileSetting"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/cog-outline-filled.svg" alt=""><span>Ayarlar</span></a>
                                             </li>
                                         </ul>
                                         <!-- Side Nav END -->
@@ -435,34 +407,23 @@
                                     <!-- Card body END -->
                                     <!-- Card footer -->
                                     <div class="card-footer text-center py-2">
-                                        <a class="btn btn-link btn-sm" href="my-profile">View Profile </a>
+                                        <a class="btn btn-link btn-sm" href="my-profile">Profilini Görüntüle </a>
                                     </div>
                                 </div>
                                 <!-- Card END -->
                                 <!-- Helper link START -->
                                 <ul class="nav small mt-4 justify-content-center lh-1">
+                                  
                                     <li class="nav-item">
-                                        <a class="nav-link" href="my-profile-about">About</a>
+                                        <a class="nav-link" href="profileSetting">Ayarlar</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="profileSetting">Settings</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" target="_blank" href="https://github.com/zaferavci1/SchoolProject">Support </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" target="_blank" href="https://github.com/zaferavci1/SchoolProject">Docs </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="https://github.com/zaferavci1/SchoolProject">Help</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="https://github.com/zaferavci1/SchoolProject">Privacy & terms</a>
-                                    </li>
+                                   
+    
+                                    
                                 </ul>
                                 <!-- Helper link END -->
                                 <!-- Copyright -->
-                                <p class="small text-center mt-1">©2024 <a class="text-reset" target="_blank" href="https://www.webestica.com/"> Coin Market </a></p>
+                                <p class="small text-center mt-1">©2024 <a class="text-reset" target="_blank" href="https://github.com/sserkanyilmaz/"> Coin Market </a></p>
                             </div>
                         </div>
                     </nav>
@@ -481,125 +442,109 @@
                             </div>
                             <!-- Post input -->
                             <form class="w-100">
-                                <textarea class="form-control pe-4 border-0" rows="2" data-autoresize placeholder="Share your thoughts..."></textarea>
+                                <input class="form-control pe-4 border-0" @bind="newPost.Title" placeholder="Post Başlığı" data-bs-toggle="modal" data-bs-target="#modalCreateFeed">
+                                <input class="form-control pe-4 border-0" @bind="newPost.Content" placeholder="Fikirlerini paylaş..." data-bs-toggle="modal" data-bs-target="#modalCreateFeed">
+                                <button type="button" class="btn btn-success-soft" @onclick="@(async () => await SubmitPost())">Gönder</button>
                             </form>
                         </div>
                         <!-- Share feed toolbar START -->
-                        <ul class="nav nav-pills nav-stack small fw-normal">
-                            <li class="nav-item">
-                                <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal" data-bs-target="#feedActionPhoto"> <i class="bi bi-image-fill text-success pe-2"></i>Photo</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal" data-bs-target="#feedActionVideo"> <i class="bi bi-camera-reels-fill text-info pe-2"></i>Video</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link bg-light py-1 px-2 mb-0" data-bs-toggle="modal" data-bs-target="#modalCreateEvents"> <i class="bi bi-calendar2-event-fill text-danger pe-2"></i>Event </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal" data-bs-target="#modalCreateFeed"> <i class="bi bi-emoji-smile-fill text-warning pe-2"></i>Feeling /Activity</a>
-                            </li>
-                            <li class="nav-item dropdown ms-lg-auto">
-                                <a class="nav-link bg-light py-1 px-2 mb-0" href="#" id="feedActionShare" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-three-dots"></i>
-                                </a>
-                                <!-- Dropdown menu -->
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="feedActionShare">
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-envelope fa-fw pe-2"></i>Create a poll</a></li>
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark-check fa-fw pe-2"></i>Ask a question </a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#"> <i class="bi bi-pencil-square fa-fw pe-2"></i>Help</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <!--<ul class="nav nav-pills nav-stack small fw-normal">
+            <li class="nav-item">
+                <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal" data-bs-target="#feedActionPhoto"> <i class="bi bi-image-fill text-success pe-2"></i>Photo</a>
+            </li>
+            <li class="nav-item dropdown ms-sm-auto">
+                <a class="nav-link bg-light py-1 px-2 mb-0" href="#" id="feedActionShare" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-three-dots"></i>
+                </a>
+            </li>
+        </ul>-->
                         <!-- Share feed toolbar END -->
+                    </div>
+                    @inject IJSRuntime jsRuntime
+
+                    <h3>TradingView Chart</h3>
+
+                    <div class="tradingview-widget-container" style="height:100%;width:100%">
+                        <div id="tradingview_advanced_chart" class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+                        <div class="tradingview-widget-copyright">
+                            <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+                                <span class="blue-text">Track all markets on TradingView</span>
+                            </a>
+                        </div>
                     </div>
                     <!-- Share feed END -->
                     <!-- Card feed item START -->
                     @foreach (var post in Posts)
                     {
-                    <div class="card">
-                        <div class="container">
-                            <div class="card-header">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <div class="avatar">
-                                            <a href="#!"><img class="avatar-img rounded-circle" src="@GetProfilePicturePath(post.ProfilePictureId)" alt="Profile Picture"></a>
-                                        </div>
-                                        <div>
-                                            <button class="btn btn-link" @onclick="() => NavigateToProfile(post.OwnersName)">
-                                                @post.OwnersName
-                                            </button>
-                                            <h6 class="mb-0 ms-2"><a href="#!">@post.OwnersName</a></h6>
+                        <div class="card">
+                            <div class="container">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar">
+                                                <a @onclick="() => NavigateToProfile(post.OwnersName)"><img class="avatar-img rounded-circle" src="@GetProfilePicturePath(post.ProfilePictureId)" alt="Profile Picture"></a>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-link" @onclick="() => NavigateToProfile(post.OwnersName)">
+                                                    @post.OwnersName
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <p>@post.Content</p>
-                                <ul class="nav nav-stack py-3 small">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="#" @onclick="() => LikePost(post.Id)">
-                                            <i class="bi bi-hand-thumbs-up-fill"></i> Liked (@post.LikeCount)
-                                        </a>
-                                    </li>
-                                    <li class="nav-item dropdown ms-auto">
-                                        <a class="nav-link" href="#" data-bs-toggle="dropdown">
-                                            <i class="bi bi-reply-fill"></i>Share (3)
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Send via Direct Message</a></li>
-                                            <li><a class="dropdown-item" href="#">Bookmark</a></li>
-                                            <li><a class="dropdown-item" href="#">Copy link to post</a></li>
-                                            <li><a class="dropdown-item" href="#">Share post via …</a></li>
-                                            <li><hr class="dropdown-divider"></li>
-                                            <li><a class="dropdown-item" href="#">Share to News Feed</a></li>
-                                        </ul>
-                                    </li>
+                                <div class="card-body">
+                                    <p>@post.Content</p>
+                                    <ul class="nav nav-stack py-3 small">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" @onclick="() => LikePost(post.Id)">
+                                                <i class="bi bi-hand-thumbs-up-fill"></i> Beğen (@post.LikeCount)
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="d-flex mb-3">
+                                    <div class="avatar avatar-xs">
+                                        <a href="#!"><img class="avatar-img rounded-circle" src="@GetProfilePicturePath(user.ProfilePictureId)" alt="User Avatar"></a>
+                                    </div>
+                                    <form class="position-relative w-100">
+                                        <textarea class="form-control pe-4 bg-light" rows="1" @bind="addComment.Content" placeholder="Yorum ekle..."></textarea>
+                                        <button class="nav-link bg-transparent px-3 position-absolute top-50 end-0 translate-middle-y border-0" type="button" @onclick="@(async () => await SubmitComment(post.Id))">
+                                            <i class="bi bi-send-fill"> </i>
+                                        </button>
+                                    </form>
+
+                                </div>
+                                <ul class="list-unstyled">
+                                    @foreach (var comment in post.Comments)
+                                    {
+                                        <li class="comment-item mb-2">
+                                            <div class="d-flex">
+                                                <div class="avatar avatar-xs">
+                                                    <a href="#!"><img class="avatar-img rounded-circle" src="@GetProfilePicturePath(comment.ProfilePictureId)" alt="Comment Avatar"></a>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <div class="bg-light rounded p-3">
+                                                        <button class="btn btn-link" @onclick="() => NavigateToProfile(comment.OwnersName)">
+                                                            @comment.OwnersName
+                                                        </button>
+                                                        <p class="small mb-0">@comment.Content</p>
+                                                    </div>
+                                                    <ul class="nav py-2 small">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active" href="#" @onclick="() => LikeComment(comment.Id)">
+                                                                <i class="bi bi-hand-thumbs-up-fill"></i> Liked (@comment.LikeCount)
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
                                 </ul>
                             </div>
-                            <div class="d-flex mb-3">
-                                <div class="avatar avatar-xs">
-                                    <a href="#!"><img class="avatar-img rounded-circle" src="@GetProfilePicturePath(user.ProfilePictureId)" alt="User Avatar"></a>
-                                </div>
-                                <form class="w-100 ms-2">
-                                    <textarea class="form-control pe-5 bg-light" rows="1" @bind="addComment.Content" placeholder="Add a comment..."></textarea>
-                                </form>
-                                <button class="btn btn-transparent position-absolute top-50 end-0 translate-middle-y" type="button" @onclick="@(async () => await SubmitComment(post.Id))">
-                                    <i class="bi bi-send-fill"></i>
-                                </button>
-                            </div>
-                            <ul class="list-unstyled">
-                                @foreach (var comment in post.Comments)
-                                {
-                                <li class="comment-item mb-2">
-                                    <div class="d-flex">
-                                        <div class="avatar avatar-xs">
-                                            <a href="#!"><img class="avatar-img rounded-circle" src="@GetProfilePicturePath(comment.ProfilePictureId)" alt="Comment Avatar"></a>
-                                        </div>
-                                        <div class="ms-2">
-                                            <div class="bg-light rounded p-3">
-                                                <button class="btn btn-link" @onclick="() => NavigateToProfile(comment.OwnersName)">
-                                                    @comment.OwnersName
-                                                </button>
-                                                <p class="small mb-0">@comment.Content</p>
-                                            </div>
-                                            <ul class="nav py-2 small">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" href="#" @onclick="() => LikeComment(comment.Id)">
-                                                        <i class="bi bi-hand-thumbs-up-fill"></i> Liked (@comment.LikeCount)
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="#!">Reply</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                }
-                            </ul>
                         </div>
-                    </div>
                     }
 
 
@@ -617,24 +562,24 @@
                                 <!-- Card body START -->
                                 @foreach (var user in response.UserDtos)
                                 {
-                                <div class="card-body">
+                                    <div class="card-body">
 
-                                    <div class="hstack gap-2 mb-3">
-                                        <div class="avatar">
-                                            <a href="#!"><img class="avatar-img rounded-circle" src="@GetProfilePicturePath(user.ProfilePictureId)" alt=""></a>
+                                        <div class="hstack gap-2 mb-3">
+                                            <div class="avatar">
+                                                <a href="#!"><img class="avatar-img rounded-circle" src="@GetProfilePicturePath(user.ProfilePictureId)" alt=""></a>
+                                            </div>
+                                            <!-- Title -->
+                                            <div class="overflow-hidden">
+                                                <a class="h6 mb-0" href="#!">@user.Name</a>
+                                                <p class="mb-0 small text-truncate">@user.NickName</p>
+                                            </div>
+                                            <!-- Button -->
+                                            <button class="btn btn-primary-soft rounded-circle icon-md ms-auto" @onclick="() => FollowUser(user.Id)">
+                                                +
+                                            </button>
                                         </div>
-                                        <!-- Title -->
-                                        <div class="overflow-hidden">
-                                            <a class="h6 mb-0" href="#!">@user.Name</a>
-                                            <p class="mb-0 small text-truncate">@user.NickName</p>
-                                        </div>
-                                        <!-- Button -->
-                                        <button class="btn btn-primary-soft rounded-circle icon-md ms-auto" @onclick="() => FollowUser(user.Id)">
-                                            +
-                                        </button>
+
                                     </div>
-
-                                </div>
                                 }
                                 <!-- Card body END -->
                             </div>
@@ -661,260 +606,15 @@
     
     <!-- Main Chat END -->
     <!-- Modal create Feed START -->
-    <div class="modal fade" id="modalCreateFeed" tabindex="-1" aria-labelledby="modalLabelCreateFeed" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <!-- Modal feed header START -->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabelCreateFeed">Create post</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <!-- Modal feed header END -->
-                <!-- Modal feed body START -->
-                <div class="modal-body">
-                    <!-- Add Feed -->
-                    <div class="d-flex mb-3">
-                        <!-- Avatar -->
-                        <div class="avatar avatar-xs me-2">
-                            <img class="avatar-img rounded-circle" src="@GetProfilePicturePath(user.ProfilePictureId)" alt="">
-                        </div>
-                        <!-- Feed box  -->
-                        <form class="w-100">
-                            <textarea class="form-control pe-4 fs-3 lh-1 border-0" rows="4" placeholder="Share your thoughts..." autofocus></textarea>
-                        </form>
-                    </div>
-                    <!-- Feed rect START -->
-                    <div class="hstack gap-2">
-                        <a class="icon-md bg-danger bg-opacity-10 text-danger rounded-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Events"> <i class="bi bi-calendar2-event-fill"></i> </a>
-                        <a class="icon-md bg-light text-secondary rounded-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Check in"> <i class="bi bi-geo-alt-fill"></i> </a>
-                    </div>
-                    <!-- Feed rect END -->
-                </div>
-                <!-- Modal feed body END -->
-                <!-- Modal feed footer -->
-                <div class="modal-footer row justify-content-between">
-                    <!-- Select -->
-                    <div class="col-lg-3">
-                        <select class="form-select js-choice choice-select-text-none" data-position="top" data-search-enabled="false">
-                            <option value="PB">Public</option>
-                            <option value="PV">Friends</option>
-                            <option value="PV">Only me</option>
-                            <option value="PV">Custom</option>
-                        </select>
-                        <!-- Button -->
-                    </div>
-                    <div class="col-lg-8 text-sm-end">
-                        <button type="button" class="btn btn-danger-soft me-2"> <i class="bi bi-camera-video-fill pe-1"></i> Live video</button>
-                        <button type="button" class="btn btn-success-soft">Post</button>
-                    </div>
-                </div>
-                <!-- Modal feed footer -->
-
-            </div>
-        </div>
-    </div>
     <!-- Modal create feed END -->
     <!-- Modal create Feed photo START -->
-    <div class="modal fade" id="feedActionPhoto" tabindex="-1" aria-labelledby="feedActionPhotoLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <!-- Modal feed header START -->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="feedActionPhotoLabel">Add post photo</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <!-- Modal feed header END -->
-                <!-- Modal feed body START -->
-                <div class="modal-body">
-                    <!-- Add Feed -->
-                    <div class="d-flex mb-3">
-                        <!-- Avatar -->
-                        <div class="avatar avatar-xs me-2">
-                            <img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="">
-                        </div>
-                        <!-- Feed box  -->
-                        <form class="w-100">
-                            <textarea class="form-control pe-4 fs-3 lh-1 border-0" rows="2" placeholder="Share your thoughts..."></textarea>
-                        </form>
-                    </div>
-
-                    <!-- Dropzone photo START -->
-                    <div>
-                        <label class="form-label">Upload attachment</label>
-                        <div class="dropzone dropzone-default card shadow-none" data-dropzone='{"maxFiles":2}'>
-                            <div class="dz-message">
-                                <i class="bi bi-images display-3"></i>
-                                <p>Drag here or click to upload photo.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Dropzone photo END -->
-
-                </div>
-                <!-- Modal feed body END -->
-                <!-- Modal feed footer -->
-                <div class="modal-footer ">
-                    <!-- Button -->
-                    <button type="button" class="btn btn-danger-soft me-2" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-success-soft">Post</button>
-                </div>
-                <!-- Modal feed footer -->
-            </div>
-        </div>
-    </div>
+    
     <!-- Modal create Feed photo END -->
     <!-- Modal create Feed video START -->
-    <div class="modal fade" id="feedActionVideo" tabindex="-1" aria-labelledby="feedActionVideoLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <!-- Modal feed header START -->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="feedActionVideoLabel">Add post video</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <!-- Modal feed header END -->
-                <!-- Modal feed body START -->
-                <div class="modal-body">
-                    <!-- Add Feed -->
-                    <div class="d-flex mb-3">
-                        <!-- Avatar -->
-                        <div class="avatar avatar-xs me-2">
-                            <img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="">
-                        </div>
-                        <!-- Feed box  -->
-                        <form class="w-100">
-                            <textarea class="form-control pe-4 fs-3 lh-1 border-0" rows="2" placeholder="Share your thoughts..."></textarea>
-                        </form>
-                    </div>
-
-                    <!-- Dropzone photo START -->
-                    <div>
-                        <label class="form-label">Upload attachment</label>
-                        <div class="dropzone dropzone-default card shadow-none" data-dropzone='{"maxFiles":2}'>
-                            <div class="dz-message">
-                                <i class="bi bi-camera-reels display-3"></i>
-                                <p>Drag here or click to upload video.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Dropzone photo END -->
-
-                </div>
-                <!-- Modal feed body END -->
-                <!-- Modal feed footer -->
-                <div class="modal-footer">
-                    <!-- Button -->
-                    <button type="button" class="btn btn-danger-soft me-2"><i class="bi bi-camera-video-fill pe-1"></i> Live video</button>
-                    <button type="button" class="btn btn-success-soft">Post</button>
-                </div>
-                <!-- Modal feed footer -->
-            </div>
-        </div>
-    </div>
+ 
     <!-- Modal create Feed video END -->
     <!-- Modal create events START -->
-    <div class="modal fade" id="modalCreateEvents" tabindex="-1" aria-labelledby="modalLabelCreateAlbum" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <!-- Modal feed header START -->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabelCreateAlbum">Create event</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <!-- Modal feed header END -->
-                <!-- Modal feed body START -->
-                <div class="modal-body">
-                    <!-- Form START -->
-                    <form class="row g-4">
-                        <!-- Title -->
-                        <div class="col-12">
-                            <label class="form-label">Title</label>
-                            <input type="email" class="form-control" placeholder="Event name here">
-                        </div>
-                        <!-- Description -->
-                        <div class="col-12">
-                            <label class="form-label">Description</label>
-                            <textarea class="form-control" rows="2" placeholder="Ex: topics, schedule, etc."></textarea>
-                        </div>
-                        <!-- Date -->
-                        <div class="col-sm-4">
-                            <label class="form-label">Date</label>
-                            <input type="text" class="form-control flatpickr" placeholder="Select date">
-                        </div>
-                        <!-- Time -->
-                        <div class="col-sm-4">
-                            <label class="form-label">Time</label>
-                            <input type="text" class="form-control flatpickr" data-enableTime="true" data-noCalendar="true" placeholder="Select time">
-                        </div>
-                        <!-- Duration -->
-                        <div class="col-sm-4">
-                            <label class="form-label">Duration</label>
-                            <input type="email" class="form-control" placeholder="1hr 23m">
-                        </div>
-                        <!-- Location -->
-                        <div class="col-12">
-                            <label class="form-label">Location</label>
-                            <input type="email" class="form-control" placeholder="Logansport, IN 46947">
-                        </div>
-                        <!-- Add guests -->
-                        <div class="col-12">
-                            <label class="form-label">Add guests</label>
-                            <input type="email" class="form-control" placeholder="Guest email">
-                        </div>
-                        <!-- Avatar group START -->
-                        <div class="col-12 mt-3">
-                            <ul class="avatar-group list-unstyled align-items-center mb-0">
-                                <li class="avatar avatar-xs">
-                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar">
-                                </li>
-                                <li class="avatar avatar-xs">
-                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="avatar">
-                                </li>
-                                <li class="avatar avatar-xs">
-                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="avatar">
-                                </li>
-                                <li class="avatar avatar-xs">
-                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/04.jpg" alt="avatar">
-                                </li>
-                                <li class="avatar avatar-xs">
-                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt="avatar">
-                                </li>
-                                <li class="avatar avatar-xs">
-                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/06.jpg" alt="avatar">
-                                </li>
-                                <li class="avatar avatar-xs">
-                                    <img class="avatar-img rounded-circle" src="assets/images/avatar/07.jpg" alt="avatar">
-                                </li>
-                                <li class="ms-3">
-                                    <small> +50 </small>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Upload Photos or Videos -->
-                        <!-- Dropzone photo START -->
-                        <div>
-                            <label class="form-label">Upload attachment</label>
-                            <div class="dropzone dropzone-default card shadow-none" data-dropzone='{"maxFiles":2}'>
-                                <div class="dz-message">
-                                    <i class="bi bi-file-earmark-text display-3"></i>
-                                    <p>Drop presentation and document here or click to upload.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Dropzone photo END -->
-                    </form>
-                    <!-- Form END -->
-                </div>
-                <!-- Modal feed body END -->
-                <!-- Modal footer -->
-                <!-- Button -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger-soft me-2" data-bs-dismiss="modal"> Cancel</button>
-                    <button type="button" class="btn btn-success-soft">Create now</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!-- Modal create events END -->
     <!-- =======================
     JS libraries, plugins and custom scripts -->
@@ -949,6 +649,7 @@
     public GetByIdUser user = new GetByIdUser();
     public List<GetAllPost> Posts { get; set; } = new List<GetAllPost>();
     AddComment addComment = new();
+    AddPost newPost = new();
     AddLikeComment addLikeComment = new();
     public List<Comment> Comments { get; set; } = new List<Comment>();
 
@@ -1055,5 +756,26 @@
     void NavigateToProfile(string nickname)
     {
         NavigationManager.NavigateTo($"/Profile/{nickname}");
+    }
+
+    async Task SubmitPost()
+    {
+        newPost.UserId = this.UserId;
+        try
+        {
+            var result = await _postService.AddPostAsync(newPost);
+            if (result.IsSucceeded)
+            {
+                _snackbar.Add("Post added successfully", Severity.Success);
+            }
+            else
+            {
+                _snackbar.Add($"Failed to add post: {result.Message}", Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            _snackbar.Add($"Exception during post submission: {ex.Message}", Severity.Error);
+        }
     }
 }

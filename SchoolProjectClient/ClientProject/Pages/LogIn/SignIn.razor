@@ -91,7 +91,7 @@
                 <div class="row justify-content-center text-center">
                     <div class="col-12">
                         <!-- Title -->
-                        <h1 class="display-4 text-white mb-4 position-relative">Welcome back!</h1>
+                        <h1 class="display-4 text-white mb-4 position-relative">Tekrar Hoşgeldiniz!</h1>
                         <!-- SVG START -->
                         <figure class="m-0 position-relative z-index-9">
                             <svg class="col-sm-8 col-lg-4" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -409,20 +409,20 @@
                         <!-- Sign in form START -->
                         <div class="card card-body p-4 p-sm-5 mt-sm-n5 mb-n5">
                             <!-- Title -->
-                            <h2 class="h1 mb-2">Sign in</h2>
-                            <p>Don't have an account?<a href="register"> Click here to sign up</a></p>
+                            <h2 class="h1 mb-2">Giriş Yap</h2>
+                            <p>Hesabın yokmu?<a href="register"> Hesap oluşturmak için tıkla</a></p>
                             <!-- Form START -->
                             <form class="mt-4">
                                 <!-- Email -->
                                 <div class="mb-3 position-relative input-group-lg">
-                                    <input type="email" class="form-control" placeholder="Enter nickname"
+                                    <input type="text" class="form-control" placeholder="Kullanıcı adınız"
                                            @bind="loginModel.UserNameOrMail">
                                 </div>
                                 <div class="mb-3 position-relative input-group-lg">
-                                    <input type="password" class="form-control" placeholder="Enter password"
+                                    <input type="password" class="form-control" placeholder="Şifreniz"
                                            @bind="loginModel.Password">
                                 </div>
-                                <button type="submit" class="btn btn-lg btn-primary-soft" @onclick="@(async () => await HandleLogin())">Login</button>
+                                <button type="button" class="btn btn-lg btn-primary-soft" @onclick="@(async () => await HandleLogin())">Giriş Yap</button>
                                 @*<RadzenButton Text="Login" ButtonType="Radzen.ButtonType.Submit" Click="@(async () => await HandleLogin())" Style="width: 100%; margin-top: 20px;" />*@
 
                                 <!-- Remember me -->
@@ -438,7 +438,7 @@
             <button type="submit" class="btn btn-lg btn-primary-soft" @onclick="HandleLogin">Login</button>
         </div>*@
                                 <!-- Copyright -->
-                                <p class="mb-0 mt-3">©2023 <a target="_blank" href="https://www.webestica.com/">Webestica.</a> All rights reserved</p>
+                                <p class="mb-0 mt-3">©2024 <a target="_blank" href="https://github.com/zaferavci1/SchoolProjectClient1">Social Market</a> Tüm hakları saklıdır</p>
                             </form>
                             <!-- Form END -->
                         </div>
@@ -459,25 +459,19 @@
             <div class="row justify-content-center">
                 <div class="col-sm-10 col-md-8 col-lg-6">
                     <div class="d-grid d-sm-flex justify-content-center justify-content-sm-between align-items-center mt-3">
-                        <!-- Nav -->
-                        <ul class="nav">
-                            <li class="nav-item"><a class="nav-link fw-bold ps-0 pe-2" href="#">Terms</a></li>
-                            <li class="nav-item"><a class="nav-link fw-bold px-2" href="#">Privacy</a></li>
-                            <li class="nav-item"><a class="nav-link fw-bold px-2" href="#">Cookies</a></li>
-                        </ul>
                         <!-- Social icon -->
                         <ul class="nav justify-content-center justify-content-sm-end">
                             <li class="nav-item">
-                                <a class="nav-link px-2 fs-5" href="#"><i class="fa-brands fa-facebook-square"></i></a>
+                                <a class="nav-link px-2 fs-5" href="https://github.com/zaferavci1/SchoolProjectClient1"><i class="fa-brands fa-facebook-square"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-2 fs-5" href="#"><i class="fa-brands fa-twitter-square"></i></a>
+                                <a class="nav-link px-2 fs-5" href="https://github.com/zaferavci1/SchoolProjectClient1"><i class="fa-brands fa-twitter-square"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-2 fs-5" href="#"><i class="fa-brands fa-linkedin"></i></a>
+                                <a class="nav-link px-2 fs-5" href="https://github.com/zaferavci1/SchoolProjectClient1"><i class="fa-brands fa-linkedin"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-2 fs-5" href="#"><i class="fa-brands fa-youtube-square"></i></a>
+                                <a class="nav-link px-2 fs-5" href="https://github.com/zaferavci1/SchoolProjectClient1"><i class="fa-brands fa-youtube-square"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -519,7 +513,7 @@
 
                 await _localStorageService.SetItemAsync("Token", response.Data.TokenDTO.AccessToken);
                 await _localStorageService.SetItemAsync("UserId", response.Data.UserDTO.Id);
-                navigationManager.NavigateTo("/assetq");
+                navigationManager.NavigateTo("/main");
             }
         }
         catch (NullReferenceException ex)
