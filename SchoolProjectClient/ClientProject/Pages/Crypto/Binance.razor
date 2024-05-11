@@ -1,0 +1,146 @@
+﻿@page "/crypto"
+@inject IJSRuntime JS
+@using System.Threading
+@using System.Net.Http.Json
+
+<h3>Crypto List</h3>
+
+@if (cryptos == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+<MudGrid>
+    <MudItem xs="12">
+        <MudAutocomplete T="string" Label="Select Crypto" @bind-Value="selectedSymbol" SearchFuncWithCancel="SearchCryptos" Variant="Variant.Outlined" ShowProgressIndicator="true" />
+    </MudItem>
+</MudGrid>
+}
+
+@if (selectedCrypto != null)
+{
+    <div>
+        <h4>Selected Crypto</h4>
+        <p>Symbol: @selectedCrypto.Symbol</p>
+        <p>Price: @selectedCrypto.Price</p>
+        <input type="number" @bind="amount" placeholder="Amount" />
+
+        <div>
+            <label for="basket-select">Select or Create a Basket:</label>
+            <select @bind="selectedBasketId">
+                <option value="">Select a basket</option>
+                @foreach (var basket in getAllBaskets)
+                {
+                    <option value="@basket.Id">@basket.BasketName</option>
+                }
+            </select>
+            <input type="text" @bind="newBasketName" placeholder="New basket name" />
+            <button @onclick="CreateNewBasket">Create New Basket</button>
+        </div>
+
+        <button @onclick="@(async () => await AddToBasket())">Add to Basket</button>
+    </div>
+}
+
+<div class="tradingview-widget-container" style="height:100%;width:100%">
+    <div class="tradingview-widget-container__widget" style="height:calc(100% - 12px);width:100%"></div>
+</div>
+
+@code {
+    private List<Crypto> cryptos;
+    private Crypto selectedCrypto = new();
+    private List<GetAllBasket> getAllBaskets = new();
+    private string selectedSymbol;
+    private float amount;
+    private string selectedBasketId;
+    private string newBasketName;
+    public string UserId { get; set; } = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        cryptos = await _binanceService.GetBinanceSymbolsAsync();
+        Console.WriteLine();
+        selectedCrypto = new();
+        getAllBaskets = (await _basketService.GetAllBasketListAsync(0, 20)).Data.GetAllBasketsDTOs.Adapt<List<GetAllBasket>>();
+
+        await base.OnInitializedAsync();
+    }
+
+    public async Task FetchPrice(string selectCrypto)
+    {
+        selectedCrypto = await _binanceService.GetPriceAsync(selectCrypto);
+        var symbol = cryptos.FirstOrDefault(s => s.Symbol == selectCrypto);
+        if (symbol != null)
+        {
+            symbol.Price = selectedCrypto.Price;
+        }
+        StateHasChanged();
+    }
+
+
+
+    private async Task CreateNewBasket()
+    {
+        if (!string.IsNullOrEmpty(newBasketName))
+        {
+            var addBasket = new AddBasket
+            {
+                BasketName = newBasketName,
+                UserId = await localStorage.GetItemAsync<string>("UserId")
+            };
+            await _basketService.AddBasketAsync(addBasket);
+
+            getAllBaskets = (await _basketService.GetAllBasketListAsync(0, 20)).Adapt<List<GetAllBasket>>();
+            selectedBasketId = getAllBaskets.FirstOrDefault(b => b.BasketName == newBasketName)?.Id;
+        }
+    }
+
+    private async Task AddToBasket()
+    {
+        await FetchPrice(selectedSymbol);
+        if (selectedCrypto != null && float.TryParse(selectedCrypto.Price, out float price))
+        {
+            var addCrypto = new AddCrypto
+            {
+                UserId = await localStorage.GetItemAsync<string>("UserId"),
+                BasketId = string.IsNullOrEmpty(selectedBasketId) ? newBasketName : selectedBasketId,
+                Symbol = selectedCrypto.Symbol,
+                Amount = amount,
+                Cost = price * amount
+            };
+
+            var response = await _basketService.BasketAddedCryptoAsync(addCrypto);
+
+        }
+        else
+        {
+            // Handle error for invalid price
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("initializeTradingViewWidget");
+        }
+    }
+
+    private async Task OnSymbolSelected(ChangeEventArgs e)
+    {
+        selectedSymbol = e.Value.ToString();
+        Console.WriteLine();
+        await FetchPrice(selectedSymbol);
+        StateHasChanged();
+    }
+
+    private async Task<IEnumerable<string>> SearchCryptos(string value, CancellationToken token)
+    {
+        if (string.IsNullOrEmpty(value))
+            return cryptos.Select(x => x.Symbol);
+
+        return cryptos.Where(x => x.Symbol.Contains(value, StringComparison.InvariantCultureIgnoreCase))
+                      .Select(x => x.Symbol);
+    }
+}

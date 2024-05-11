@@ -24,6 +24,7 @@
     <PackageReference Include="MudBlazor" Version="6.19.1" />
     <PackageReference Include="Radzen.Blazor" Version="4.31.0" />
     <PackageReference Include="Riok.Mapperly" Version="3.5.1" />
+    <PackageReference Include="TradingView.Blazor" Version="2023.5.20.1603" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,9 +34,17 @@
   <ItemGroup>
     <None Remove="Pages\MainPage\" />
     <None Remove="Services\PublicProfile\" />
+    <None Remove="Services\Binance\" />
+    <None Remove="Pages\Crypto\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\MainPage\" />
     <Folder Include="Services\PublicProfile\" />
+    <Folder Include="wwwroot\js\" />
+    <Folder Include="Services\Binance\" />
+    <Folder Include="Pages\Crypto\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\js\" />
   </ItemGroup>
 </Project>

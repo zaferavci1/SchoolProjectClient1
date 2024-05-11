@@ -10,6 +10,7 @@ using SchoolProjectClient.Client.Model.Login;
 using SchoolProjectClient.Client.Model.Utils;
 using SchoolProjectClient.Client.Services;
 using SchoolProjectClient.Client.Services.Baskets;
+using SchoolProjectClient.Client.Services.Binance;
 using SchoolProjectClient.Client.Services.Comments;
 using SchoolProjectClient.Client.Services.Login;
 using SchoolProjectClient.Client.Services.Posts;
@@ -30,6 +31,7 @@ builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IHttpClientService, HttpClientService>();
 builder.Services.AddScoped<IPublicProfileService, PublicProfileService>();
+builder.Services.AddScoped<IBinanceService, BinanceService>();
 builder.Services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
 builder.Services.AddMudServices();
 builder.Services.AddMapster();
@@ -45,7 +47,6 @@ builder.Services.AddScoped<NotificationService>();
 builder.Services.AddScoped<TooltipService>();
 
 
-builder.Services.AddScoped<AppUserId>();
 
 
 await builder.Build().RunAsync();

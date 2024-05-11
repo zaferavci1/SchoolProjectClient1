@@ -1,8 +1,4 @@
-﻿using System;
-using System.Net.Http.Headers;
-using SchoolProjectClient.Client.Model.Common;
-using SchoolProjectClient.Client.Model.Login;
-using SchoolProjectClient.Client.Model.User;
+﻿using SchoolProjectClient.Client.Model.Crypto;
 
 namespace SchoolProjectClient.Client.Services
 {
@@ -13,6 +9,7 @@ namespace SchoolProjectClient.Client.Services
         Task<TResponse> PutAsync<TRequest, TResponse>(RequestParameter requestParameter, TRequest body);
         Task<TResponse> DeleteAsync<TResponse>(RequestParameter requestParameter, string id);
         Task<TResponse> LoginAsync<TRequest, TResponse>(RequestParameter requestParameter, TRequest body);
+        Task<TResponse> GetFromUrlAsync<TResponse>(string url);
         Task UpdateAuthorizationHeader();
     }
 }

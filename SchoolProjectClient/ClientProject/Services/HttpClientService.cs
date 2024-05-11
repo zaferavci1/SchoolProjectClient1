@@ -4,22 +4,18 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using Blazored.LocalStorage;
-using SchoolProjectClient.Client.Model.Common;
-using SchoolProjectClient.Client.Model.Login;
-using SchoolProjectClient.Client.Model.User;
+using SchoolProjectClient.Client.Model.Crypto;
 
 namespace SchoolProjectClient.Client.Services
 {
     public class HttpClientService : IHttpClientService
     {
         private readonly HttpClient _httpClient;
-        private readonly IConfiguration _configuration;
         public string? jwtToken = null;
         private readonly ILocalStorageService localStorage;
-        public HttpClientService(HttpClient httpClient, IConfiguration configuration, ILocalStorageService localStorage)
+        public HttpClientService(HttpClient httpClient, ILocalStorageService localStorage)
         {
             _httpClient = httpClient;
-            _configuration = configuration;
             this.localStorage = localStorage;
         }
 
@@ -95,8 +91,6 @@ namespace SchoolProjectClient.Client.Services
             }
         }
 
-
-
         private string Url(RequestParameter requestParameter)
         {
             StringBuilder urlBuilder = new StringBuilder();
@@ -106,6 +100,15 @@ namespace SchoolProjectClient.Client.Services
             urlBuilder.Append(!String.IsNullOrEmpty(requestParameter.Action) ? requestParameter.Action : "");
             urlBuilder.Append((!String.IsNullOrEmpty(requestParameter.QueryString) ? "?" + requestParameter.QueryString : "/"));
             return !String.IsNullOrEmpty(requestParameter.FullEndPoint) ? requestParameter.FullEndPoint : urlBuilder.ToString();
+        }
+
+        public async Task<TResponse> GetFromUrlAsync<TResponse>(string url)
+        {
+            JsonSerializerOptions options = new();
+            options.PropertyNameCaseInsensitive = true;
+            HttpClient httpClient = new();
+            
+            return await httpClient.GetFromJsonAsync<TResponse>(url,options);
         }
     }
 }

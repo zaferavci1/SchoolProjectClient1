@@ -1,5 +1,6 @@
 ﻿using SchoolProjectClient.Client.Model.Basket;
 using SchoolProjectClient.Client.Model.Common;
+using SchoolProjectClient.Client.Model.Crypto;
 
 namespace SchoolProjectClient.Client.Services.Baskets
 {
@@ -26,6 +27,9 @@ namespace SchoolProjectClient.Client.Services.Baskets
 
         public Task<BaseResponse<Basket>> UpdateBasketAsync(UpdateBasket updateBasket)
             => _httpClientService.PutAsync<UpdateBasket, BaseResponse<Basket>>(new RequestParameter() { Controller = "Basket", Action = "Update" }, updateBasket);
+
+        public Task<BaseResponse<Crypto>> BasketAddedCryptoAsync(AddCrypto addCrypto)
+            => _httpClientService.PostAsync<AddCrypto, BaseResponse<Crypto>>(new RequestParameter() { Controller = "Basket", Action = "AddCrypto" }, addCrypto);
     }
 }
 

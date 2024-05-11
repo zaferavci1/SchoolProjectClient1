@@ -28,7 +28,7 @@
     {
         try
         {
-            var result = await _postService.DeletePostAsync(new PostUpdateRequest() { UserId = UserId, id = Id});
+            var result = await _postService.DeletePostAsync(new PostUpdateRequest() { UserId = UserId, Id = Id});
             if (result.IsSucceeded)
             {
 

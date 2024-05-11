@@ -22,14 +22,18 @@
 @using SchoolProjectClient.Client.Services.Posts
 @using SchoolProjectClient.Client.Services.Users
 @using SchoolProjectClient.Client.Services.Comments
+@using SchoolProjectClient.Client.Services.Binance
 @using SchoolProjectClient.Client.Services.Login
+@using SchoolProjectClient.Client.Services.Baskets
 @using SchoolProjectClient.Client.Services.PublicProfile
 @using SchoolProjectClient.Client.Model.Post
 @using SchoolProjectClient.Client.Model.Utils
 @using SchoolProjectClient.Client.Model.Comment
 @using SchoolProjectClient.Client.Model.User
 @using SchoolProjectClient.Client.Model.Login
+@using SchoolProjectClient.Client.Model.Basket
 @using ClientProject.Pages.Posts
+@using SchoolProjectClient.Client.Model.Crypto
 
 
 
@@ -45,7 +49,9 @@
 @inject ICommentService _commentService
 @inject ISnackbar _snackbar
 @inject IDialogService _dialogService
-@inject AppUserId AppUserId
+@*@inject AppUserId AppUserId*@
 @inject IUserService _userService
 @inject IPublicProfileService _publicProfile 
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject IBinanceService _binanceService 
+@inject IBasketService _basketService 

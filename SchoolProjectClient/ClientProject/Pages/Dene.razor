@@ -1,4 +1,5 @@
-﻿@page "/main"
+﻿@page "/dene"
+
 
 
 
@@ -394,9 +395,6 @@
                                                 <a class="nav-link" href="my-profile"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/home-outline-filled.svg" alt=""><span>Anasayfa</span></a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="crypto"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/home-outline-filled.svg" alt=""><span>Crypto</span></a>
-                                            </li>
-                                            <li class="nav-item">
                                                 <a class="nav-link" href="my-profile-connections"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/person-outline-filled.svg" alt=""><span>Bağlantılarım</span></a>
                                             </li>
                                             <li class="nav-item">
@@ -435,151 +433,9 @@
                 </div>
                 <!-- Sidenav END -->
                 <!-- Main content START -->
-                <div class="col-md-8 col-lg-6 vstack gap-4">
-
-                    <!-- Share feed START -->
-                    <div class="card card-body">
-                        <div class="d-flex mb-3">
-                            <!-- Avatar -->
-                            <div class="avatar avatar-xs me-2">
-                                <a href="#"> <img class="avatar-img rounded-circle" src="@GetProfilePicturePath(user.ProfilePictureId)" alt=""> </a>
-                            </div>
-                            <!-- Post input -->
-                            <form class="w-100">
-                                <input class="form-control pe-4 border-0" @bind="newPost.Title" placeholder="Post Başlığı" data-bs-toggle="modal" data-bs-target="#modalCreateFeed">
-                                <input class="form-control pe-4 border-0" @bind="newPost.Content" placeholder="Fikirlerini paylaş..." data-bs-toggle="modal" data-bs-target="#modalCreateFeed">
-                                <button type="button" class="btn btn-success-soft" @onclick="@(async () => await SubmitPost())">Gönder</button>
-                            </form>
-                        </div>
-                        <!-- Share feed toolbar START -->
-                        <!--<ul class="nav nav-pills nav-stack small fw-normal">
-                            <li class="nav-item">
-                                <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal" data-bs-target="#feedActionPhoto"> <i class="bi bi-image-fill text-success pe-2"></i>Photo</a>
-                            </li>
-                            <li class="nav-item dropdown ms-sm-auto">
-                                <a class="nav-link bg-light py-1 px-2 mb-0" href="#" id="feedActionShare" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-three-dots"></i>
-                                </a>
-                            </li>
-                        </ul>-->
-                        <!-- Share feed toolbar END -->
-                    </div>
-
-                    <!-- Share feed END -->
-                    <!-- Card feed item START -->
-                    @foreach (var post in Posts)
-                    {
-                        <div class="card">
-                            <div class="container">
-                                <div class="card-header">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex align-items-center">
-                                            <div class="avatar">
-                                                <a @onclick="() => NavigateToProfile(post.OwnersName)"><img class="avatar-img rounded-circle" src="@GetProfilePicturePath(post.ProfilePictureId)" alt="Profile Picture"></a>
-                                            </div>
-                                            <div>
-                                                <button class="btn btn-link" @onclick="() => NavigateToProfile(post.OwnersName)">
-                                                    @post.OwnersName
-                                                </button>
-
-                                                <p>@post.Title</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <p>@post.Content</p>
-                                    <ul class="nav nav-stack py-3 small">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" @onclick="() => LikePost(post.Id)">
-                                                <i class="bi bi-hand-thumbs-up-fill" type="button"></i> Beğen (@post.LikeCount)
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                                <div class="d-flex mb-3">
-                                    <div class="avatar avatar-xs">
-                                        <a href="#!"><img class="avatar-img rounded-circle" src="@GetProfilePicturePath(user.ProfilePictureId)" alt="User Avatar"></a>
-                                    </div>
-                                    <form class="position-relative w-100">
-                                        <textarea class="form-control pe-4 bg-light" rows="1" @bind="addComment.Content" placeholder="Yorum ekle..."></textarea>
-                                        <button class="nav-link bg-transparent px-3 position-absolute top-50 end-0 translate-middle-y border-0" type="button" @onclick="@(async () => await SubmitComment(post.Id))">
-                                            <i class="bi bi-send-fill"> </i>
-                                        </button>
-                                    </form>
-
-                                </div>
-                                <ul class="list-unstyled">
-                                    @foreach (var comment in post.Comments)
-                                    {
-                                        <li class="comment-item mb-2">
-                                            <div class="d-flex">
-                                                <div class="avatar avatar-xs">
-                                                    <a href="#!"><img class="avatar-img rounded-circle" src="@GetProfilePicturePath(comment.ProfilePictureId)" alt="Comment Avatar"></a>
-                                                </div>
-                                                <div class="ms-2">
-                                                    <div class="bg-light rounded p-3">
-                                                        <button class="btn btn-link" @onclick="() => NavigateToProfile(comment.OwnersName)">
-                                                            @comment.OwnersName
-                                                        </button>
-                                                        <p class="small mb-0">@comment.Content</p>
-                                                    </div>
-                                                    <ul class="nav py-2 small">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link active" href="" @onclick="() => LikeComment(comment.Id)">
-                                                                <i class="bi bi-hand-thumbs-up-fill" type="button"></i> Liked (@comment.LikeCount)
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                    }
-
-
-                </div>
-                <div class="col-lg-3">
-                    <div class="row g-4">
-                        <!-- Card follow START -->
-                        <div class="col-sm-6 col-lg-12">
-                            <div class="card">
-                                <!-- Card header START -->
-                                <div class="card-header pb-0 border-0">
-                                    <h5 class="card-title mb-0">Kimi Takip Etmeli</h5>
-                                </div>
-                                <!-- Card header END -->
-                                <!-- Card body START -->
-                                @foreach (var user in response.UserDtos)
-                                {
-                                    <div class="card-body">
-
-                                        <div class="hstack gap-2 mb-3">
-                                            <div class="avatar">
-                                                <a href="#!"><img class="avatar-img rounded-circle" src="@GetProfilePicturePath(user.ProfilePictureId)" alt=""></a>
-                                            </div>
-                                            <!-- Title -->
-                                            <div class="overflow-hidden">
-                                                <a class="h6 mb-0" href="#!">@user.Name</a>
-                                                <p class="mb-0 small text-truncate">@user.NickName</p>
-                                            </div>
-                                            <!-- Button -->
-                                            <button class="btn btn-primary-soft rounded-circle icon-md ms-auto" @onclick="() => FollowUser(user.Id)">
-                                                +
-                                            </button>
-                                        </div>
-
-                                    </div>
-                                }
-                                <!-- Card body END -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- TradingView Widget BEGIN -->
+                
+                <!-- TradingView Widget END -->
                 <!-- Card body END -->
             </div>
             <!-- Card feed item END -->
@@ -626,6 +482,7 @@
 
 <!-- Mirrored from social.webestica.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 May 2024 09:27:55 GMT -->
 </html>
+
 
 
 @code{
@@ -693,9 +550,7 @@
             if (result.IsSucceeded)
             {
                 _snackbar.Add("Comment added successfully", Severity.Success);
-                addComment.Content = "";
-                await PostLoad(); // Yorum eklendikten sonra postları yeniden yükleyin
-                StateHasChanged(); // Bileşeni yeniden render edin
+                MudDialog.Close(DialogResult.Ok(true));
             }
             else
             {
@@ -722,8 +577,6 @@
             if (result.IsSucceeded)
             {
                 _snackbar.Add("Post liked successfully!", Severity.Success);
-                await PostLoad(); // Post beğenildikten sonra postları yeniden yükleyin
-                StateHasChanged(); // Bileşeni yeniden render edin
             }
             else
             {
@@ -757,10 +610,6 @@
             if (result.IsSucceeded)
             {
                 _snackbar.Add("Post added successfully", Severity.Success);
-                newPost.Content = "";
-                newPost.Title = "";
-                await PostLoad(); // Post eklendikten sonra postları yeniden yükleyin
-                StateHasChanged(); // Bileşeni yeniden render edin
             }
             else
             {
@@ -772,5 +621,9 @@
             _snackbar.Add($"Exception during post submission: {ex.Message}", Severity.Error);
         }
     }
-   
+
+    
+
+
+    
 }

@@ -564,13 +564,13 @@
                                 <div>
                                     <!-- Avatar -->
                                     <div class="avatar avatar-xxl mt-n5 mb-3">
-                                        <img class="avatar-img rounded-circle border border-white border-3" src="assets/images/avatar/07.jpg" alt="">
+                                        <img class="avatar-img rounded-circle border border-white border-3" src="@GetProfilePicturePath(UserById.ProfilePictureId)" alt="">
                                     </div>
                                 </div>
                                 <div class="ms-sm-4 mt-sm-3">
                                     <!-- Info -->
                                     <h1 class="mb-0 h5">@UserById.Name <i class="bi bi-patch-check-fill text-success small"></i></h1>
-                                    <p>@UserById.Followers.Count</p>
+                                    <p>Takipçi Sayısı: @UserById.Followers.Count</p>
                                     <ul class="list-inline mb-0 text-center text-sm-start mt-3 mt-sm-0">
                                         <li class="list-inline-item"><i class="bi bi-pencil-square me-1"></i> Post Sayısı : @UserById.Posts.Count() </li>
                                         <li class="list-inline-item"><i class="bi bi-people me-1"></i> Takipçi Sayısı : @UserById.Followers.Count() </li>
@@ -580,7 +580,7 @@
                                 </div>
                                 <!-- Button -->
                                 <div class="d-flex mt-3 justify-content-center ms-sm-auto">
-                                    <button class="btn btn-danger-soft me-2" type="button"> <i class="bi bi-pencil-fill pe-1"></i> Profili Düzenle </button>
+                                    <button class="btn btn-danger-soft me-2" type="button" href="profileSetting"> <i class="bi bi-pencil-fill pe-1"></i> Profili Düzenle </button>
                                     <div class="dropdown">
                                         <!-- Card share action menu -->
                                         <button class="icon-md btn btn-light" type="button" id="profileAction2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -611,7 +611,7 @@
                         <div class="d-flex mb-3">
                             <!-- Avatar -->
                             <div class="avatar avatar-xs me-2">
-                                <a href="#"> <img class="avatar-img rounded-circle" src="assets/images/avatar/07.jpg" alt=""> </a>
+                                <a href="#"> <img class="avatar-img rounded-circle" src="@GetProfilePicturePath(UserById.ProfilePictureId)" alt=""> </a>
                             </div>
                             <!-- Post input -->
                             <form class="w-100">
@@ -644,19 +644,28 @@
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
                                         <div class="avatar avatar-story me-2">
-                                            <a href="#!"> <img class="avatar-img rounded-circle" src="assets/images/avatar/04.jpg" alt=""> </a>
+                                            <a href="#!"> <img class="avatar-img rounded-circle" src="@GetProfilePicturePath(post.ProfilePictureId)" alt=""> </a>
                                         </div>
                                         <!-- Info -->
                                         <div>
                                             <div class="nav nav-divider">
-                                                <h6 class="nav-item card-title mb-0"> <a href="#!"> @UserById.Name </a></h6>
+                                                <h6 class="nav-item card-title mb-0"> <a href=""> @UserById.Name </a></h6>
                                                 <small class="ms-2">
                                                     @UserById.Comments.FirstOrDefault()?.CreatedDate.ToString("yyyy-MM-dd")
                                                 </small>
 
                                             </div>
-                                            <p class="mb-0 small">Web Developer at Webestica</p>
+                                            <p class="mb-0 small">@UserById.NickName</p>
                                         </div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2" id="cardFeedAction1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots"></i>
+                                        </a>
+                                        <!-- Card feed action dropdown menu -->
+                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction1">
+                                            <li><a class="dropdown-item" @onclick="() => DeletePost(post.Id,post.UserId)"> <i class="bi bi-flag fa-fw pe-2"></i>Postu Sil</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -677,14 +686,14 @@
                                 <div class="d-flex mb-3">
                                     <!-- Avatar -->
                                     <div class="avatar avatar-xs me-2">
-                                        <a href="#!"> <img class="avatar-img rounded-circle" src="assets/images/avatar/12.jpg" alt=""> </a>
+                                        <a href="#!"> <img class="avatar-img rounded-circle" src="@GetProfilePicturePath(post.ProfilePictureId)" alt=""> </a>
                                     </div>
                                     <!-- Comment box  -->
                                     <form class="position-relative w-100">
                                         <textarea class="form-control pe-4 bg-light" rows="1" placeholder="Yorum Ekle..."></textarea>
-                                        <button class="nav-link bg-transparent px-3 position-absolute top-50 end-0 translate-middle-y border-0" type="button" @onclick="@(async () => await SubmitComment(post.Id))">
-                                            <i class="bi bi-send-fill"> </i>
-                                        </button>
+                                        @*<button class="nav-link bg-transparent px-3 position-absolute top-50 end-0 translate-middle-y border-0" type="button" @onclick="@(async () => await SubmitComment(post.Id))">*@
+                                            @*<i class="bi bi-send-fill"> </i>
+                                        </button>*@
                                     </form>
                                 </div>
                                 <!-- Comment wrap START -->
@@ -696,7 +705,7 @@
                                             <div class="d-flex position-relative">
                                                 <!-- Avatar -->
                                                 <div class="avatar avatar-xs">
-                                                    <a href="#!"><img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt=""></a>
+                                                    <a href="#!"><img class="avatar-img rounded-circle" src="@GetProfilePicturePath(comment.ProfilePictureId)" alt=""></a>
                                                 </div>
                                                 <div class="ms-2">
                                                     <!-- Comment by -->
@@ -1103,24 +1112,34 @@
         Users = (await _userService.GetAllUserListAsync(0, 100)).Adapt<GetAllUser>();
     }
 
-    async Task SubmitComment(string PostId)
-    {
-        try
-        {
-            addComment.UserId = UserId;
-            addComment.PostId = PostId;
-            var result = await _commentService.AddCommentAsync(addComment);
-
-        }
-        catch (Exception ex)
-        {
-            _snackbar.Add($"Exception during comment submission: {ex.Message}", Severity.Error);
-        }
-    }
+    //async Task SubmitComment(string PostId)
+    //{
+    //    try
+    //    {
+    //        addComment.UserId = UserId;
+    //        addComment.PostId = PostId;
+    //        var result = await _commentService.AddCommentAsync(addComment);
+    //        if (result.IsSucceeded)
+    //        {
+    //            _snackbar.Add("Comment added successfully", Severity.Success);
+    //            addComment.Content = "";
+    //            await OnInitializedAsync(); // Yorum eklendikten sonra postları yeniden yükleyin
+    //            StateHasChanged(); // Bileşeni yeniden render edin
+    //        }
+    //        else
+    //        {
+    //            _snackbar.Add($"Failed to add comment: {result.Message}", Severity.Error);
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        _snackbar.Add($"Exception during comment submission: {ex.Message}", Severity.Error);
+    //    }
+    //}
 
     private async Task UnFollowUser(string followId)
     {
-        var result = await _userService.FollowUserAsync(new FollowUser() { user1 = UserId, user2 = followId });
+        var result = await _userService.UnFollowUserAsync(new FollowUser() { user1 = UserId, user2 = followId });
 
         if (result.IsSucceeded)
         {
@@ -1160,5 +1179,19 @@
     string GetProfilePicturePath(int profilePictureId)
     {
         return $"assets/profiles/Profile{profilePictureId}.jpg";
+    }
+
+    async Task DeletePost(string PostId, string PostUserID)
+    {
+        try
+        {
+            var result = await _postService.DeletePostAsync(new PostUpdateRequest() { UserId = PostUserID, Id = PostId });
+            UserOfPost = (await _userService.GetByIdUserPost(UserId)).Data.usersPosts;
+
+        }
+        catch (Exception ex)
+        {
+            _snackbar.Add("Exception during post deletion:" + ex.Message, Severity.Error);
+        }
     }
 }
